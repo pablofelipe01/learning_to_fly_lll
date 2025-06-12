@@ -1,0 +1,468 @@
+2025-06-12 10:56:15 | INFO | ============================================================
+2025-06-12 10:56:15 | INFO |    ESTRATEGIA RSI MULTI-DIVISA PARA IQ OPTION
+2025-06-12 10:56:15 | INFO |    ⚡ LÓGICA INVERTIDA ⚡
+2025-06-12 10:56:15 | INFO | ============================================================
+2025-06-12 10:56:15 | INFO | 📅 Fecha/Hora: 2025-06-12 10:56:15
+2025-06-12 10:56:15 | INFO | 📧 Usuario: pab***ipe@me.com
+2025-06-12 10:56:15 | INFO | ============================================================
+2025-06-12 10:56:15 | INFO | ⚠️ IMPORTANTE: Esta estrategia usa lógica INVERTIDA
+2025-06-12 10:56:15 | INFO |    - PUT cuando RSI ≤ 35 (sobreventa)
+2025-06-12 10:56:15 | INFO |    - CALL cuando RSI ≥ 65 (sobrecompra)
+2025-06-12 10:56:15 | INFO | ============================================================
+2025-06-12 10:56:15 | INFO | 🚀 Inicializando estrategia...
+2025-06-12 10:56:15 | INFO | 🎯 INICIANDO ESTRATEGIA RSI MULTI-DIVISA (LÓGICA INVERTIDA)
+2025-06-12 10:56:15 | INFO | 📊 Configuración: PUT <= 35, CALL >= 65
+2025-06-12 10:56:15 | INFO | ⚡ LÓGICA INVERTIDA: PUT en sobreventa, CALL en sobrecompra
+2025-06-12 10:56:15 | INFO | 🔗 Conectando a IQ Option...
+2025-06-12 10:56:17 | INFO | ✅ Conexión exitosa
+2025-06-12 10:56:18 | INFO | 💰 Balance actual: $12,284.55
+2025-06-12 10:56:18 | INFO | 💰 Capital inicial: $12,284.55
+2025-06-12 10:56:18 | INFO | 📂 No hay archivo de estado previo
+2025-06-12 10:56:18 | INFO | 🔍 Verificando pares disponibles...
+2025-06-12 10:56:30 | INFO | ✅ EURCAD: Encontrado como EURCAD-OTC (turbo)
+2025-06-12 10:56:30 | INFO | ✅ EURCAD: Encontrado como EURCAD-OTC (binary)
+2025-06-12 10:56:30 | INFO | ✅ EURCAD: Encontrado como EURCAD-op (binary)
+2025-06-12 10:56:30 | INFO | ✅ EURCAD: Seleccionado EURCAD-OTC (binary)
+2025-06-12 10:56:30 | INFO | ✅ GBPCHF: Encontrado como GBPCHF-OTC (turbo)
+2025-06-12 10:56:30 | INFO | ✅ GBPCHF: Encontrado como GBPCHF-OTC (binary)
+2025-06-12 10:56:30 | INFO | ✅ GBPCHF: Encontrado como GBPCHF-op (binary)
+2025-06-12 10:56:30 | INFO | ✅ GBPCHF: Seleccionado GBPCHF-OTC (binary)
+2025-06-12 10:56:30 | INFO | ✅ EURJPY: Encontrado como EURJPY-op (turbo)
+2025-06-12 10:56:30 | INFO | ✅ EURJPY: Encontrado como EURJPY-OTC (binary)
+2025-06-12 10:56:30 | INFO | ✅ EURJPY: Encontrado como EURJPY-op (binary)
+2025-06-12 10:56:30 | INFO | ✅ EURJPY: Seleccionado EURJPY-OTC (binary)
+2025-06-12 10:56:30 | INFO | ✅ GBPAUD: Encontrado como GBPAUD-OTC (turbo)
+2025-06-12 10:56:30 | INFO | ✅ GBPAUD: Encontrado como GBPAUD-OTC (binary)
+2025-06-12 10:56:30 | INFO | ✅ GBPAUD: Encontrado como GBPAUD-op (binary)
+2025-06-12 10:56:30 | INFO | ✅ GBPAUD: Seleccionado GBPAUD-OTC (binary)
+2025-06-12 10:56:30 | INFO | ✅ GBPCAD: Encontrado como GBPCAD-OTC (turbo)
+2025-06-12 10:56:30 | INFO | ✅ GBPCAD: Encontrado como GBPCAD-OTC (binary)
+2025-06-12 10:56:30 | INFO | ✅ GBPCAD: Encontrado como GBPCAD-op (binary)
+2025-06-12 10:56:30 | INFO | ✅ GBPCAD: Seleccionado GBPCAD-OTC (binary)
+2025-06-12 10:56:30 | INFO | 📊 Total pares disponibles: 5
+2025-06-12 10:56:30 | INFO | 📋 Pares activos:
+2025-06-12 10:56:30 | INFO |    - EURCAD → EURCAD-OTC (binary)
+2025-06-12 10:56:30 | INFO |    - GBPCHF → GBPCHF-OTC (binary)
+2025-06-12 10:56:30 | INFO |    - EURJPY → EURJPY-OTC (binary)
+2025-06-12 10:56:30 | INFO |    - GBPAUD → GBPAUD-OTC (binary)
+2025-06-12 10:56:30 | INFO |    - GBPCAD → GBPCAD-OTC (binary)
+2025-06-12 10:56:30 | INFO | 🧪 MODO PRUEBA - Verificando configuración...
+2025-06-12 10:56:30 | INFO | ✅ Conexión exitosa
+2025-06-12 10:56:30 | INFO | 💰 Balance: $12,284.55
+2025-06-12 10:56:30 | INFO | 📊 Pares disponibles: 5
+2025-06-12 10:56:30 | INFO | 📋 Pares activos:
+2025-06-12 10:56:30 | INFO |    - EURCAD → EURCAD-OTC (binary)
+2025-06-12 10:56:30 | INFO |    - GBPCHF → GBPCHF-OTC (binary)
+2025-06-12 10:56:30 | INFO |    - EURJPY → EURJPY-OTC (binary)
+2025-06-12 10:56:30 | INFO |    - GBPAUD → GBPAUD-OTC (binary)
+2025-06-12 10:56:30 | INFO |    - GBPCAD → GBPCAD-OTC (binary)
+2025-06-12 10:56:30 | INFO | ✅ Prueba completada exitosamente
+2025-06-12 10:56:30 | INFO | 👋 Programa finalizado
+2025-06-12 10:59:21 | INFO | ============================================================
+2025-06-12 10:59:21 | INFO |    ESTRATEGIA RSI MULTI-DIVISA PARA IQ OPTION
+2025-06-12 10:59:21 | INFO |    ⚡ LÓGICA INVERTIDA ⚡
+2025-06-12 10:59:21 | INFO | ============================================================
+2025-06-12 10:59:21 | INFO | 📅 Fecha/Hora: 2025-06-12 10:59:21
+2025-06-12 10:59:21 | INFO | 📧 Usuario: pab***ipe@me.com
+2025-06-12 10:59:21 | INFO | ============================================================
+2025-06-12 10:59:21 | INFO | ⚠️ IMPORTANTE: Esta estrategia usa lógica INVERTIDA
+2025-06-12 10:59:21 | INFO |    - PUT cuando RSI ≤ 35 (sobreventa)
+2025-06-12 10:59:21 | INFO |    - CALL cuando RSI ≥ 65 (sobrecompra)
+2025-06-12 10:59:21 | INFO | ============================================================
+2025-06-12 10:59:21 | INFO | 🚀 Inicializando estrategia...
+2025-06-12 10:59:21 | INFO | 🎯 INICIANDO ESTRATEGIA RSI MULTI-DIVISA (LÓGICA INVERTIDA)
+2025-06-12 10:59:21 | INFO | 📊 Configuración: PUT <= 35, CALL >= 65
+2025-06-12 10:59:21 | INFO | ⚡ LÓGICA INVERTIDA: PUT en sobreventa, CALL en sobrecompra
+2025-06-12 10:59:21 | INFO | 🔗 Conectando a IQ Option...
+2025-06-12 10:59:24 | INFO | ✅ Conexión exitosa
+2025-06-12 10:59:24 | INFO | 💰 Balance actual: $12,284.55
+2025-06-12 10:59:25 | INFO | 💰 Capital inicial: $12,284.55
+2025-06-12 10:59:25 | INFO | 📂 No hay archivo de estado previo
+2025-06-12 10:59:25 | INFO | 🔍 Verificando pares disponibles...
+2025-06-12 10:59:33 | INFO | ✅ EURCAD: Encontrado como EURCAD-OTC (turbo)
+2025-06-12 10:59:33 | INFO | ✅ EURCAD: Encontrado como EURCAD-OTC (binary)
+2025-06-12 10:59:33 | INFO | ✅ EURCAD: Encontrado como EURCAD-op (binary)
+2025-06-12 10:59:33 | INFO | ✅ EURCAD: Seleccionado EURCAD-OTC (binary)
+2025-06-12 10:59:33 | INFO | ✅ GBPCHF: Encontrado como GBPCHF-OTC (turbo)
+2025-06-12 10:59:33 | INFO | ✅ GBPCHF: Encontrado como GBPCHF-OTC (binary)
+2025-06-12 10:59:33 | INFO | ✅ GBPCHF: Encontrado como GBPCHF-op (binary)
+2025-06-12 10:59:33 | INFO | ✅ GBPCHF: Seleccionado GBPCHF-OTC (binary)
+2025-06-12 10:59:33 | INFO | ✅ EURJPY: Encontrado como EURJPY-op (turbo)
+2025-06-12 10:59:33 | INFO | ✅ EURJPY: Encontrado como EURJPY-OTC (binary)
+2025-06-12 10:59:33 | INFO | ✅ EURJPY: Encontrado como EURJPY-op (binary)
+2025-06-12 10:59:33 | INFO | ✅ EURJPY: Seleccionado EURJPY-OTC (binary)
+2025-06-12 10:59:33 | INFO | ✅ GBPAUD: Encontrado como GBPAUD-OTC (turbo)
+2025-06-12 10:59:33 | INFO | ✅ GBPAUD: Encontrado como GBPAUD-OTC (binary)
+2025-06-12 10:59:33 | INFO | ✅ GBPAUD: Encontrado como GBPAUD-op (binary)
+2025-06-12 10:59:33 | INFO | ✅ GBPAUD: Seleccionado GBPAUD-OTC (binary)
+2025-06-12 10:59:33 | INFO | ✅ GBPCAD: Encontrado como GBPCAD-OTC (turbo)
+2025-06-12 10:59:33 | INFO | ✅ GBPCAD: Encontrado como GBPCAD-OTC (binary)
+2025-06-12 10:59:33 | INFO | ✅ GBPCAD: Encontrado como GBPCAD-op (binary)
+2025-06-12 10:59:33 | INFO | ✅ GBPCAD: Seleccionado GBPCAD-OTC (binary)
+2025-06-12 10:59:33 | INFO | 📊 Total pares disponibles: 5
+2025-06-12 10:59:33 | INFO | 📋 Pares activos:
+2025-06-12 10:59:33 | INFO |    - EURCAD → EURCAD-OTC (binary)
+2025-06-12 10:59:33 | INFO |    - GBPCHF → GBPCHF-OTC (binary)
+2025-06-12 10:59:33 | INFO |    - EURJPY → EURJPY-OTC (binary)
+2025-06-12 10:59:33 | INFO |    - GBPAUD → GBPAUD-OTC (binary)
+2025-06-12 10:59:33 | INFO |    - GBPCAD → GBPCAD-OTC (binary)
+2025-06-12 10:59:33 | INFO | 🎯 Iniciando operaciones...
+2025-06-12 10:59:33 | INFO | ℹ️ Presiona Ctrl+C para detener la estrategia
+2025-06-12 10:59:33 | INFO | 🚀 Iniciando estrategia RSI Multi-Divisa (LÓGICA INVERTIDA)
+2025-06-12 10:59:33 | INFO | 📊 Configuración: 5 pares disponibles
+2025-06-12 10:59:33 | INFO | ⚡ IMPORTANTE: PUT en RSI≤35 (sobreventa), CALL en RSI≥65 (sobrecompra)
+2025-06-12 10:59:33 | INFO | ⏰ Tiempo entre señales: 60 minutos (1 hora)
+2025-06-12 10:59:33 | INFO | 🔄 Sin bloqueo por pérdidas consecutivas
+2025-06-12 10:59:34 | INFO | 🔴 GBPCHF - Señal PUT (RSI: 29.79)
+2025-06-12 10:59:35 | INFO | 📈 Colocando PUT en GBPCHF (GBPCHF-OTC), cantidad: $10.00
+2025-06-12 10:59:36 | INFO | ✅ Orden colocada exitosamente. ID: 12737548186
+2025-06-12 10:59:36 | INFO | 📝 Orden registrada para GBPCHF
+2025-06-12 10:59:48 | INFO | 📉 Nuevo mínimo: $12,274.55 (0.08% pérdida)
+2025-06-12 11:01:48 | INFO | 🔄 Ciclo #10 - 2025-06-12 11:01:48
+2025-06-12 11:02:03 | INFO | 🔄 Verificando orden 12737548186...
+2025-06-12 11:02:03 | INFO | 📋 Orden encontrada en order_binary
+2025-06-12 11:02:03 | INFO |    Result: LOOSE
+2025-06-12 11:02:03 | INFO | ❌ Pérdida detectada
+2025-06-12 11:02:03 | INFO | ❌ GBPCHF - PUT PERDIDA. Pérdida: $10.00
+2025-06-12 11:02:03 | INFO | 📊 GBPCHF - Pérdidas consecutivas: 1
+2025-06-12 11:04:18 | INFO | 🔄 Ciclo #20 - 2025-06-12 11:04:18
+2025-06-12 11:06:48 | INFO | 🔄 Ciclo #30 - 2025-06-12 11:06:48
+2025-06-12 11:08:49 | INFO | 🔴 EURJPY - Señal PUT (RSI: 34.46)
+2025-06-12 11:08:50 | INFO | 📈 Colocando PUT en EURJPY (EURJPY-OTC), cantidad: $10.00
+2025-06-12 11:08:50 | WARNING | ⚠️ Error con EURJPY-OTC: Cannot purchase an option (active is suspended)
+2025-06-12 11:08:50 | INFO | 🔄 Buscando alternativa para EURJPY...
+2025-06-12 11:09:00 | ERROR | ⚠️ TIMEOUT: get_all_open_time tardó más de 10s
+2025-06-12 11:09:00 | ERROR | ❌ Error colocando orden: Cannot purchase an option (active is suspended)
+2025-06-12 11:09:23 | INFO | 🔄 Ciclo #40 - 2025-06-12 11:09:23
+2025-06-12 11:11:53 | INFO | 🔄 Ciclo #50 - 2025-06-12 11:11:53
+2025-06-12 11:14:24 | INFO | 🔄 Ciclo #60 - 2025-06-12 11:14:24
+2025-06-12 11:16:54 | INFO | 🔄 Ciclo #70 - 2025-06-12 11:16:54
+2025-06-12 11:19:24 | INFO | 🔄 Ciclo #80 - 2025-06-12 11:19:24
+2025-06-12 11:20:08 | INFO | ⏹️ Estrategia detenida por el usuario
+2025-06-12 11:20:08 | INFO | 🏁 Finalizando estrategia...
+2025-06-12 11:20:08 | INFO | ============================================================
+2025-06-12 11:20:08 | INFO | 📊 RESUMEN DE LA ESTRATEGIA RSI (LÓGICA INVERTIDA)
+2025-06-12 11:20:08 | INFO | ============================================================
+2025-06-12 11:20:08 | INFO | ⚡ Estrategia: PUT en sobreventa (RSI≤35), CALL en sobrecompra (RSI≥65)
+2025-06-12 11:20:08 | INFO | 💰 Capital Inicial: $12,284.55
+2025-06-12 11:20:08 | INFO | 💰 Balance Final: $12,274.55
+2025-06-12 11:20:08 | INFO | 📈 Rendimiento Total: -0.08%
+2025-06-12 11:20:08 | INFO | 🎯 Total Operaciones: 1
+2025-06-12 11:20:08 | INFO | ✅ Victorias: 0 (0.0%)
+2025-06-12 11:20:08 | INFO | ❌ Derrotas: 1 (100.0%)
+2025-06-12 11:20:08 | INFO | 🟡 Empates: 0 (0.0%)
+2025-06-12 11:20:08 | INFO | 📊 Tasa de Éxito (sin empates): 0.00%
+2025-06-12 11:20:08 | INFO | 💵 Beneficio Neto: $-10.00
+2025-06-12 11:20:08 | INFO | 📉 Capital Mínimo: $12,274.55
+2025-06-12 11:20:08 | INFO | 
+📊 Estadísticas por Par:
+2025-06-12 11:20:08 | INFO | GBPCHF: 1 trades | 0W/1L/0T | 0.0% éxito | Pérdidas consecutivas actuales: 1
+2025-06-12 11:20:08 | INFO | 
+📅 Rendimiento Mensual:
+2025-06-12 11:20:08 | INFO | ============================================================
+2025-06-12 11:20:08 | INFO | 👋 Estrategia finalizada
+2025-06-12 11:20:08 | INFO | 👋 Programa finalizado
+2025-06-12 11:20:36 | INFO | ============================================================
+2025-06-12 11:20:36 | INFO |    ESTRATEGIA RSI MULTI-DIVISA PARA IQ OPTION
+2025-06-12 11:20:36 | INFO |    ⚡ LÓGICA INVERTIDA ⚡
+2025-06-12 11:20:36 | INFO | ============================================================
+2025-06-12 11:20:36 | INFO | 📅 Fecha/Hora: 2025-06-12 11:20:36
+2025-06-12 11:20:36 | INFO | 📧 Usuario: pab***ipe@me.com
+2025-06-12 11:20:36 | INFO | ============================================================
+2025-06-12 11:20:36 | INFO | ⚠️ IMPORTANTE: Esta estrategia usa lógica INVERTIDA
+2025-06-12 11:20:36 | INFO |    - PUT cuando RSI ≤ 35 (sobreventa)
+2025-06-12 11:20:36 | INFO |    - CALL cuando RSI ≥ 65 (sobrecompra)
+2025-06-12 11:20:36 | INFO | ============================================================
+2025-06-12 11:20:36 | INFO | 🚀 Inicializando estrategia...
+2025-06-12 11:20:36 | INFO | 🎯 INICIANDO ESTRATEGIA RSI MULTI-DIVISA (LÓGICA INVERTIDA)
+2025-06-12 11:20:36 | INFO | 📊 Configuración: PUT <= 35, CALL >= 65
+2025-06-12 11:20:36 | INFO | ⚡ LÓGICA INVERTIDA: PUT en sobreventa, CALL en sobrecompra
+2025-06-12 11:20:36 | INFO | 🔗 Conectando a IQ Option...
+2025-06-12 11:20:39 | INFO | ✅ Conexión exitosa
+2025-06-12 11:20:39 | INFO | 💰 Balance actual: $12,274.55
+2025-06-12 11:20:40 | INFO | 💰 Capital inicial: $12,274.55
+2025-06-12 11:20:40 | INFO | ✅ Estado cargado desde 2025-06-12T11:20:08.427903
+2025-06-12 11:20:40 | INFO | 🔍 Verificando pares disponibles...
+2025-06-12 11:20:47 | INFO | ✅ EURCAD: Encontrado como EURCAD-OTC (turbo)
+2025-06-12 11:20:47 | INFO | ✅ EURCAD: Encontrado como EURCAD-OTC (binary)
+2025-06-12 11:20:47 | INFO | ✅ EURCAD: Encontrado como EURCAD-op (binary)
+2025-06-12 11:20:47 | INFO | ✅ EURCAD: Seleccionado EURCAD-OTC (turbo)
+2025-06-12 11:20:47 | INFO | ✅ GBPCHF: Encontrado como GBPCHF-OTC (turbo)
+2025-06-12 11:20:47 | INFO | ✅ GBPCHF: Encontrado como GBPCHF-OTC (binary)
+2025-06-12 11:20:47 | INFO | ✅ GBPCHF: Encontrado como GBPCHF-op (binary)
+2025-06-12 11:20:47 | INFO | ✅ GBPCHF: Seleccionado GBPCHF-OTC (turbo)
+2025-06-12 11:20:47 | INFO | ✅ EURJPY: Encontrado como EURJPY-op (turbo)
+2025-06-12 11:20:47 | INFO | ✅ EURJPY: Encontrado como EURJPY-OTC (binary)
+2025-06-12 11:20:47 | INFO | ✅ EURJPY: Encontrado como EURJPY-op (binary)
+2025-06-12 11:20:47 | INFO | ✅ EURJPY: Seleccionado EURJPY-op (turbo)
+2025-06-12 11:20:47 | INFO | ✅ GBPAUD: Encontrado como GBPAUD-OTC (turbo)
+2025-06-12 11:20:47 | INFO | ✅ GBPAUD: Encontrado como GBPAUD-OTC (binary)
+2025-06-12 11:20:47 | INFO | ✅ GBPAUD: Encontrado como GBPAUD-op (binary)
+2025-06-12 11:20:47 | INFO | ✅ GBPAUD: Seleccionado GBPAUD-OTC (turbo)
+2025-06-12 11:20:47 | INFO | ✅ GBPCAD: Encontrado como GBPCAD-OTC (turbo)
+2025-06-12 11:20:47 | INFO | ✅ GBPCAD: Encontrado como GBPCAD-OTC (binary)
+2025-06-12 11:20:47 | INFO | ✅ GBPCAD: Encontrado como GBPCAD-op (binary)
+2025-06-12 11:20:47 | INFO | ✅ GBPCAD: Seleccionado GBPCAD-OTC (turbo)
+2025-06-12 11:20:47 | INFO | 📊 Total pares disponibles: 5
+2025-06-12 11:20:47 | INFO | 📋 Pares activos:
+2025-06-12 11:20:47 | INFO |    - EURCAD → EURCAD-OTC (turbo)
+2025-06-12 11:20:47 | INFO |    - GBPCHF → GBPCHF-OTC (turbo)
+2025-06-12 11:20:47 | INFO |    - EURJPY → EURJPY-op (turbo)
+2025-06-12 11:20:47 | INFO |    - GBPAUD → GBPAUD-OTC (turbo)
+2025-06-12 11:20:47 | INFO |    - GBPCAD → GBPCAD-OTC (turbo)
+2025-06-12 11:20:47 | INFO | 🎯 Iniciando operaciones...
+2025-06-12 11:20:47 | INFO | ℹ️ Presiona Ctrl+C para detener la estrategia
+2025-06-12 11:20:47 | INFO | 🚀 Iniciando estrategia RSI Multi-Divisa (LÓGICA INVERTIDA)
+2025-06-12 11:20:47 | INFO | 📊 Configuración: 5 pares disponibles
+2025-06-12 11:20:47 | INFO | ⚡ IMPORTANTE: PUT en RSI≤35 (sobreventa), CALL en RSI≥65 (sobrecompra)
+2025-06-12 11:20:47 | INFO | ⏰ Tiempo entre señales: 60 minutos (1 hora)
+2025-06-12 11:20:47 | INFO | 🔄 Sin bloqueo por pérdidas consecutivas
+2025-06-12 11:23:02 | INFO | 🔄 Ciclo #10 - 2025-06-12 11:23:02
+2025-06-12 11:25:32 | INFO | 🔄 Ciclo #20 - 2025-06-12 11:25:32
+2025-06-12 11:28:03 | INFO | 🔄 Ciclo #30 - 2025-06-12 11:28:03
+2025-06-12 11:30:33 | INFO | 🔄 Ciclo #40 - 2025-06-12 11:30:33
+2025-06-12 11:33:03 | INFO | 🔄 Ciclo #50 - 2025-06-12 11:33:03
+2025-06-12 11:35:33 | INFO | 🔄 Ciclo #60 - 2025-06-12 11:35:33
+2025-06-12 11:37:05 | INFO | ⏹️ Estrategia detenida por el usuario
+2025-06-12 11:37:05 | INFO | 🏁 Finalizando estrategia...
+2025-06-12 11:37:06 | INFO | ============================================================
+2025-06-12 11:37:06 | INFO | 📊 RESUMEN DE LA ESTRATEGIA RSI (LÓGICA INVERTIDA)
+2025-06-12 11:37:06 | INFO | ============================================================
+2025-06-12 11:37:06 | INFO | ⚡ Estrategia: PUT en sobreventa (RSI≤35), CALL en sobrecompra (RSI≥65)
+2025-06-12 11:37:06 | INFO | 💰 Capital Inicial: $12,274.55
+2025-06-12 11:37:06 | INFO | 💰 Balance Final: $12,274.55
+2025-06-12 11:37:06 | INFO | 📈 Rendimiento Total: 0.00%
+2025-06-12 11:37:06 | INFO | 🎯 Total Operaciones: 1
+2025-06-12 11:37:06 | INFO | ✅ Victorias: 0 (0.0%)
+2025-06-12 11:37:06 | INFO | ❌ Derrotas: 1 (100.0%)
+2025-06-12 11:37:06 | INFO | 🟡 Empates: 0 (0.0%)
+2025-06-12 11:37:06 | INFO | 📊 Tasa de Éxito (sin empates): 0.00%
+2025-06-12 11:37:06 | INFO | 💵 Beneficio Neto: $-10.00
+2025-06-12 11:37:06 | INFO | 📉 Capital Mínimo: $12,274.55
+2025-06-12 11:37:06 | INFO | 
+📊 Estadísticas por Par:
+2025-06-12 11:37:06 | INFO | GBPCHF: 1 trades | 0W/1L/0T | 0.0% éxito | Pérdidas consecutivas actuales: 1
+2025-06-12 11:37:06 | INFO | 
+📅 Rendimiento Mensual:
+2025-06-12 11:37:06 | INFO | ============================================================
+2025-06-12 11:37:06 | INFO | 👋 Estrategia finalizada
+2025-06-12 11:37:06 | INFO | 👋 Programa finalizado
+2025-06-12 12:34:21 | INFO | ============================================================
+2025-06-12 12:34:21 | INFO |    ESTRATEGIA RSI MULTI-DIVISA PARA IQ OPTION
+2025-06-12 12:34:21 | INFO |    ⚡ LÓGICA INVERTIDA ⚡
+2025-06-12 12:34:21 | INFO | ============================================================
+2025-06-12 12:34:21 | INFO | 📅 Fecha/Hora: 2025-06-12 12:34:21
+2025-06-12 12:34:21 | INFO | 📧 Usuario: pab***ipe@me.com
+2025-06-12 12:34:21 | INFO | ============================================================
+2025-06-12 12:34:21 | INFO | ⚠️ IMPORTANTE: Esta estrategia usa lógica INVERTIDA
+2025-06-12 12:34:21 | INFO |    - PUT cuando RSI ≤ 35 (sobreventa)
+2025-06-12 12:34:21 | INFO |    - CALL cuando RSI ≥ 65 (sobrecompra)
+2025-06-12 12:34:21 | INFO | ============================================================
+2025-06-12 12:34:21 | INFO | 🚀 Inicializando estrategia...
+2025-06-12 12:34:21 | INFO | 🎯 INICIANDO ESTRATEGIA RSI MULTI-DIVISA (LÓGICA INVERTIDA)
+2025-06-12 12:34:21 | INFO | 📊 Configuración: PUT <= 35, CALL >= 65
+2025-06-12 12:34:21 | INFO | ⚡ LÓGICA INVERTIDA: PUT en sobreventa, CALL en sobrecompra
+2025-06-12 12:34:21 | INFO | 🔗 Conectando a IQ Option...
+2025-06-12 12:34:51 | INFO | ✅ Conexión exitosa
+2025-06-12 12:34:52 | INFO | 💰 Balance actual: $12,274.55
+2025-06-12 12:34:52 | INFO | 💰 Capital inicial: $12,274.55
+2025-06-12 12:34:52 | INFO | ✅ Estado cargado desde 2025-06-12T11:37:05.855913
+2025-06-12 12:34:52 | INFO | 🔍 Verificando pares disponibles...
+2025-06-12 12:34:59 | INFO | ✅ EURCAD: Encontrado como EURCAD-OTC (turbo)
+2025-06-12 12:34:59 | INFO | ✅ EURCAD: Encontrado como EURCAD-OTC (binary)
+2025-06-12 12:34:59 | INFO | ✅ EURCAD: Encontrado como EURCAD-op (binary)
+2025-06-12 12:34:59 | INFO | ✅ EURCAD: Seleccionado EURCAD-OTC (turbo)
+2025-06-12 12:34:59 | INFO | ✅ GBPCHF: Encontrado como GBPCHF-OTC (turbo)
+2025-06-12 12:34:59 | INFO | ✅ GBPCHF: Encontrado como GBPCHF-OTC (binary)
+2025-06-12 12:34:59 | INFO | ✅ GBPCHF: Encontrado como GBPCHF-op (binary)
+2025-06-12 12:34:59 | INFO | ✅ GBPCHF: Seleccionado GBPCHF-OTC (turbo)
+2025-06-12 12:34:59 | INFO | ✅ EURJPY: Encontrado como EURJPY-op (turbo)
+2025-06-12 12:34:59 | INFO | ✅ EURJPY: Encontrado como EURJPY-OTC (binary)
+2025-06-12 12:34:59 | INFO | ✅ EURJPY: Encontrado como EURJPY-op (binary)
+2025-06-12 12:34:59 | INFO | ✅ EURJPY: Seleccionado EURJPY-op (turbo)
+2025-06-12 12:34:59 | INFO | ✅ GBPAUD: Encontrado como GBPAUD-OTC (turbo)
+2025-06-12 12:34:59 | INFO | ✅ GBPAUD: Encontrado como GBPAUD-OTC (binary)
+2025-06-12 12:34:59 | INFO | ✅ GBPAUD: Encontrado como GBPAUD-op (binary)
+2025-06-12 12:34:59 | INFO | ✅ GBPAUD: Seleccionado GBPAUD-OTC (turbo)
+2025-06-12 12:34:59 | INFO | ✅ GBPCAD: Encontrado como GBPCAD-OTC (turbo)
+2025-06-12 12:34:59 | INFO | ✅ GBPCAD: Encontrado como GBPCAD-OTC (binary)
+2025-06-12 12:34:59 | INFO | ✅ GBPCAD: Encontrado como GBPCAD-op (binary)
+2025-06-12 12:34:59 | INFO | ✅ GBPCAD: Seleccionado GBPCAD-OTC (turbo)
+2025-06-12 12:34:59 | INFO | 📊 Total pares disponibles: 5
+2025-06-12 12:34:59 | INFO | 📋 Pares activos:
+2025-06-12 12:34:59 | INFO |    - EURCAD → EURCAD-OTC (turbo)
+2025-06-12 12:34:59 | INFO |    - GBPCHF → GBPCHF-OTC (turbo)
+2025-06-12 12:34:59 | INFO |    - EURJPY → EURJPY-op (turbo)
+2025-06-12 12:34:59 | INFO |    - GBPAUD → GBPAUD-OTC (turbo)
+2025-06-12 12:34:59 | INFO |    - GBPCAD → GBPCAD-OTC (turbo)
+2025-06-12 12:34:59 | INFO | 🎯 Iniciando operaciones...
+2025-06-12 12:34:59 | INFO | ℹ️ Presiona Ctrl+C para detener la estrategia
+2025-06-12 12:34:59 | INFO | 🚀 Iniciando estrategia RSI Multi-Divisa (LÓGICA INVERTIDA)
+2025-06-12 12:34:59 | INFO | 📊 Configuración: 5 pares disponibles
+2025-06-12 12:34:59 | INFO | ⚡ IMPORTANTE: PUT en RSI≤35 (sobreventa), CALL en RSI≥65 (sobrecompra)
+2025-06-12 12:34:59 | INFO | ⏰ Tiempo entre señales: 60 minutos (1 hora)
+2025-06-12 12:34:59 | INFO | 🔄 Sin bloqueo por pérdidas consecutivas
+2025-06-12 12:36:30 | INFO | 🔴 GBPCAD - Señal PUT (RSI: 34.96)
+2025-06-12 12:36:30 | INFO | 📈 Colocando PUT en GBPCAD (GBPCAD-OTC), cantidad: $10.00
+2025-06-12 12:36:31 | INFO | ✅ Orden colocada exitosamente. ID: 12737828270
+2025-06-12 12:36:31 | INFO | 📝 Orden registrada para GBPCAD
+2025-06-12 12:36:44 | INFO | 📉 Nuevo mínimo: $12,264.55 (0.08% pérdida)
+2025-06-12 12:37:14 | INFO | 🔄 Ciclo #10 - 2025-06-12 12:37:14
+2025-06-12 12:38:14 | INFO | 🟢 EURCAD - Señal CALL (RSI: 65.05)
+2025-06-12 12:38:15 | INFO | 📈 Colocando CALL en EURCAD (EURCAD-OTC), cantidad: $10.00
+2025-06-12 12:38:15 | INFO | ✅ Orden colocada exitosamente. ID: 12737833387
+2025-06-12 12:38:15 | INFO | 📝 Orden registrada para EURCAD
+2025-06-12 12:38:25 | ERROR | ⚠️ TIMEOUT: get_candles tardó más de 10s
+2025-06-12 12:38:25 | WARNING | ⚠️ No se pudo calcular RSI para GBPCHF
+2025-06-12 12:38:35 | ERROR | ⚠️ TIMEOUT: get_candles tardó más de 10s
+2025-06-12 12:38:35 | WARNING | ⚠️ No se pudo calcular RSI para EURJPY
+2025-06-12 12:38:45 | ERROR | ⚠️ TIMEOUT: get_candles tardó más de 10s
+2025-06-12 12:38:45 | WARNING | ⚠️ No se pudo calcular RSI para GBPAUD
+2025-06-12 12:39:00 | ERROR | ⚠️ TIMEOUT: get_balance tardó más de 10s
+2025-06-12 12:39:01 | INFO | 🔄 Verificando orden 12737828270...
+2025-06-12 12:39:01 | INFO | 📋 Orden encontrada en order_binary
+2025-06-12 12:39:01 | INFO |    Result: LOOSE
+2025-06-12 12:39:01 | INFO | ❌ Pérdida detectada
+2025-06-12 12:39:01 | INFO | ❌ GBPCAD - PUT PERDIDA. Pérdida: $10.00
+2025-06-12 12:39:01 | INFO | 📊 GBPCAD - Pérdidas consecutivas: 1
+2025-06-12 12:39:11 | ERROR | ⚠️ TIMEOUT: get_candles tardó más de 10s
+2025-06-12 12:39:11 | WARNING | ⚠️ No se pudo calcular RSI para GBPCHF
+2025-06-12 12:39:21 | ERROR | ⚠️ TIMEOUT: get_candles tardó más de 10s
+2025-06-12 12:39:21 | WARNING | ⚠️ No se pudo calcular RSI para EURJPY
+2025-06-12 12:39:31 | ERROR | ⚠️ TIMEOUT: get_candles tardó más de 10s
+2025-06-12 12:39:31 | WARNING | ⚠️ No se pudo calcular RSI para GBPAUD
+2025-06-12 12:39:36 | WARNING | 🔌 Reconectando...
+2025-06-12 12:39:36 | INFO | 🔗 Conectando a IQ Option...
+2025-06-12 12:39:36 | CRITICAL | 🚨 Error crítico: Expecting value: line 1 column 2 (char 1)
+2025-06-12 12:39:36 | CRITICAL | Traceback (most recent call last):
+  File "/Users/pablofelipe/Desktop/LEARNING_TO_FLY_III/strategy.py", line 1261, in run
+    self._connect_to_iq_option(IQ_EMAIL, IQ_PASSWORD, ACCOUNT_TYPE)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/pablofelipe/Desktop/LEARNING_TO_FLY_III/strategy.py", line 117, in _connect_to_iq_option
+    login_status, login_reason = self.iqoption.connect()
+                                 ~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/pablofelipe/Desktop/LEARNING_TO_FLY_III/venv/lib/python3.13/site-packages/iqoptionapi/stable_api.py", line 142, in connect
+    if json.loads(reason)['code'] == 'verify':
+       ~~~~~~~~~~^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^
+  File "/opt/homebrew/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/json/decoder.py", line 345, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/json/decoder.py", line 363, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 2 (char 1)
+
+2025-06-12 12:39:36 | INFO | 🏁 Finalizando estrategia...
+2025-06-12 12:39:47 | ERROR | ⚠️ TIMEOUT: get_balance tardó más de 10s
+2025-06-12 12:39:47 | INFO | ============================================================
+2025-06-12 12:39:47 | INFO | 📊 RESUMEN DE LA ESTRATEGIA RSI (LÓGICA INVERTIDA)
+2025-06-12 12:39:47 | INFO | ============================================================
+2025-06-12 12:39:47 | INFO | ⚡ Estrategia: PUT en sobreventa (RSI≤35), CALL en sobrecompra (RSI≥65)
+2025-06-12 12:39:47 | INFO | 💰 Capital Inicial: $12,274.55
+2025-06-12 12:39:47 | INFO | 💰 Balance Final: $12,274.55
+2025-06-12 12:39:47 | INFO | 📈 Rendimiento Total: 0.00%
+2025-06-12 12:39:47 | INFO | 🎯 Total Operaciones: 2
+2025-06-12 12:39:47 | INFO | ✅ Victorias: 0 (0.0%)
+2025-06-12 12:39:47 | INFO | ❌ Derrotas: 2 (100.0%)
+2025-06-12 12:39:47 | INFO | 🟡 Empates: 0 (0.0%)
+2025-06-12 12:39:47 | INFO | 📊 Tasa de Éxito (sin empates): 0.00%
+2025-06-12 12:39:47 | INFO | 💵 Beneficio Neto: $-20.00
+2025-06-12 12:39:47 | INFO | 📉 Capital Mínimo: $12,264.55
+2025-06-12 12:39:47 | INFO | 
+📊 Estadísticas por Par:
+2025-06-12 12:39:47 | INFO | GBPCHF: 1 trades | 0W/1L/0T | 0.0% éxito | Pérdidas consecutivas actuales: 1
+2025-06-12 12:39:47 | INFO | GBPCAD: 1 trades | 0W/1L/0T | 0.0% éxito | Pérdidas consecutivas actuales: 1
+2025-06-12 12:39:47 | INFO | 
+📅 Rendimiento Mensual:
+2025-06-12 12:39:47 | INFO | ============================================================
+2025-06-12 12:40:39 | INFO | 
+⏹️ Estrategia detenida por el usuario
+2025-06-12 12:40:39 | INFO | 👋 Programa finalizado
+2025-06-12 13:41:10 | INFO | ============================================================
+2025-06-12 13:41:10 | INFO |    ESTRATEGIA RSI MULTI-DIVISA PARA IQ OPTION
+2025-06-12 13:41:10 | INFO |    ⚡ LÓGICA INVERTIDA ⚡
+2025-06-12 13:41:10 | INFO | ============================================================
+2025-06-12 13:41:10 | INFO | 📅 Fecha/Hora: 2025-06-12 13:41:10
+2025-06-12 13:41:10 | INFO | 📧 Usuario: pab***ipe@me.com
+2025-06-12 13:41:10 | INFO | ============================================================
+2025-06-12 13:41:10 | INFO | ⚠️ IMPORTANTE: Esta estrategia usa lógica INVERTIDA
+2025-06-12 13:41:10 | INFO |    - PUT cuando RSI ≤ 35 (sobreventa)
+2025-06-12 13:41:10 | INFO |    - CALL cuando RSI ≥ 65 (sobrecompra)
+2025-06-12 13:41:10 | INFO | ============================================================
+2025-06-12 13:41:10 | INFO | 🚀 Inicializando estrategia...
+2025-06-12 13:41:10 | INFO | 🎯 INICIANDO ESTRATEGIA RSI MULTI-DIVISA (LÓGICA INVERTIDA)
+2025-06-12 13:41:10 | INFO | 📊 Configuración: PUT <= 35, CALL >= 65
+2025-06-12 13:41:10 | INFO | ⚡ LÓGICA INVERTIDA: PUT en sobreventa, CALL en sobrecompra
+2025-06-12 13:41:10 | INFO | 🔗 Conectando a IQ Option...
+2025-06-12 13:41:13 | INFO | ✅ Conexión exitosa
+2025-06-12 13:41:13 | INFO | 💰 Balance actual: $12,273.05
+2025-06-12 13:41:13 | INFO | 💰 Capital inicial: $12,273.05
+2025-06-12 13:41:13 | INFO | ✅ Estado cargado desde 2025-06-12T12:39:36.921833
+2025-06-12 13:41:13 | INFO | 🔍 Verificando pares disponibles...
+2025-06-12 13:41:21 | INFO | ✅ EURCAD: Encontrado como EURCAD-OTC (turbo)
+2025-06-12 13:41:21 | INFO | ✅ EURCAD: Encontrado como EURCAD-OTC (binary)
+2025-06-12 13:41:21 | INFO | ✅ EURCAD: Encontrado como EURCAD-op (binary)
+2025-06-12 13:41:21 | INFO | ✅ EURCAD: Seleccionado EURCAD-OTC (turbo)
+2025-06-12 13:41:21 | INFO | ✅ GBPCHF: Encontrado como GBPCHF-OTC (turbo)
+2025-06-12 13:41:21 | INFO | ✅ GBPCHF: Encontrado como GBPCHF-OTC (binary)
+2025-06-12 13:41:21 | INFO | ✅ GBPCHF: Encontrado como GBPCHF-op (binary)
+2025-06-12 13:41:21 | INFO | ✅ GBPCHF: Seleccionado GBPCHF-OTC (turbo)
+2025-06-12 13:41:21 | INFO | ✅ EURJPY: Encontrado como EURJPY-op (turbo)
+2025-06-12 13:41:21 | INFO | ✅ EURJPY: Encontrado como EURJPY-OTC (binary)
+2025-06-12 13:41:21 | INFO | ✅ EURJPY: Encontrado como EURJPY-op (binary)
+2025-06-12 13:41:21 | INFO | ✅ EURJPY: Seleccionado EURJPY-op (turbo)
+2025-06-12 13:41:21 | INFO | ✅ GBPAUD: Encontrado como GBPAUD-OTC (turbo)
+2025-06-12 13:41:21 | INFO | ✅ GBPAUD: Encontrado como GBPAUD-OTC (binary)
+2025-06-12 13:41:21 | INFO | ✅ GBPAUD: Encontrado como GBPAUD-op (binary)
+2025-06-12 13:41:21 | INFO | ✅ GBPAUD: Seleccionado GBPAUD-OTC (turbo)
+2025-06-12 13:41:21 | INFO | ✅ GBPCAD: Encontrado como GBPCAD-OTC (turbo)
+2025-06-12 13:41:21 | INFO | ✅ GBPCAD: Encontrado como GBPCAD-OTC (binary)
+2025-06-12 13:41:21 | INFO | ✅ GBPCAD: Encontrado como GBPCAD-op (binary)
+2025-06-12 13:41:21 | INFO | ✅ GBPCAD: Seleccionado GBPCAD-OTC (turbo)
+2025-06-12 13:41:21 | INFO | 📊 Total pares disponibles: 5
+2025-06-12 13:41:21 | INFO | 📋 Pares activos:
+2025-06-12 13:41:21 | INFO |    - EURCAD → EURCAD-OTC (turbo)
+2025-06-12 13:41:21 | INFO |    - GBPCHF → GBPCHF-OTC (turbo)
+2025-06-12 13:41:21 | INFO |    - EURJPY → EURJPY-op (turbo)
+2025-06-12 13:41:21 | INFO |    - GBPAUD → GBPAUD-OTC (turbo)
+2025-06-12 13:41:21 | INFO |    - GBPCAD → GBPCAD-OTC (turbo)
+2025-06-12 13:41:21 | INFO | 🎯 Iniciando operaciones...
+2025-06-12 13:41:21 | INFO | ℹ️ Presiona Ctrl+C para detener la estrategia
+2025-06-12 13:41:21 | INFO | 🚀 Iniciando estrategia RSI Multi-Divisa (LÓGICA INVERTIDA)
+2025-06-12 13:41:21 | INFO | 📊 Configuración: 5 pares disponibles
+2025-06-12 13:41:21 | INFO | ⚡ IMPORTANTE: PUT en RSI≤35 (sobreventa), CALL en RSI≥65 (sobrecompra)
+2025-06-12 13:41:21 | INFO | ⏰ Tiempo entre señales: 60 minutos (1 hora)
+2025-06-12 13:41:21 | INFO | 🔄 Sin bloqueo por pérdidas consecutivas
+2025-06-12 13:41:22 | INFO | 🔄 Verificando orden 12737833387...
+2025-06-12 13:41:22 | INFO | 📊 Verificación por balance:
+2025-06-12 13:41:22 | INFO |    Balance antes: $12,264.55
+2025-06-12 13:41:22 | INFO |    Balance ahora: $12,273.05
+2025-06-12 13:41:22 | INFO |    Diferencia: $+8.50
+2025-06-12 13:41:22 | INFO | ✅ Victoria detectada
+2025-06-12 13:41:22 | INFO | ✅ EURCAD - CALL GANADA! Beneficio: $8.50
+2025-06-12 13:41:22 | INFO | 🟢 EURCAD - Señal CALL (RSI: 68.45)
+2025-06-12 13:41:23 | INFO | 📈 Colocando CALL en EURCAD (EURCAD-OTC), cantidad: $10.00
+2025-06-12 13:41:23 | INFO | ✅ Orden colocada exitosamente. ID: 12738008906
+2025-06-12 13:41:23 | INFO | 📝 Orden registrada para EURCAD
+2025-06-12 13:41:24 | INFO | 🟢 GBPAUD - Señal CALL (RSI: 66.16)
+2025-06-12 13:41:25 | INFO | 📈 Colocando CALL en GBPAUD (GBPAUD-OTC), cantidad: $10.00
+2025-06-12 13:41:26 | INFO | ✅ Orden colocada exitosamente. ID: 12738009026
+2025-06-12 13:41:26 | INFO | 📝 Orden registrada para GBPAUD
+2025-06-12 13:41:37 | INFO | 📉 Nuevo mínimo: $12,253.05 (0.16% pérdida)
+2025-06-12 13:42:52 | INFO | 🔄 Verificando orden 12738008906...
+2025-06-12 13:42:52 | INFO | 📋 Orden encontrada en order_binary
+2025-06-12 13:42:52 | INFO |    Result: LOOSE
+2025-06-12 13:42:52 | INFO | ❌ Pérdida detectada
+2025-06-12 13:42:52 | INFO | ❌ EURCAD - CALL PERDIDA. Pérdida: $10.00
+2025-06-12 13:42:52 | INFO | 📊 EURCAD - Pérdidas consecutivas: 1
+2025-06-12 13:42:52 | INFO | 🔄 Verificando orden 12738009026...
+2025-06-12 13:42:52 | INFO | 📋 Orden encontrada en order_binary
+2025-06-12 13:42:52 | INFO |    Result: WIN (profit: 185%)
+2025-06-12 13:42:52 | INFO | ✅ Victoria detectada
+2025-06-12 13:42:52 | INFO | ✅ GBPAUD - CALL GANADA! Beneficio: $18.50
+2025-06-12 13:43:36 | INFO | 🔄 Ciclo #10 - 2025-06-12 13:43:36
+2025-06-12 13:46:06 | INFO | 🔄 Ciclo #20 - 2025-06-12 13:46:06
+2025-06-12 13:48:36 | INFO | 🔄 Ciclo #30 - 2025-06-12 13:48:36
+2025-06-12 13:51:06 | INFO | 🔄 Ciclo #40 - 2025-06-12 13:51:06
