@@ -1,0 +1,67 @@
+{
+    "timestamp": "2025-06-13T13:25:00.542156",
+    "strategy_mode": "CALL_PUT",
+    "active_options": {},
+    "last_signal_time": {
+        "EURCHF": "2025-06-13T12:13:41.284160",
+        "GBPCAD": "2025-06-13T12:09:26.908357",
+        "GBPCHF": "2025-06-13T13:15:18.747131",
+        "EURUSD": "2025-06-13T11:09:27.844100",
+        "GBPUSD": "2025-06-13T12:09:43.311260",
+        "EURNZD": "2025-06-13T13:20:18.674908",
+        "NZDUSD": "2025-06-13T11:22:28.899441",
+        "GBPJPY": "2025-06-13T13:19:35.239976",
+        "EURAUD": "2025-06-13T11:43:40.662896",
+        "EURCAD": "2025-06-13T12:00:11.026294",
+        "AUDCHF": "2025-06-13T12:17:40.749378",
+        "USDJPY": "2025-06-13T12:33:59.049501",
+        "GBPNZD": "2025-06-13T12:48:13.168142"
+    },
+    "consecutive_losses": {
+        "EURCHF": 1,
+        "GBPCAD": 1,
+        "GBPCHF": 0,
+        "EURUSD": 0,
+        "GBPUSD": 0,
+        "EURNZD": 0,
+        "GBPJPY": 2,
+        "EURAUD": 0,
+        "EURCAD": 0,
+        "AUDCHF": 1,
+        "USDJPY": 1,
+        "GBPNZD": 0
+    },
+    "daily_lockouts": {},
+    "wins": {
+        "EURCHF": 1,
+        "GBPCAD": 1,
+        "GBPCHF": 3,
+        "EURUSD": 1,
+        "EURNZD": 2,
+        "EURAUD": 1,
+        "EURCAD": 1,
+        "GBPUSD": 1,
+        "GBPNZD": 1
+    },
+    "losses": {
+        "GBPUSD": 1,
+        "GBPJPY": 2,
+        "GBPCAD": 1,
+        "EURCHF": 1,
+        "AUDCHF": 1,
+        "USDJPY": 1
+    },
+    "ties": {},
+    "total_profit": 152000.0,
+    "daily_profit": 152000.0,
+    "monthly_profits": {},
+    "monthly_starting_capital": {
+        "2025-06": 535673.1
+    },
+    "monthly_stop_loss": false,
+    "stop_loss_triggered_month": null,
+    "absolute_stop_loss_activated": false,
+    "min_capital": 485673.1,
+    "last_date": "2025-06-13",
+    "current_month": "2025-06"
+}

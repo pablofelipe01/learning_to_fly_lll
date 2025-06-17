@@ -48,7 +48,7 @@ class MultiCurrencyRSIBinaryOptionsStrategy:
         # Configuración de posiciones
         self.position_size_percent = POSITION_SIZE_PERCENT
         self.min_position_size = MIN_POSITION_SIZE
-        self.max_position_size = MAX_POSITION_SIZE
+        # self.max_position_size = MAX_POSITION_SIZE  # ELIMINADO - Sin límite máximo
         
         # Parámetros de trading
         self.forex_pairs = FOREX_PAIRS
@@ -589,13 +589,20 @@ class MultiCurrencyRSIBinaryOptionsStrategy:
         return True
     
     def calculate_position_size(self):
-        """Calcular tamaño de posición basado en el capital actual"""
+        """Calcular tamaño de posición basado en el capital actual (2.5% sin límite máximo)"""
         current_capital = self.api_call_with_timeout(self.iqoption.get_balance)
         if current_capital is None:
             current_capital = self.initial_capital
         
+        # Calcular 2.5% del capital actual
         position_size = round(current_capital * self.position_size_percent, 2)
-        return min(self.max_position_size, max(self.min_position_size, position_size))
+        
+        # Solo aplicar límite mínimo (no hay límite máximo)
+        position_size = max(self.min_position_size, position_size)
+        
+        self.logger.debug(f"💰 Capital: ${current_capital:,.2f} → Posición: ${position_size:,.2f} ({self.position_size_percent*100}%)")
+        
+        return position_size
     
     def get_rsi(self, pair):
         """Obtener RSI para un par específico usando velas de 5 minutos"""
@@ -1243,6 +1250,7 @@ class MultiCurrencyRSIBinaryOptionsStrategy:
         self.logger.info("⚡ IMPORTANTE: PUT en RSI≤35 (sobreventa), CALL en RSI≥65 (sobrecompra)")
         self.logger.info(f"⏰ Tiempo entre señales: {self.min_time_between_signals} minutos (1 hora)")
         self.logger.info("🔄 Sin bloqueo por pérdidas consecutivas")
+        self.logger.info(f"💰 Tamaño de posición: {self.position_size_percent*100}% del capital (sin límite máximo)")
         
         cycle_count = 0
         
