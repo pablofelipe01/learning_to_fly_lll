@@ -1,0 +1,394 @@
+2025-06-18 08:24:51 | INFO | ============================================================
+2025-06-18 08:24:51 | INFO |    ESTRATEGIA RSI MULTI-ACTIVOS PARA IQ OPTION
+2025-06-18 08:24:51 | INFO |    ⚡ LÓGICA INVERTIDA ⚡
+2025-06-18 08:24:51 | INFO | ============================================================
+2025-06-18 08:24:51 | INFO | 📅 Fecha/Hora: 2025-06-18 08:24:51
+2025-06-18 08:24:51 | INFO | 📧 Usuario: pab***ipe@me.com
+2025-06-18 08:24:51 | INFO | ============================================================
+2025-06-18 08:24:51 | INFO | ⚠️ IMPORTANTE: Esta estrategia usa lógica INVERTIDA
+2025-06-18 08:24:51 | INFO |    - PUT cuando RSI ≤ 35 (sobreventa)
+2025-06-18 08:24:51 | INFO |    - CALL cuando RSI ≥ 65 (sobrecompra)
+2025-06-18 08:24:51 | INFO | ============================================================
+2025-06-18 08:24:51 | INFO | 🚀 Inicializando estrategia...
+2025-06-18 08:24:51 | INFO | 🎯 INICIANDO ESTRATEGIA RSI MULTI-ACTIVOS (LÓGICA INVERTIDA)
+2025-06-18 08:24:51 | INFO | 📊 Configuración: PUT <= 35, CALL >= 65
+2025-06-18 08:24:51 | INFO | ⚡ LÓGICA INVERTIDA: PUT en sobreventa, CALL en sobrecompra
+2025-06-18 08:24:51 | INFO | 🔗 Conectando a IQ Option...
+2025-06-18 08:24:52 | ERROR | ❌ Error al conectar: {"code":"invalid_credentials","message":"You entered the wrong credentials. Please ensure that your login/password is correct."}
+2025-06-18 08:24:52 | ERROR | ❌ Error fatal: Error al conectar a IQ Option: {"code":"invalid_credentials","message":"You entered the wrong credentials. Please ensure that your login/password is correct."}
+2025-06-18 08:24:52 | ERROR | Traceback completo:
+Traceback (most recent call last):
+  File "/Users/pablofelipe/Desktop/LEARNING_TO_FLY_III/main.py", line 62, in main
+    strategy = MultiAssetRSIBinaryOptionsStrategy(
+        email=email,
+        password=password,
+        account_type=account_type
+    )
+  File "/Users/pablofelipe/Desktop/LEARNING_TO_FLY_III/strategy.py", line 46, in __init__
+    self._connect_to_iq_option(email, password, account_type)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/pablofelipe/Desktop/LEARNING_TO_FLY_III/strategy.py", line 148, in _connect_to_iq_option
+    raise Exception(f"Error al conectar a IQ Option: {login_reason}")
+Exception: Error al conectar a IQ Option: {"code":"invalid_credentials","message":"You entered the wrong credentials. Please ensure that your login/password is correct."}
+2025-06-18 08:24:52 | INFO | 👋 Programa finalizado
+2025-06-18 08:26:08 | INFO | ============================================================
+2025-06-18 08:26:08 | INFO |    ESTRATEGIA RSI MULTI-ACTIVOS PARA IQ OPTION
+2025-06-18 08:26:08 | INFO |    ⚡ LÓGICA INVERTIDA ⚡
+2025-06-18 08:26:08 | INFO | ============================================================
+2025-06-18 08:26:08 | INFO | 📅 Fecha/Hora: 2025-06-18 08:26:08
+2025-06-18 08:26:08 | INFO | 📧 Usuario: pab***ipe@me.com
+2025-06-18 08:26:08 | INFO | ============================================================
+2025-06-18 08:26:08 | INFO | ⚠️ IMPORTANTE: Esta estrategia usa lógica INVERTIDA
+2025-06-18 08:26:08 | INFO |    - PUT cuando RSI ≤ 35 (sobreventa)
+2025-06-18 08:26:08 | INFO |    - CALL cuando RSI ≥ 65 (sobrecompra)
+2025-06-18 08:26:08 | INFO | ============================================================
+2025-06-18 08:26:08 | INFO | 🚀 Inicializando estrategia...
+2025-06-18 08:26:08 | INFO | 🎯 INICIANDO ESTRATEGIA RSI MULTI-ACTIVOS (LÓGICA INVERTIDA)
+2025-06-18 08:26:08 | INFO | 📊 Configuración: PUT <= 35, CALL >= 65
+2025-06-18 08:26:08 | INFO | ⚡ LÓGICA INVERTIDA: PUT en sobreventa, CALL en sobrecompra
+2025-06-18 08:26:08 | INFO | 🔗 Conectando a IQ Option...
+2025-06-18 08:26:10 | ERROR | ❌ Error al conectar: {"code":"invalid_credentials","message":"You entered the wrong credentials. Please ensure that your login/password is correct."}
+2025-06-18 08:26:10 | ERROR | ❌ Error fatal: Error al conectar a IQ Option: {"code":"invalid_credentials","message":"You entered the wrong credentials. Please ensure that your login/password is correct."}
+2025-06-18 08:26:10 | ERROR | Traceback completo:
+Traceback (most recent call last):
+  File "/Users/pablofelipe/Desktop/LEARNING_TO_FLY_III/main.py", line 62, in main
+    strategy = MultiAssetRSIBinaryOptionsStrategy(
+        email=email,
+        password=password,
+        account_type=account_type
+    )
+  File "/Users/pablofelipe/Desktop/LEARNING_TO_FLY_III/strategy.py", line 46, in __init__
+    self._connect_to_iq_option(email, password, account_type)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/pablofelipe/Desktop/LEARNING_TO_FLY_III/strategy.py", line 142, in _connect_to_iq_option
+    raise Exception(f"Error al conectar a IQ Option: {login_reason}")
+Exception: Error al conectar a IQ Option: {"code":"invalid_credentials","message":"You entered the wrong credentials. Please ensure that your login/password is correct."}
+2025-06-18 08:26:10 | INFO | 👋 Programa finalizado
+2025-06-18 08:26:22 | INFO | ============================================================
+2025-06-18 08:26:22 | INFO |    ESTRATEGIA RSI MULTI-ACTIVOS PARA IQ OPTION
+2025-06-18 08:26:22 | INFO |    ⚡ LÓGICA INVERTIDA ⚡
+2025-06-18 08:26:22 | INFO | ============================================================
+2025-06-18 08:26:22 | INFO | 📅 Fecha/Hora: 2025-06-18 08:26:22
+2025-06-18 08:26:22 | INFO | 📧 Usuario: pab***ipe@me.com
+2025-06-18 08:26:22 | INFO | ============================================================
+2025-06-18 08:26:22 | INFO | ⚠️ IMPORTANTE: Esta estrategia usa lógica INVERTIDA
+2025-06-18 08:26:22 | INFO |    - PUT cuando RSI ≤ 35 (sobreventa)
+2025-06-18 08:26:22 | INFO |    - CALL cuando RSI ≥ 65 (sobrecompra)
+2025-06-18 08:26:22 | INFO | ============================================================
+2025-06-18 08:26:22 | INFO | 🚀 Inicializando estrategia...
+2025-06-18 08:26:22 | INFO | 🎯 INICIANDO ESTRATEGIA RSI MULTI-ACTIVOS (LÓGICA INVERTIDA)
+2025-06-18 08:26:22 | INFO | 📊 Configuración: PUT <= 35, CALL >= 65
+2025-06-18 08:26:22 | INFO | ⚡ LÓGICA INVERTIDA: PUT en sobreventa, CALL en sobrecompra
+2025-06-18 08:26:22 | INFO | 🔗 Conectando a IQ Option...
+2025-06-18 08:26:23 | ERROR | ❌ Error al conectar: {"code":"invalid_credentials","message":"You entered the wrong credentials. Please ensure that your login/password is correct."}
+2025-06-18 08:26:23 | ERROR | ❌ Error fatal: Error al conectar a IQ Option: {"code":"invalid_credentials","message":"You entered the wrong credentials. Please ensure that your login/password is correct."}
+2025-06-18 08:26:23 | ERROR | Traceback completo:
+Traceback (most recent call last):
+  File "/Users/pablofelipe/Desktop/LEARNING_TO_FLY_III/main.py", line 62, in main
+    strategy = MultiAssetRSIBinaryOptionsStrategy(
+        email=email,
+        password=password,
+        account_type=account_type
+    )
+  File "/Users/pablofelipe/Desktop/LEARNING_TO_FLY_III/strategy.py", line 46, in __init__
+    self._connect_to_iq_option(email, password, account_type)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/pablofelipe/Desktop/LEARNING_TO_FLY_III/strategy.py", line 137, in _connect_to_iq_option
+    raise Exception(f"Error al conectar a IQ Option: {login_reason}")
+Exception: Error al conectar a IQ Option: {"code":"invalid_credentials","message":"You entered the wrong credentials. Please ensure that your login/password is correct."}
+2025-06-18 08:26:23 | INFO | 👋 Programa finalizado
+2025-06-18 08:27:16 | INFO | ============================================================
+2025-06-18 08:27:16 | INFO |    ESTRATEGIA RSI MULTI-ACTIVOS PARA IQ OPTION
+2025-06-18 08:27:16 | INFO |    ⚡ LÓGICA INVERTIDA ⚡
+2025-06-18 08:27:16 | INFO | ============================================================
+2025-06-18 08:27:16 | INFO | 📅 Fecha/Hora: 2025-06-18 08:27:16
+2025-06-18 08:27:16 | INFO | 📧 Usuario: pab***ipe@me.com
+2025-06-18 08:27:16 | INFO | ============================================================
+2025-06-18 08:27:16 | INFO | ⚠️ IMPORTANTE: Esta estrategia usa lógica INVERTIDA
+2025-06-18 08:27:16 | INFO |    - PUT cuando RSI ≤ 35 (sobreventa)
+2025-06-18 08:27:16 | INFO |    - CALL cuando RSI ≥ 65 (sobrecompra)
+2025-06-18 08:27:16 | INFO | ============================================================
+2025-06-18 08:27:16 | INFO | 🚀 Inicializando estrategia...
+2025-06-18 08:27:16 | INFO | 🎯 INICIANDO ESTRATEGIA RSI MULTI-ACTIVOS (LÓGICA INVERTIDA)
+2025-06-18 08:27:16 | INFO | 📊 Configuración: PUT <= 35, CALL >= 65
+2025-06-18 08:27:16 | INFO | ⚡ LÓGICA INVERTIDA: PUT en sobreventa, CALL en sobrecompra
+2025-06-18 08:27:16 | INFO | 🔗 Conectando a IQ Option...
+2025-06-18 08:27:18 | INFO | ✅ Conexión exitosa
+2025-06-18 08:27:19 | INFO | 💰 Balance actual: $18,221.82
+2025-06-18 08:27:19 | INFO | 💰 Capital inicial: $18,221.82
+2025-06-18 08:27:19 | INFO | ⏳ Período de calentamiento activo por 1 hora
+2025-06-18 08:27:19 | INFO | 🕐 Primera operación posible a las: 09:27:19
+2025-06-18 08:27:19 | INFO | 📂 No hay archivo de estado previo
+2025-06-18 08:27:19 | INFO | 🔍 Verificando activos disponibles...
+2025-06-18 08:27:25 | WARNING | ⚠️ US500: No disponible (SP500)
+2025-06-18 08:27:25 | INFO | ✅ EURUSD: Encontrado como EURUSD-OTC (turbo)
+2025-06-18 08:27:25 | INFO | ✅ EURUSD: Encontrado como EURUSD-op (turbo)
+2025-06-18 08:27:25 | INFO | ✅ EURUSD: Encontrado como EURUSD-OTC (binary)
+2025-06-18 08:27:25 | INFO | ✅ EURUSD: Encontrado como EURUSD-op (binary)
+2025-06-18 08:27:25 | INFO | ✅ GER30: Encontrado como GER30-OTC (turbo)
+2025-06-18 08:27:25 | INFO | ✅ GER30: Encontrado como GER30-OTC (binary)
+2025-06-18 08:27:25 | INFO | ✅ GBPUSD: Encontrado como GBPUSD-OTC (turbo)
+2025-06-18 08:27:25 | INFO | ✅ GBPUSD: Encontrado como GBPUSD-op (turbo)
+2025-06-18 08:27:25 | INFO | ✅ GBPUSD: Encontrado como GBPUSD-OTC (binary)
+2025-06-18 08:27:25 | INFO | ✅ GBPUSD: Encontrado como GBPUSD-op (binary)
+2025-06-18 08:27:25 | INFO | ✅ XAUUSD: Encontrado como XAUUSD-OTC (turbo)
+2025-06-18 08:27:25 | INFO | ✅ XAUUSD: Encontrado como XAUUSD-op (turbo)
+2025-06-18 08:27:25 | INFO | ✅ XAUUSD: Encontrado como XAUUSD-OTC (binary)
+2025-06-18 08:27:25 | INFO | ✅ XAUUSD: Encontrado como XAUUSD-op (binary)
+2025-06-18 08:27:25 | INFO | ✅ USDJPY: Encontrado como USDJPY-op (turbo)
+2025-06-18 08:27:25 | INFO | ✅ USDJPY: Encontrado como USDJPY-OTC (binary)
+2025-06-18 08:27:25 | INFO | ✅ USDJPY: Encontrado como USDJPY-op (binary)
+2025-06-18 08:27:25 | INFO | ✅ UK100: Encontrado como UK100-OTC (turbo)
+2025-06-18 08:27:25 | INFO | ✅ UK100: Encontrado como UK100-OTC (binary)
+2025-06-18 08:27:25 | INFO | ✅ EURGBP: Encontrado como EURGBP-OTC (turbo)
+2025-06-18 08:27:25 | INFO | ✅ EURGBP: Encontrado como EURGBP-op (turbo)
+2025-06-18 08:27:25 | INFO | ✅ EURGBP: Encontrado como EURGBP-OTC (binary)
+2025-06-18 08:27:25 | INFO | ✅ EURGBP: Encontrado como EURGBP-op (binary)
+2025-06-18 08:27:25 | INFO | ✅ AUDUSD: Encontrado como AUDUSD-OTC (turbo)
+2025-06-18 08:27:25 | INFO | ✅ AUDUSD: Encontrado como AUDUSD-op (turbo)
+2025-06-18 08:27:25 | INFO | ✅ AUDUSD: Encontrado como AUDUSD-OTC (binary)
+2025-06-18 08:27:25 | INFO | ✅ JP225: Encontrado como JP225-OTC (turbo)
+2025-06-18 08:27:25 | INFO | ✅ JP225: Encontrado como JP225-OTC (binary)
+2025-06-18 08:27:25 | INFO | ✅ EURJPY: Encontrado como EURJPY-op (turbo)
+2025-06-18 08:27:25 | INFO | ✅ EURJPY: Encontrado como EURJPY-OTC (binary)
+2025-06-18 08:27:25 | INFO | ✅ EURJPY: Encontrado como EURJPY-op (binary)
+2025-06-18 08:27:25 | INFO | ✅ GBPJPY: Encontrado como GBPJPY-OTC (turbo)
+2025-06-18 08:27:25 | INFO | ✅ GBPJPY: Encontrado como GBPJPY-op (turbo)
+2025-06-18 08:27:25 | INFO | ✅ GBPJPY: Encontrado como GBPJPY-OTC (binary)
+2025-06-18 08:27:25 | INFO | ✅ GBPJPY: Encontrado como GBPJPY-op (binary)
+2025-06-18 08:27:25 | INFO | 📊 Total activos disponibles: 11
+2025-06-18 08:27:25 | INFO | 📋 Activos habilitados:
+2025-06-18 08:27:25 | INFO |    - EURUSD → EURUSD-OTC (turbo)
+2025-06-18 08:27:25 | INFO |    - GER30 → GER30-OTC (turbo)
+2025-06-18 08:27:25 | INFO |    - GBPUSD → GBPUSD-OTC (turbo)
+2025-06-18 08:27:25 | INFO |    - XAUUSD → XAUUSD-OTC (turbo)
+2025-06-18 08:27:25 | INFO |    - USDJPY → USDJPY-op (turbo)
+2025-06-18 08:27:25 | INFO |    - UK100 → UK100-OTC (turbo)
+2025-06-18 08:27:25 | INFO |    - EURGBP → EURGBP-OTC (turbo)
+2025-06-18 08:27:25 | INFO |    - AUDUSD → AUDUSD-OTC (turbo)
+2025-06-18 08:27:25 | INFO |    - JP225 → JP225-OTC (turbo)
+2025-06-18 08:27:25 | INFO |    - EURJPY → EURJPY-op (turbo)
+2025-06-18 08:27:25 | INFO |    - GBPJPY → GBPJPY-OTC (turbo)
+2025-06-18 08:27:25 | INFO | 🎯 Iniciando operaciones...
+2025-06-18 08:27:25 | INFO | ℹ️ Presiona Ctrl+C para detener la estrategia
+2025-06-18 08:27:25 | INFO | 🚀 Iniciando estrategia RSI Multi-Activos (LÓGICA INVERTIDA)
+2025-06-18 08:27:25 | INFO | 📊 Configuración: 11 activos disponibles
+2025-06-18 08:27:25 | INFO | ⚡ IMPORTANTE: PUT en RSI≤35 (sobreventa), CALL en RSI≥65 (sobrecompra)
+2025-06-18 08:27:25 | INFO | ⏰ Tiempo entre señales: 60 minutos (1 hora)
+2025-06-18 08:27:25 | INFO | 🔄 Sin bloqueo por pérdidas consecutivas
+2025-06-18 08:27:25 | INFO | 💰 Tamaño de posición: 1.0% del capital (sin límite máximo)
+2025-06-18 08:29:40 | INFO | 🔄 Ciclo #10 - 2025-06-18 08:29:40
+2025-06-18 08:29:40 | INFO | ⏳ Período de calentamiento: 57.6 minutos restantes
+2025-06-18 08:32:10 | INFO | 🔄 Ciclo #20 - 2025-06-18 08:32:10
+2025-06-18 08:32:10 | INFO | ⏳ Período de calentamiento: 55.1 minutos restantes
+2025-06-18 08:34:40 | INFO | 🔄 Ciclo #30 - 2025-06-18 08:34:40
+2025-06-18 08:34:40 | INFO | ⏳ Período de calentamiento: 52.6 minutos restantes
+2025-06-18 08:37:10 | INFO | 🔄 Ciclo #40 - 2025-06-18 08:37:10
+2025-06-18 08:37:10 | INFO | ⏳ Período de calentamiento: 50.1 minutos restantes
+2025-06-18 08:39:40 | INFO | 🔄 Ciclo #50 - 2025-06-18 08:39:40
+2025-06-18 08:39:40 | INFO | ⏳ Período de calentamiento: 47.6 minutos restantes
+2025-06-18 08:42:10 | INFO | 🔄 Ciclo #60 - 2025-06-18 08:42:10
+2025-06-18 08:42:10 | INFO | ⏳ Período de calentamiento: 45.1 minutos restantes
+2025-06-18 08:44:40 | INFO | 🔄 Ciclo #70 - 2025-06-18 08:44:40
+2025-06-18 08:44:40 | INFO | ⏳ Período de calentamiento: 42.6 minutos restantes
+2025-06-18 08:47:11 | INFO | 🔄 Ciclo #80 - 2025-06-18 08:47:11
+2025-06-18 08:47:11 | INFO | ⏳ Período de calentamiento: 40.1 minutos restantes
+2025-06-18 08:49:41 | INFO | 🔄 Ciclo #90 - 2025-06-18 08:49:41
+2025-06-18 08:49:41 | INFO | ⏳ Período de calentamiento: 37.6 minutos restantes
+2025-06-18 08:52:11 | INFO | 🔄 Ciclo #100 - 2025-06-18 08:52:11
+2025-06-18 08:52:11 | INFO | ⏳ Período de calentamiento: 35.1 minutos restantes
+2025-06-18 08:52:11 | INFO | 🔄 Re-verificando activos disponibles...
+2025-06-18 08:52:11 | INFO | 🔍 Verificando activos disponibles...
+2025-06-18 08:52:17 | WARNING | ⚠️ US500: No disponible (SP500)
+2025-06-18 08:52:17 | INFO | ✅ EURUSD: Encontrado como EURUSD-OTC (turbo)
+2025-06-18 08:52:17 | INFO | ✅ EURUSD: Encontrado como EURUSD-op (turbo)
+2025-06-18 08:52:17 | INFO | ✅ EURUSD: Encontrado como EURUSD-OTC (binary)
+2025-06-18 08:52:17 | INFO | ✅ EURUSD: Encontrado como EURUSD-op (binary)
+2025-06-18 08:52:17 | INFO | ✅ GER30: Encontrado como GER30-OTC (turbo)
+2025-06-18 08:52:17 | INFO | ✅ GER30: Encontrado como GER30-OTC (binary)
+2025-06-18 08:52:17 | INFO | ✅ GBPUSD: Encontrado como GBPUSD-OTC (turbo)
+2025-06-18 08:52:17 | INFO | ✅ GBPUSD: Encontrado como GBPUSD-op (turbo)
+2025-06-18 08:52:17 | INFO | ✅ GBPUSD: Encontrado como GBPUSD-OTC (binary)
+2025-06-18 08:52:17 | INFO | ✅ GBPUSD: Encontrado como GBPUSD-op (binary)
+2025-06-18 08:52:17 | INFO | ✅ XAUUSD: Encontrado como XAUUSD-OTC (turbo)
+2025-06-18 08:52:17 | INFO | ✅ XAUUSD: Encontrado como XAUUSD-op (turbo)
+2025-06-18 08:52:17 | INFO | ✅ XAUUSD: Encontrado como XAUUSD-OTC (binary)
+2025-06-18 08:52:17 | INFO | ✅ XAUUSD: Encontrado como XAUUSD-op (binary)
+2025-06-18 08:52:17 | INFO | ✅ USDJPY: Encontrado como USDJPY-op (turbo)
+2025-06-18 08:52:17 | INFO | ✅ USDJPY: Encontrado como USDJPY-OTC (binary)
+2025-06-18 08:52:17 | INFO | ✅ USDJPY: Encontrado como USDJPY-op (binary)
+2025-06-18 08:52:17 | INFO | ✅ UK100: Encontrado como UK100-OTC (turbo)
+2025-06-18 08:52:17 | INFO | ✅ UK100: Encontrado como UK100-OTC (binary)
+2025-06-18 08:52:17 | INFO | ✅ EURGBP: Encontrado como EURGBP-OTC (turbo)
+2025-06-18 08:52:17 | INFO | ✅ EURGBP: Encontrado como EURGBP-op (turbo)
+2025-06-18 08:52:17 | INFO | ✅ EURGBP: Encontrado como EURGBP-OTC (binary)
+2025-06-18 08:52:17 | INFO | ✅ EURGBP: Encontrado como EURGBP-op (binary)
+2025-06-18 08:52:17 | INFO | ✅ AUDUSD: Encontrado como AUDUSD-OTC (turbo)
+2025-06-18 08:52:17 | INFO | ✅ AUDUSD: Encontrado como AUDUSD-op (turbo)
+2025-06-18 08:52:17 | INFO | ✅ AUDUSD: Encontrado como AUDUSD-OTC (binary)
+2025-06-18 08:52:17 | INFO | ✅ JP225: Encontrado como JP225-OTC (turbo)
+2025-06-18 08:52:17 | INFO | ✅ JP225: Encontrado como JP225-OTC (binary)
+2025-06-18 08:52:17 | INFO | ✅ EURJPY: Encontrado como EURJPY-op (turbo)
+2025-06-18 08:52:17 | INFO | ✅ EURJPY: Encontrado como EURJPY-OTC (binary)
+2025-06-18 08:52:17 | INFO | ✅ EURJPY: Encontrado como EURJPY-op (binary)
+2025-06-18 08:52:17 | INFO | ✅ GBPJPY: Encontrado como GBPJPY-OTC (turbo)
+2025-06-18 08:52:17 | INFO | ✅ GBPJPY: Encontrado como GBPJPY-op (turbo)
+2025-06-18 08:52:17 | INFO | ✅ GBPJPY: Encontrado como GBPJPY-OTC (binary)
+2025-06-18 08:52:17 | INFO | ✅ GBPJPY: Encontrado como GBPJPY-op (binary)
+2025-06-18 08:52:17 | INFO | 📊 Total activos disponibles: 11
+2025-06-18 08:52:17 | INFO | 📋 Activos habilitados:
+2025-06-18 08:52:17 | INFO |    - EURUSD → EURUSD-OTC (turbo)
+2025-06-18 08:52:17 | INFO |    - GER30 → GER30-OTC (turbo)
+2025-06-18 08:52:17 | INFO |    - GBPUSD → GBPUSD-OTC (turbo)
+2025-06-18 08:52:17 | INFO |    - XAUUSD → XAUUSD-OTC (turbo)
+2025-06-18 08:52:17 | INFO |    - USDJPY → USDJPY-op (turbo)
+2025-06-18 08:52:17 | INFO |    - UK100 → UK100-OTC (turbo)
+2025-06-18 08:52:17 | INFO |    - EURGBP → EURGBP-OTC (turbo)
+2025-06-18 08:52:17 | INFO |    - AUDUSD → AUDUSD-OTC (turbo)
+2025-06-18 08:52:17 | INFO |    - JP225 → JP225-OTC (turbo)
+2025-06-18 08:52:17 | INFO |    - EURJPY → EURJPY-op (turbo)
+2025-06-18 08:52:17 | INFO |    - GBPJPY → GBPJPY-OTC (turbo)
+2025-06-18 08:54:41 | INFO | 🔄 Ciclo #110 - 2025-06-18 08:54:41
+2025-06-18 08:54:41 | INFO | ⏳ Período de calentamiento: 32.6 minutos restantes
+2025-06-18 08:57:11 | INFO | 🔄 Ciclo #120 - 2025-06-18 08:57:11
+2025-06-18 08:57:11 | INFO | ⏳ Período de calentamiento: 30.1 minutos restantes
+2025-06-18 08:59:41 | INFO | 🔄 Ciclo #130 - 2025-06-18 08:59:41
+2025-06-18 08:59:41 | INFO | ⏳ Período de calentamiento: 27.6 minutos restantes
+2025-06-18 09:02:11 | INFO | 🔄 Ciclo #140 - 2025-06-18 09:02:11
+2025-06-18 09:02:11 | INFO | ⏳ Período de calentamiento: 25.1 minutos restantes
+2025-06-18 09:04:41 | INFO | 🔄 Ciclo #150 - 2025-06-18 09:04:41
+2025-06-18 09:04:41 | INFO | ⏳ Período de calentamiento: 22.6 minutos restantes
+2025-06-18 09:07:11 | INFO | 🔄 Ciclo #160 - 2025-06-18 09:07:11
+2025-06-18 09:07:11 | INFO | ⏳ Período de calentamiento: 20.1 minutos restantes
+2025-06-18 09:09:41 | INFO | 🔄 Ciclo #170 - 2025-06-18 09:09:41
+2025-06-18 09:09:41 | INFO | ⏳ Período de calentamiento: 17.6 minutos restantes
+2025-06-18 09:12:11 | INFO | 🔄 Ciclo #180 - 2025-06-18 09:12:11
+2025-06-18 09:12:11 | INFO | ⏳ Período de calentamiento: 15.1 minutos restantes
+2025-06-18 09:14:41 | INFO | 🔄 Ciclo #190 - 2025-06-18 09:14:41
+2025-06-18 09:14:41 | INFO | ⏳ Período de calentamiento: 12.6 minutos restantes
+2025-06-18 09:17:11 | INFO | 🔄 Ciclo #200 - 2025-06-18 09:17:11
+2025-06-18 09:17:11 | INFO | ⏳ Período de calentamiento: 10.1 minutos restantes
+2025-06-18 09:17:11 | INFO | 🔄 Re-verificando activos disponibles...
+2025-06-18 09:17:11 | INFO | 🔍 Verificando activos disponibles...
+2025-06-18 09:17:17 | WARNING | ⚠️ US500: No disponible (SP500)
+2025-06-18 09:17:17 | INFO | ✅ EURUSD: Encontrado como EURUSD-OTC (turbo)
+2025-06-18 09:17:17 | INFO | ✅ EURUSD: Encontrado como EURUSD-op (turbo)
+2025-06-18 09:17:17 | INFO | ✅ EURUSD: Encontrado como EURUSD-OTC (binary)
+2025-06-18 09:17:17 | INFO | ✅ EURUSD: Encontrado como EURUSD-op (binary)
+2025-06-18 09:17:17 | INFO | ✅ GER30: Encontrado como GER30-OTC (turbo)
+2025-06-18 09:17:17 | INFO | ✅ GER30: Encontrado como GER30-OTC (binary)
+2025-06-18 09:17:17 | INFO | ✅ GBPUSD: Encontrado como GBPUSD-OTC (turbo)
+2025-06-18 09:17:17 | INFO | ✅ GBPUSD: Encontrado como GBPUSD-op (turbo)
+2025-06-18 09:17:17 | INFO | ✅ GBPUSD: Encontrado como GBPUSD-OTC (binary)
+2025-06-18 09:17:17 | INFO | ✅ GBPUSD: Encontrado como GBPUSD-op (binary)
+2025-06-18 09:17:17 | INFO | ✅ XAUUSD: Encontrado como XAUUSD-OTC (turbo)
+2025-06-18 09:17:17 | INFO | ✅ XAUUSD: Encontrado como XAUUSD-op (turbo)
+2025-06-18 09:17:17 | INFO | ✅ XAUUSD: Encontrado como XAUUSD-OTC (binary)
+2025-06-18 09:17:17 | INFO | ✅ XAUUSD: Encontrado como XAUUSD-op (binary)
+2025-06-18 09:17:17 | INFO | ✅ USDJPY: Encontrado como USDJPY-op (turbo)
+2025-06-18 09:17:17 | INFO | ✅ USDJPY: Encontrado como USDJPY-OTC (binary)
+2025-06-18 09:17:17 | INFO | ✅ USDJPY: Encontrado como USDJPY-op (binary)
+2025-06-18 09:17:17 | INFO | ✅ UK100: Encontrado como UK100-OTC (turbo)
+2025-06-18 09:17:17 | INFO | ✅ UK100: Encontrado como UK100-OTC (binary)
+2025-06-18 09:17:17 | INFO | ✅ EURGBP: Encontrado como EURGBP-OTC (turbo)
+2025-06-18 09:17:17 | INFO | ✅ EURGBP: Encontrado como EURGBP-op (turbo)
+2025-06-18 09:17:17 | INFO | ✅ EURGBP: Encontrado como EURGBP-OTC (binary)
+2025-06-18 09:17:17 | INFO | ✅ EURGBP: Encontrado como EURGBP-op (binary)
+2025-06-18 09:17:17 | INFO | ✅ AUDUSD: Encontrado como AUDUSD-OTC (turbo)
+2025-06-18 09:17:17 | INFO | ✅ AUDUSD: Encontrado como AUDUSD-op (turbo)
+2025-06-18 09:17:17 | INFO | ✅ AUDUSD: Encontrado como AUDUSD-OTC (binary)
+2025-06-18 09:17:17 | INFO | ✅ JP225: Encontrado como JP225-OTC (turbo)
+2025-06-18 09:17:17 | INFO | ✅ JP225: Encontrado como JP225-OTC (binary)
+2025-06-18 09:17:17 | INFO | ✅ EURJPY: Encontrado como EURJPY-op (turbo)
+2025-06-18 09:17:17 | INFO | ✅ EURJPY: Encontrado como EURJPY-OTC (binary)
+2025-06-18 09:17:17 | INFO | ✅ EURJPY: Encontrado como EURJPY-op (binary)
+2025-06-18 09:17:17 | INFO | ✅ GBPJPY: Encontrado como GBPJPY-OTC (turbo)
+2025-06-18 09:17:17 | INFO | ✅ GBPJPY: Encontrado como GBPJPY-OTC (binary)
+2025-06-18 09:17:17 | INFO | ✅ GBPJPY: Encontrado como GBPJPY-op (binary)
+2025-06-18 09:17:17 | INFO | 📊 Total activos disponibles: 11
+2025-06-18 09:17:17 | INFO | 📋 Activos habilitados:
+2025-06-18 09:17:17 | INFO |    - EURUSD → EURUSD-OTC (turbo)
+2025-06-18 09:17:17 | INFO |    - GER30 → GER30-OTC (turbo)
+2025-06-18 09:17:17 | INFO |    - GBPUSD → GBPUSD-OTC (turbo)
+2025-06-18 09:17:17 | INFO |    - XAUUSD → XAUUSD-OTC (turbo)
+2025-06-18 09:17:17 | INFO |    - USDJPY → USDJPY-op (turbo)
+2025-06-18 09:17:17 | INFO |    - UK100 → UK100-OTC (turbo)
+2025-06-18 09:17:17 | INFO |    - EURGBP → EURGBP-OTC (turbo)
+2025-06-18 09:17:17 | INFO |    - AUDUSD → AUDUSD-OTC (turbo)
+2025-06-18 09:17:17 | INFO |    - JP225 → JP225-OTC (turbo)
+2025-06-18 09:17:17 | INFO |    - EURJPY → EURJPY-op (turbo)
+2025-06-18 09:17:17 | INFO |    - GBPJPY → GBPJPY-OTC (turbo)
+2025-06-18 09:19:41 | INFO | 🔄 Ciclo #210 - 2025-06-18 09:19:41
+2025-06-18 09:19:41 | INFO | ⏳ Período de calentamiento: 7.6 minutos restantes
+2025-06-18 09:22:11 | INFO | 🔄 Ciclo #220 - 2025-06-18 09:22:11
+2025-06-18 09:22:11 | INFO | ⏳ Período de calentamiento: 5.1 minutos restantes
+2025-06-18 09:24:41 | INFO | 🔄 Ciclo #230 - 2025-06-18 09:24:41
+2025-06-18 09:24:41 | INFO | ⏳ Período de calentamiento: 2.6 minutos restantes
+2025-06-18 09:27:12 | INFO | 🔄 Ciclo #240 - 2025-06-18 09:27:12
+2025-06-18 09:27:12 | INFO | ⏳ Período de calentamiento: 0.1 minutos restantes
+2025-06-18 09:27:57 | INFO | 🔴 EURUSD - Señal PUT (RSI: 33.47)
+2025-06-18 09:27:57 | INFO | 📈 Colocando PUT en EURUSD (EURUSD-OTC), cantidad: $182.22
+2025-06-18 09:27:58 | INFO | ✅ Orden colocada exitosamente. ID: 12758653933
+2025-06-18 09:27:58 | INFO | 📝 Orden registrada para EURUSD
+2025-06-18 09:28:12 | INFO | 📉 Nuevo mínimo: $18,039.82 (1.00% pérdida)
+2025-06-18 09:29:42 | INFO | 🔄 Ciclo #250 - 2025-06-18 09:29:42
+2025-06-18 09:30:13 | INFO | 🔴 UK100 - Señal PUT (RSI: 34.83)
+2025-06-18 09:30:13 | INFO | 📈 Colocando PUT en UK100 (UK100-OTC), cantidad: $180.40
+2025-06-18 09:30:14 | INFO | ✅ Orden colocada exitosamente. ID: 12758661610
+2025-06-18 09:30:14 | INFO | 📝 Orden registrada para UK100
+2025-06-18 09:30:27 | INFO | 📉 Nuevo mínimo: $17,859.82 (1.99% pérdida)
+2025-06-18 09:32:12 | INFO | 🔄 Ciclo #260 - 2025-06-18 09:32:12
+2025-06-18 09:33:27 | INFO | 🔄 Verificando orden 12758653933...
+2025-06-18 09:33:27 | INFO | 📋 Orden encontrada en order_binary
+2025-06-18 09:33:27 | INFO |    Result: WIN (profit: 185%)
+2025-06-18 09:33:27 | INFO | ✅ Victoria detectada
+2025-06-18 09:33:27 | INFO | ✅ EURUSD - PUT GANADA! Beneficio: $337.11
+2025-06-18 09:34:42 | INFO | 🔄 Ciclo #270 - 2025-06-18 09:34:42
+2025-06-18 09:35:42 | INFO | 🔄 Verificando orden 12758661610...
+2025-06-18 09:35:42 | INFO | 📋 Orden encontrada en order_binary
+2025-06-18 09:35:42 | INFO |    Result: WIN (profit: 185%)
+2025-06-18 09:35:42 | INFO | ✅ Victoria detectada
+2025-06-18 09:35:42 | INFO | ✅ UK100 - PUT GANADA! Beneficio: $333.74
+2025-06-18 09:35:57 | INFO | ============================================================
+2025-06-18 09:35:57 | INFO | 🎯 OBJETIVO DIARIO ALCANZADO - TRADING PAUSADO
+2025-06-18 09:35:57 | INFO | ============================================================
+2025-06-18 09:35:57 | INFO | 💰 Profit del día: $670.85
+2025-06-18 09:35:57 | INFO | 📊 Balance actual: $18,529.52
+2025-06-18 09:35:57 | INFO | 🕐 Hora: 09:35:57
+2025-06-18 09:35:57 | INFO | ✅ No se realizarán más operaciones hoy
+2025-06-18 09:35:57 | INFO | 🔄 El trading se reanudará mañana
+2025-06-18 09:35:57 | INFO | ============================================================
+2025-06-18 09:36:58 | INFO | 🔄 Ciclo #280 - 2025-06-18 09:36:58
+2025-06-18 09:39:30 | INFO | 🔄 Ciclo #290 - 2025-06-18 09:39:30
+2025-06-18 09:40:01 | INFO | 🔒 Trading pausado - Profit diario alcanzado: $670.85
+2025-06-18 09:42:02 | INFO | 🔄 Ciclo #300 - 2025-06-18 09:42:02
+2025-06-18 09:44:34 | INFO | 🔄 Ciclo #310 - 2025-06-18 09:44:34
+2025-06-18 09:47:06 | INFO | 🔄 Ciclo #320 - 2025-06-18 09:47:06
+2025-06-18 09:49:38 | INFO | 🔄 Ciclo #330 - 2025-06-18 09:49:38
+2025-06-18 09:50:09 | INFO | 🔒 Trading pausado - Profit diario alcanzado: $670.85
+2025-06-18 09:51:47 | INFO | ⏹️ Estrategia detenida por el usuario
+2025-06-18 09:51:47 | INFO | 🏁 Finalizando estrategia...
+2025-06-18 09:51:47 | INFO | ============================================================
+2025-06-18 09:51:47 | INFO | 📊 RESUMEN DE LA ESTRATEGIA RSI MULTI-ACTIVOS (LÓGICA INVERTIDA)
+2025-06-18 09:51:47 | INFO | ============================================================
+2025-06-18 09:51:47 | INFO | ⚡ Estrategia: PUT en sobreventa (RSI≤35), CALL en sobrecompra (RSI≥65)
+2025-06-18 09:51:47 | INFO | 💰 Capital Inicial: $18,221.82
+2025-06-18 09:51:47 | INFO | 💰 Balance Final: $18,529.52
+2025-06-18 09:51:47 | INFO | 📈 Rendimiento Total: 1.69%
+2025-06-18 09:51:47 | INFO | 🎯 Total Operaciones: 2
+2025-06-18 09:51:47 | INFO | ✅ Victorias: 2 (100.0%)
+2025-06-18 09:51:47 | INFO | ❌ Derrotas: 0 (0.0%)
+2025-06-18 09:51:47 | INFO | 🟡 Empates: 0 (0.0%)
+2025-06-18 09:51:47 | INFO | 📊 Tasa de Éxito (sin empates): 100.00%
+2025-06-18 09:51:47 | INFO | 💵 Beneficio Neto: $670.85
+2025-06-18 09:51:47 | INFO | 📉 Capital Mínimo: $17,859.82
+2025-06-18 09:51:47 | INFO | 🔒 Daily Profit Lock: ACTIVO desde 09:35
+2025-06-18 09:51:47 | INFO | 
+📊 Estadísticas por Activo:
+2025-06-18 09:51:47 | INFO | EURUSD: 1 trades | 1W/0L/0T | 100.0% éxito | Pérdidas consecutivas: 0
+2025-06-18 09:51:47 | INFO | UK100: 1 trades | 1W/0L/0T | 100.0% éxito | Pérdidas consecutivas: 0
+2025-06-18 09:51:47 | INFO | 
+📅 Rendimiento Mensual:
+2025-06-18 09:51:47 | INFO | ============================================================
+2025-06-18 09:51:47 | INFO | 👋 Estrategia finalizada
+2025-06-18 09:51:47 | INFO | 👋 Programa finalizado

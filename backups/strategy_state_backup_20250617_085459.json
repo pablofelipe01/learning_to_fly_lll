@@ -1,0 +1,103 @@
+{
+    "timestamp": "2025-06-17T08:50:02.038617",
+    "strategy_mode": "CALL_PUT",
+    "active_options": {
+        "XAUUSD": [
+            {
+                "id": 12754884214,
+                "type": "PUT",
+                "asset": "XAUUSD",
+                "size": 406.79,
+                "entry_time": "2025-06-17T08:49:37.881165",
+                "expiry_time": "2025-06-17T08:51:37.881166",
+                "rsi": 27.84,
+                "balance_before": 16271.55
+            }
+        ],
+        "UK100": [
+            {
+                "id": 12754884247,
+                "type": "PUT",
+                "asset": "UK100",
+                "size": 396.64,
+                "entry_time": "2025-06-17T08:49:39.185314",
+                "expiry_time": "2025-06-17T08:51:39.185316",
+                "rsi": 34.84,
+                "balance_before": 15865.55
+            }
+        ],
+        "AUDUSD": [
+            {
+                "id": 12754884309,
+                "type": "PUT",
+                "asset": "AUDUSD",
+                "size": 386.74,
+                "entry_time": "2025-06-17T08:49:40.648552",
+                "expiry_time": "2025-06-17T08:51:40.648554",
+                "rsi": 30.85,
+                "balance_before": 15469.55
+            }
+        ],
+        "XAGUSD": [
+            {
+                "id": 12754884368,
+                "type": "PUT",
+                "asset": "XAGUSD",
+                "size": 377.09,
+                "entry_time": "2025-06-17T08:49:42.196438",
+                "expiry_time": "2025-06-17T08:51:42.196439",
+                "rsi": 28.05,
+                "balance_before": 15083.55
+            }
+        ],
+        "GBPJPY": [
+            {
+                "id": 12754884430,
+                "type": "CALL",
+                "asset": "GBPJPY",
+                "size": 367.66,
+                "entry_time": "2025-06-17T08:49:43.916546",
+                "expiry_time": "2025-06-17T08:51:43.916547",
+                "rsi": 76.07,
+                "balance_before": 14706.55
+            }
+        ],
+        "EURGBP": [
+            {
+                "id": 12754884722,
+                "type": "CALL",
+                "asset": "EURGBP",
+                "size": 358.49,
+                "entry_time": "2025-06-17T08:49:52.693613",
+                "expiry_time": "2025-06-17T08:51:52.693614",
+                "rsi": 65.82,
+                "balance_before": 14339.55
+            }
+        ]
+    },
+    "last_signal_time": {
+        "XAUUSD": "2025-06-17T08:49:37.881220",
+        "UK100": "2025-06-17T08:49:39.185355",
+        "AUDUSD": "2025-06-17T08:49:40.649068",
+        "XAGUSD": "2025-06-17T08:49:42.196483",
+        "GBPJPY": "2025-06-17T08:49:43.917445",
+        "EURGBP": "2025-06-17T08:49:52.693661"
+    },
+    "consecutive_losses": {},
+    "daily_lockouts": {},
+    "wins": {},
+    "losses": {},
+    "ties": {},
+    "total_profit": 0.0,
+    "daily_profit": 0.0,
+    "monthly_profits": {},
+    "monthly_starting_capital": {
+        "2025-06": 16271.55
+    },
+    "monthly_stop_loss": false,
+    "stop_loss_triggered_month": null,
+    "absolute_stop_loss_activated": false,
+    "min_capital": 14339.55,
+    "last_date": "2025-06-17",
+    "current_month": "2025-06"
+}

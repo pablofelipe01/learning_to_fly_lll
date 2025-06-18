@@ -59,10 +59,10 @@ def show_current_statistics(state):
     # Pérdidas consecutivas
     consecutive_losses = state.get('consecutive_losses', {})
     if consecutive_losses:
-        print("\n📉 Pérdidas consecutivas por par:")
-        for pair, count in consecutive_losses.items():
+        print("\n📉 Pérdidas consecutivas por activo:")
+        for asset, count in consecutive_losses.items():
             if count > 0:
-                print(f"   {pair}: {count}")
+                print(f"   {asset}: {count}")
     
     # Stop losses
     if state.get('absolute_stop_loss_activated'):
@@ -113,6 +113,7 @@ def reset_strategy():
             # Hacer backup del log
             timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
             log_backup = f"{BACKUP_DIR}/iqoption_strategy_log_{timestamp}.log"
+            Path(BACKUP_DIR).mkdir(exist_ok=True)
             shutil.move(LOG_FILE, log_backup)
             print(f"✅ Log movido a: {log_backup}")
         else:

@@ -7,21 +7,21 @@ import logging
 from datetime import datetime
 
 from config import IQ_EMAIL, IQ_PASSWORD, ACCOUNT_TYPE, LOG_FILE
-from strategy import MultiCurrencyRSIBinaryOptionsStrategy
+from strategy import MultiAssetRSIBinaryOptionsStrategy
 from utils import setup_logger
 
 def main():
     """Función principal para ejecutar la estrategia"""
     
     # Configurar argumentos de línea de comandos
-    parser = argparse.ArgumentParser(description='Estrategia RSI Multi-Divisa para IQ Option')
+    parser = argparse.ArgumentParser(description='Estrategia RSI Multi-Activos para IQ Option')
     parser.add_argument('--email', type=str, help='Email de IQ Option (sobrescribe config)')
     parser.add_argument('--password', type=str, help='Contraseña de IQ Option (sobrescribe config)')
     parser.add_argument('--account', type=str, choices=['PRACTICE', 'REAL'], 
                        default=ACCOUNT_TYPE, help='Tipo de cuenta a usar')
     parser.add_argument('--test', action='store_true', help='Ejecutar en modo prueba')
     parser.add_argument('--debug-assets', action='store_true', 
-                       help='Mostrar todos los activos forex disponibles y salir')
+                       help='Mostrar todos los activos disponibles y salir')
     parser.add_argument('--check-order', type=str, 
                        help='Verificar el resultado de una orden específica por ID')
     parser.add_argument('--check-recent', action='store_true',
@@ -45,7 +45,7 @@ def main():
     
     # Banner de inicio
     logger.info("=" * 60)
-    logger.info("   ESTRATEGIA RSI MULTI-DIVISA PARA IQ OPTION")
+    logger.info("   ESTRATEGIA RSI MULTI-ACTIVOS PARA IQ OPTION")
     logger.info("   ⚡ LÓGICA INVERTIDA ⚡")
     logger.info("=" * 60)
     logger.info(f"📅 Fecha/Hora: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
@@ -59,7 +59,7 @@ def main():
     try:
         # Crear e inicializar la estrategia
         logger.info("🚀 Inicializando estrategia...")
-        strategy = MultiCurrencyRSIBinaryOptionsStrategy(
+        strategy = MultiAssetRSIBinaryOptionsStrategy(
             email=email,
             password=password,
             account_type=account_type
@@ -67,8 +67,8 @@ def main():
         
         # Si es modo debug de activos
         if args.debug_assets:
-            logger.info("🔍 MODO DEBUG: Mostrando todos los activos forex disponibles...")
-            strategy.debug_show_all_forex_assets()
+            logger.info("🔍 MODO DEBUG: Mostrando todos los activos disponibles...")
+            strategy.debug_show_all_available_assets()
             logger.info("✅ Debug completado. Revisa los logs para ver todos los activos.")
             return
         
@@ -91,15 +91,15 @@ def main():
             logger.info("🧪 MODO PRUEBA - Verificando configuración...")
             logger.info(f"✅ Conexión exitosa")
             logger.info(f"💰 Balance: ${strategy.initial_capital:,.2f}")
-            logger.info(f"📊 Pares disponibles: {len(strategy.valid_pairs)}")
-            if strategy.valid_pairs:
-                logger.info("📋 Pares activos:")
-                for pair in strategy.valid_pairs[:10]:  # Mostrar hasta 10
-                    iq_name = strategy.iqoption_pairs[pair]
-                    option_type = strategy.pair_option_types[pair]
-                    logger.info(f"   - {pair} → {iq_name} ({option_type})")
+            logger.info(f"📊 Activos disponibles: {len(strategy.valid_assets)}")
+            if strategy.valid_assets:
+                logger.info("📋 Activos habilitados:")
+                for asset in strategy.valid_assets[:10]:  # Mostrar hasta 10
+                    iq_name = strategy.iqoption_assets[asset]
+                    option_type = strategy.asset_option_types[asset]
+                    logger.info(f"   - {asset} → {iq_name} ({option_type})")
             else:
-                logger.warning("⚠️ No hay pares disponibles para operar")
+                logger.warning("⚠️ No hay activos disponibles para operar")
                 logger.info("💡 Ejecuta con --debug-assets para ver todos los activos disponibles")
             logger.info("✅ Prueba completada exitosamente")
             return

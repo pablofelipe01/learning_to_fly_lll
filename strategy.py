@@ -1,5 +1,5 @@
 # strategy.py
-# Estrategia RSI adaptada de QuantConnect para IQ Option
+# Estrategia RSI adaptada de QuantConnect para IQ Option - Multi-Activos
 
 import warnings
 import threading
@@ -19,18 +19,26 @@ from concurrent.futures import ThreadPoolExecutor, TimeoutError as FutureTimeout
 
 from iqoptionapi.stable_api import IQ_Option
 
-from config import *
+from config import (
+    IQ_EMAIL, IQ_PASSWORD, ACCOUNT_TYPE, TRADING_ASSETS, ASSET_IQ_MAPPING,
+    RSI_PERIOD, OVERSOLD_LEVEL, OVERBOUGHT_LEVEL, EXPIRY_MINUTES, CANDLE_TIMEFRAME,
+    ABSOLUTE_STOP_LOSS_PERCENT, MONTHLY_STOP_LOSS_PERCENT, POSITION_SIZE_PERCENT,
+    MIN_POSITION_SIZE, MIN_TIME_BETWEEN_SIGNALS, MAX_CONSECUTIVE_LOSSES,
+    ALLOWED_ASSET_SUFFIXES, PRIORITY_SUFFIX, STRATEGY_MODE, LOG_LEVEL, LOG_FILE,
+    API_TIMEOUT, SAVE_STATE_INTERVAL, STATE_FILE, USE_POSITION_HISTORY,
+    POSITION_HISTORY_TIMEOUT, DEBUG_ORDER_RESULTS
+)
 from utils import calculate_rsi, is_market_open, format_currency, calculate_win_rate, setup_logger
 
-class MultiCurrencyRSIBinaryOptionsStrategy:
+class MultiAssetRSIBinaryOptionsStrategy:
     def __init__(self, email, password, account_type="PRACTICE"):
         """
         Inicializar la estrategia de opciones binarias con RSI
-        Adaptada de QuantConnect para IQ Option
+        Adaptada de QuantConnect para IQ Option - Multi-Activos
         """
         # Configurar logger
         self.logger = setup_logger(__name__, LOG_FILE, getattr(logging, LOG_LEVEL))
-        self.logger.info("🎯 INICIANDO ESTRATEGIA RSI MULTI-DIVISA (LÓGICA INVERTIDA)")
+        self.logger.info("🎯 INICIANDO ESTRATEGIA RSI MULTI-ACTIVOS (LÓGICA INVERTIDA)")
         self.logger.info(f"📊 Configuración: PUT <= {OVERSOLD_LEVEL}, CALL >= {OVERBOUGHT_LEVEL}")
         self.logger.info("⚡ LÓGICA INVERTIDA: PUT en sobreventa, CALL en sobrecompra")
         
@@ -48,10 +56,10 @@ class MultiCurrencyRSIBinaryOptionsStrategy:
         # Configuración de posiciones
         self.position_size_percent = POSITION_SIZE_PERCENT
         self.min_position_size = MIN_POSITION_SIZE
-        # self.max_position_size = MAX_POSITION_SIZE  # ELIMINADO - Sin límite máximo
         
         # Parámetros de trading
-        self.forex_pairs = FOREX_PAIRS
+        self.trading_assets = TRADING_ASSETS
+        self.asset_mapping = ASSET_IQ_MAPPING
         self.expiry_minutes = EXPIRY_MINUTES
         self.oversold_level = OVERSOLD_LEVEL
         self.overbought_level = OVERBOUGHT_LEVEL
@@ -81,10 +89,27 @@ class MultiCurrencyRSIBinaryOptionsStrategy:
         self.last_date = None
         self.min_capital = self.initial_capital
         
+        # Daily profit lock (parar cuando el día es rentable)
+        self.daily_profit_lock = False
+        self.daily_profit_lock_amount = 0.0
+        self.daily_profit_lock_time = None
+        
+        # Daily loss lock (parar después de 3 pérdidas consecutivas)
+        self.daily_consecutive_losses = 0
+        self.daily_loss_lock = False
+        self.daily_loss_lock_time = None
+        self.max_daily_consecutive_losses = 3
+        
         # Control de sistema
         self.executor = ThreadPoolExecutor(max_workers=3)
         self.last_activity_time = time.time()
         self.start_time = time.time()
+        
+        # Período de calentamiento (1 hora sin operaciones)
+        self.warmup_period = 3600  # 1 hora en segundos
+        self.warmup_end_time = self.start_time + self.warmup_period
+        self.logger.info(f"⏳ Período de calentamiento activo por 1 hora")
+        self.logger.info(f"🕐 Primera operación posible a las: {datetime.fromtimestamp(self.warmup_end_time).strftime('%H:%M:%S')}")
         
         # Cache para optimización
         self.opcode_cache = {}
@@ -92,10 +117,10 @@ class MultiCurrencyRSIBinaryOptionsStrategy:
         self.asset_open_status_cache = {}
         self.asset_open_status_timestamp = 0
         
-        # Mapeo de pares y activos
-        self.pair_option_types = {}
-        self.iqoption_pairs = {}
-        self.valid_pairs = []
+        # Mapeo de activos
+        self.asset_option_types = {}
+        self.iqoption_assets = {}
+        self.valid_assets = []
         
         # Cargar estado previo si existe
         self.load_state()
@@ -107,8 +132,8 @@ class MultiCurrencyRSIBinaryOptionsStrategy:
             self.on_new_day()
             self.last_date = current_date
         
-        # Validar pares disponibles
-        self.check_valid_pairs()
+        # Validar activos disponibles
+        self.check_valid_assets()
         
     def _connect_to_iq_option(self, email, password, account_type):
         """Conectar a IQ Option con manejo de errores"""
@@ -141,9 +166,9 @@ class MultiCurrencyRSIBinaryOptionsStrategy:
             self.logger.error(f"❌ Error en {func.__name__}: {str(e)}")
             return None
     
-    def check_valid_pairs(self):
-        """Verificar qué pares están disponibles para operar"""
-        self.logger.info("🔍 Verificando pares disponibles...")
+    def check_valid_assets(self):
+        """Verificar qué activos están disponibles para operar"""
+        self.logger.info("🔍 Verificando activos disponibles...")
         
         # Actualizar lista de activos
         self.api_call_with_timeout(self.iqoption.update_ACTIVES_OPCODE)
@@ -159,80 +184,80 @@ class MultiCurrencyRSIBinaryOptionsStrategy:
             self.logger.error("❌ No se pudo obtener el estado de los activos")
             return []
         
-        self.valid_pairs = []
-        self.pair_option_types = {}
-        self.iqoption_pairs = {}
+        self.valid_assets = []
+        self.asset_option_types = {}
+        self.iqoption_assets = {}
         
-        # Importar configuración de sufijos
-        from config import ALLOWED_ASSET_SUFFIXES, PRIORITY_SUFFIX
-        
-        # Verificar cada par
-        for pair in self.forex_pairs:
-            pair_upper = pair.upper()
-            found = False
-            available_options = []
-            
-            # Buscar en opciones turbo y binarias
-            for option_type in ["turbo", "binary"]:
-                if option_type not in all_assets:
-                    continue
+        # Verificar cada activo
+        for asset in self.trading_assets:
+            # Si tenemos un mapeo conocido, usarlo directamente
+            if asset in self.asset_mapping:
+                iq_name = self.asset_mapping[asset]
+                found = False
+                
+                # Buscar en opciones turbo y binarias (preferir binarias)
+                for option_type in ["binary", "turbo"]:
+                    if option_type not in all_assets:
+                        continue
                     
-                # Lista de todas las variantes posibles del par
-                variants_to_check = []
+                    if iq_name in all_assets[option_type]:
+                        if all_assets[option_type][iq_name].get("open", False):
+                            self.valid_assets.append(asset)
+                            self.asset_option_types[asset] = option_type
+                            self.iqoption_assets[asset] = iq_name
+                            self.logger.info(f"✅ {asset}: Disponible como {iq_name} ({option_type})")
+                            found = True
+                            break
                 
-                # Sin preferencias - usar cualquier variante disponible
-                if PRIORITY_SUFFIX is None:
-                    # Verificar todas las variantes sin orden específico
-                    variants_to_check = [
-                        pair_upper,           # Estándar
-                        f"{pair_upper}-OTC",  # OTC
-                        f"{pair_upper}-op"    # op
-                    ]
-                else:
-                    # Si hay prioridad, usar el orden configurado
-                    variants_to_check.append(pair_upper)
-                    if PRIORITY_SUFFIX:
-                        variants_to_check.append(f"{pair_upper}{PRIORITY_SUFFIX}")
-                    for suffix in ALLOWED_ASSET_SUFFIXES:
-                        variant = f"{pair_upper}{suffix}"
-                        if variant not in variants_to_check:
-                            variants_to_check.append(variant)
-                
-                # Buscar cada variante
-                for variant in variants_to_check:
-                    if variant in all_assets[option_type]:
-                        if all_assets[option_type][variant].get("open", False):
-                            available_options.append({
-                                'pair': pair,
-                                'option_type': option_type,
-                                'iq_name': variant,
-                                'is_otc': variant.endswith('-OTC')
-                            })
-                            self.logger.info(f"✅ {pair}: Encontrado como {variant} ({option_type})")
-            
-            # Seleccionar la mejor opción disponible
-            if available_options:
-                # Sin preferencias - usar la primera disponible
-                if PRIORITY_SUFFIX is None:
-                    # No ordenar, simplemente usar la primera que encontramos
-                    pass
-                
-                best_option = available_options[0]  # Primera disponible
-                self.valid_pairs.append(best_option['pair'])
-                self.pair_option_types[best_option['pair']] = best_option['option_type']
-                self.iqoption_pairs[best_option['pair']] = best_option['iq_name']
-                self.logger.info(f"✅ {best_option['pair']}: Seleccionado {best_option['iq_name']} ({best_option['option_type']})")
+                if not found:
+                    self.logger.warning(f"⚠️ {asset}: No disponible ({iq_name})")
             else:
-                self.logger.warning(f"⚠️ {pair}: No disponible en ninguna variante")
+                # Buscar variantes si no hay mapeo (compatibilidad con versión anterior)
+                asset_upper = asset.upper()
+                found = False
+                available_options = []
+                
+                # Buscar en opciones turbo y binarias
+                for option_type in ["turbo", "binary"]:
+                    if option_type not in all_assets:
+                        continue
+                    
+                    # Lista de variantes a verificar
+                    variants_to_check = [
+                        asset_upper,
+                        f"{asset_upper}-OTC",
+                        f"{asset_upper}-op"
+                    ]
+                    
+                    # Buscar cada variante
+                    for variant in variants_to_check:
+                        if variant in all_assets[option_type]:
+                            if all_assets[option_type][variant].get("open", False):
+                                available_options.append({
+                                    'asset': asset,
+                                    'option_type': option_type,
+                                    'iq_name': variant,
+                                    'is_otc': variant.endswith('-OTC')
+                                })
+                                self.logger.info(f"✅ {asset}: Encontrado como {variant} ({option_type})")
+                
+                # Seleccionar la mejor opción disponible
+                if available_options:
+                    best_option = available_options[0]  # Primera disponible
+                    self.valid_assets.append(best_option['asset'])
+                    self.asset_option_types[best_option['asset']] = best_option['option_type']
+                    self.iqoption_assets[best_option['asset']] = best_option['iq_name']
+                else:
+                    self.logger.warning(f"⚠️ {asset}: No disponible en ninguna variante")
         
         # Log resumen
-        self.logger.info(f"📊 Total pares disponibles: {len(self.valid_pairs)}")
-        if self.valid_pairs:
-            self.logger.info("📋 Pares activos:")
-            for pair in self.valid_pairs:
-                self.logger.info(f"   - {pair} → {self.iqoption_pairs[pair]} ({self.pair_option_types[pair]})")
+        self.logger.info(f"📊 Total activos disponibles: {len(self.valid_assets)}")
+        if self.valid_assets:
+            self.logger.info("📋 Activos habilitados:")
+            for asset in self.valid_assets:
+                self.logger.info(f"   - {asset} → {self.iqoption_assets[asset]} ({self.asset_option_types[asset]})")
         
-        return self.valid_pairs
+        return self.valid_assets
     
     def test_check_order_result(self, order_id):
         """
@@ -431,13 +456,13 @@ class MultiCurrencyRSIBinaryOptionsStrategy:
             self.logger.error(f"❌ Error obteniendo historial: {str(e)}")
             self.logger.error(f"Detalles: {traceback.format_exc()}")
     
-    def debug_show_all_forex_assets(self):
+    def debug_show_all_available_assets(self):
         """
-        Método de debugging para mostrar TODOS los activos forex disponibles
-        Útil para ver qué variantes están realmente disponibles en IQ Option
+        Método de debugging para mostrar TODOS los activos disponibles
+        Útil para ver qué está realmente disponible en IQ Option
         """
         self.logger.info("="*60)
-        self.logger.info("🔍 DEBUG: MOSTRANDO TODOS LOS ACTIVOS FOREX DISPONIBLES")
+        self.logger.info("🔍 DEBUG: MOSTRANDO TODOS LOS ACTIVOS DISPONIBLES")
         self.logger.info("="*60)
         
         # Obtener todos los activos
@@ -449,8 +474,14 @@ class MultiCurrencyRSIBinaryOptionsStrategy:
         # Tipos de opciones a verificar
         option_types = ["turbo", "binary", "digital"]
         
-        # Recopilar todos los activos forex
-        forex_assets = {}
+        # Recopilar todos los activos por categoría
+        categories = {
+            'forex': [],
+            'indices': [],
+            'stocks': [],
+            'commodities': [],
+            'crypto': []
+        }
         
         for option_type in option_types:
             if option_type not in all_assets:
@@ -459,64 +490,85 @@ class MultiCurrencyRSIBinaryOptionsStrategy:
             self.logger.info(f"\n📊 Tipo: {option_type.upper()}")
             self.logger.info("-" * 40)
             
-            # Filtrar solo pares forex (que contengan divisas conocidas)
-            currency_codes = ["EUR", "USD", "GBP", "JPY", "AUD", "CAD", "CHF", "NZD"]
-            
             for asset_name, asset_data in all_assets[option_type].items():
-                # Verificar si es un par forex
-                is_forex = False
-                for currency in currency_codes:
-                    if currency in asset_name:
-                        is_forex = True
-                        break
+                if asset_data.get("open", False):
+                    # Categorizar
+                    currency_codes = ["EUR", "USD", "GBP", "JPY", "AUD", "CAD", "CHF", "NZD"]
+                    indices_keywords = ["500", "100", "225", "30", "40", "NASDAQ", "DAX", "FTSE", "NIKKEI"]
+                    commodity_keywords = ["XAU", "XAG", "GOLD", "SILVER", "OIL", "GAS"]
+                    crypto_keywords = ["BTC", "ETH", "LTC", "XRP", "CRYPTO"]
+                    
+                    categorized = False
+                    
+                    # Detectar categoría
+                    if any(keyword in asset_name.upper() for keyword in crypto_keywords):
+                        categories['crypto'].append((asset_name, option_type))
+                        categorized = True
+                    elif any(keyword in asset_name.upper() for keyword in commodity_keywords):
+                        categories['commodities'].append((asset_name, option_type))
+                        categorized = True
+                    elif any(keyword in asset_name.upper() for keyword in indices_keywords):
+                        categories['indices'].append((asset_name, option_type))
+                        categorized = True
+                    elif "#" in asset_name or "-US" in asset_name or "_US" in asset_name:
+                        categories['stocks'].append((asset_name, option_type))
+                        categorized = True
+                    elif sum(1 for curr in currency_codes if curr in asset_name) >= 2:
+                        categories['forex'].append((asset_name, option_type))
+                        categorized = True
+                    
+                    # Si no se categorizó, ponerlo en commodities
+                    if not categorized:
+                        categories['commodities'].append((asset_name, option_type))
+        
+        # Mostrar por categorías
+        category_names = {
+            'forex': '💱 FOREX',
+            'indices': '📈 ÍNDICES',
+            'stocks': '🏢 ACCIONES',
+            'commodities': '🏗️ COMMODITIES',
+            'crypto': '🪙 CRIPTO'
+        }
+        
+        for cat_key, cat_name in category_names.items():
+            if categories[cat_key]:
+                self.logger.info(f"\n{cat_name} ({len(categories[cat_key])} activos):")
+                seen = set()
+                for asset_name, opt_type in sorted(categories[cat_key]):
+                    if asset_name not in seen:
+                        seen.add(asset_name)
+                        self.logger.info(f"   • {asset_name} ({opt_type})")
+        
+        # Buscar específicamente nuestros activos configurados
+        self.logger.info(f"\n🎯 ESTADO DE NUESTROS ACTIVOS CONFIGURADOS:")
+        self.logger.info("-" * 40)
+        
+        for asset in self.trading_assets:
+            if asset in self.asset_mapping:
+                iq_name = self.asset_mapping[asset]
+                found = False
                 
-                if is_forex:
-                    is_open = asset_data.get("open", False)
-                    status = "✅ ABIERTO" if is_open else "❌ CERRADO"
-                    
-                    if asset_name not in forex_assets:
-                        forex_assets[asset_name] = {}
-                    forex_assets[asset_name][option_type] = is_open
-                    
-                    self.logger.info(f"   {asset_name}: {status}")
-        
-        # Resumen de activos únicos
-        self.logger.info(f"\n📋 RESUMEN DE ACTIVOS FOREX ÚNICOS:")
-        self.logger.info("-" * 40)
-        
-        for asset in sorted(forex_assets.keys()):
-            available_in = [opt_type for opt_type, is_open in forex_assets[asset].items() if is_open]
-            if available_in:
-                self.logger.info(f"{asset}: Disponible en {', '.join(available_in)}")
-        
-        # Buscar específicamente nuestros pares configurados
-        self.logger.info(f"\n🎯 ESTADO DE NUESTROS PARES CONFIGURADOS:")
-        self.logger.info("-" * 40)
-        
-        for pair in self.forex_pairs:
-            pair_upper = pair.upper()
-            found_variants = []
-            
-            for asset_name in forex_assets.keys():
-                if asset_name.startswith(pair_upper):
-                    available_in = [opt_type for opt_type, is_open in forex_assets[asset_name].items() if is_open]
-                    if available_in:
-                        found_variants.append(f"{asset_name} ({', '.join(available_in)})")
-            
-            if found_variants:
-                self.logger.info(f"{pair}: {', '.join(found_variants)}")
+                for option_type in ["binary", "turbo"]:
+                    if option_type in all_assets and iq_name in all_assets[option_type]:
+                        if all_assets[option_type][iq_name].get("open", False):
+                            self.logger.info(f"✅ {asset}: Disponible como {iq_name} ({option_type})")
+                            found = True
+                            break
+                
+                if not found:
+                    self.logger.info(f"❌ {asset}: NO disponible como {iq_name}")
             else:
-                self.logger.info(f"{pair}: ⚠️ NO ENCONTRADO")
+                self.logger.info(f"⚠️ {asset}: Sin mapeo definido")
         
         self.logger.info("="*60)
     
-    def verify_asset_tradeable(self, pair):
+    def verify_asset_tradeable(self, asset):
         """
         Verificar si un activo realmente se puede operar
         Útil para detectar activos que aparecen abiertos pero están suspendidos
         """
         try:
-            asset_name = self.iqoption_pairs[pair]
+            asset_name = self.iqoption_assets[asset]
             
             # Intentar obtener el profit del activo
             profit = self.api_call_with_timeout(
@@ -529,7 +581,7 @@ class MultiCurrencyRSIBinaryOptionsStrategy:
             
             # Si no hay profit, verificar de otra manera
             all_assets = self.api_call_with_timeout(self.iqoption.get_all_open_time)
-            option_type = self.pair_option_types[pair]
+            option_type = self.asset_option_types[asset]
             
             if all_assets and option_type in all_assets:
                 if asset_name in all_assets[option_type]:
@@ -538,32 +590,39 @@ class MultiCurrencyRSIBinaryOptionsStrategy:
             return False
             
         except Exception as e:
-            self.logger.debug(f"Error verificando {pair}: {str(e)}")
+            self.logger.debug(f"Error verificando {asset}: {str(e)}")
             return False
     
-    def handle_trading_error(self, pair, error_message):
+    def handle_trading_error(self, asset, error_message):
         """
         Manejar errores de trading y cambiar a activo alternativo si es necesario
         """
-        self.logger.warning(f"⚠️ Error con {self.iqoption_pairs[pair]}: {error_message}")
+        self.logger.warning(f"⚠️ Error con {self.iqoption_assets[asset]}: {error_message}")
         
         # Si el activo no está disponible, intentar con una variante alternativa
         if "not available" in error_message or "suspended" in error_message:
-            self.logger.info(f"🔄 Buscando alternativa para {pair}...")
+            self.logger.info(f"🔄 Buscando alternativa para {asset}...")
             
             # Obtener estado actual de activos
             all_assets = self.api_call_with_timeout(self.iqoption.get_all_open_time)
             if not all_assets:
                 return False
             
-            pair_upper = pair.upper()
-            current_asset = self.iqoption_pairs[pair]
+            current_asset = self.iqoption_assets[asset]
             
-            # Lista de alternativas a probar
+            # Para activos con mapeo fijo, no hay alternativas
+            if asset in self.asset_mapping:
+                self.logger.warning(f"❌ {asset} tiene mapeo fijo, no hay alternativas")
+                if asset in self.valid_assets:
+                    self.valid_assets.remove(asset)
+                return False
+            
+            # Para otros activos, buscar alternativas
+            asset_upper = asset.upper()
             alternatives = [
-                f"{pair_upper}-OTC",
-                pair_upper,
-                f"{pair_upper}-op"
+                f"{asset_upper}-OTC",
+                asset_upper,
+                f"{asset_upper}-op"
             ]
             
             # Quitar el activo actual de las alternativas
@@ -575,15 +634,15 @@ class MultiCurrencyRSIBinaryOptionsStrategy:
                     if option_type in all_assets and alt_asset in all_assets[option_type]:
                         if all_assets[option_type][alt_asset].get("open", False):
                             # Actualizar a la alternativa
-                            self.logger.info(f"✅ Cambiando {pair} de {current_asset} a {alt_asset} ({option_type})")
-                            self.iqoption_pairs[pair] = alt_asset
-                            self.pair_option_types[pair] = option_type
+                            self.logger.info(f"✅ Cambiando {asset} de {current_asset} a {alt_asset} ({option_type})")
+                            self.iqoption_assets[asset] = alt_asset
+                            self.asset_option_types[asset] = option_type
                             return True
             
-            # Si no hay alternativas, eliminar el par temporalmente
-            self.logger.warning(f"❌ No hay alternativas disponibles para {pair}, eliminándolo temporalmente")
-            if pair in self.valid_pairs:
-                self.valid_pairs.remove(pair)
+            # Si no hay alternativas, eliminar el activo temporalmente
+            self.logger.warning(f"❌ No hay alternativas disponibles para {asset}, eliminándolo temporalmente")
+            if asset in self.valid_assets:
+                self.valid_assets.remove(asset)
             return False
         
         return True
@@ -604,13 +663,13 @@ class MultiCurrencyRSIBinaryOptionsStrategy:
         
         return position_size
     
-    def get_rsi(self, pair):
-        """Obtener RSI para un par específico usando velas de 5 minutos"""
+    def get_rsi(self, asset):
+        """Obtener RSI para un activo específico usando velas de 5 minutos"""
         try:
             # Asegurarnos de usar timeframe de 5 minutos (300 segundos)
             candles = self.api_call_with_timeout(
                 self.iqoption.get_candles,
-                self.iqoption_pairs[pair],
+                self.iqoption_assets[asset],
                 300,  # 5 minutos
                 100,
                 time.time()
@@ -619,27 +678,27 @@ class MultiCurrencyRSIBinaryOptionsStrategy:
             if candles and len(candles) >= self.rsi_period:
                 rsi = calculate_rsi(candles, self.rsi_period)
                 if rsi is not None:
-                    self.logger.debug(f"📊 {pair} - RSI(5min): {rsi:.2f}")
+                    self.logger.debug(f"📊 {asset} - RSI(5min): {rsi:.2f}")
                 return rsi
             
-            self.logger.warning(f"⚠️ No se pudo calcular RSI para {pair}")
+            self.logger.warning(f"⚠️ No se pudo calcular RSI para {asset}")
             return None
             
         except Exception as e:
-            self.logger.error(f"❌ Error obteniendo RSI para {pair}: {str(e)}")
+            self.logger.error(f"❌ Error obteniendo RSI para {asset}: {str(e)}")
             return None
     
-    def place_option(self, pair, direction, amount):
+    def place_option(self, asset, direction, amount):
         """Colocar una opción binaria con reintentos automáticos"""
         max_retries = 2
         retry_count = 0
         
         while retry_count < max_retries:
             try:
-                asset_name = self.iqoption_pairs[pair]
-                option_type = self.pair_option_types[pair]
+                asset_name = self.iqoption_assets[asset]
+                option_type = self.asset_option_types[asset]
                 
-                self.logger.info(f"📈 Colocando {direction} en {pair} ({asset_name}), cantidad: {format_currency(amount)}")
+                self.logger.info(f"📈 Colocando {direction} en {asset} ({asset_name}), cantidad: {format_currency(amount)}")
                 
                 status, order_id = self.api_call_with_timeout(
                     self.iqoption.buy,
@@ -658,7 +717,7 @@ class MultiCurrencyRSIBinaryOptionsStrategy:
                     
                     # Si es un error de disponibilidad y tenemos reintentos
                     if retry_count < max_retries - 1 and ("not available" in error_msg or "suspended" in error_msg):
-                        if self.handle_trading_error(pair, error_msg):
+                        if self.handle_trading_error(asset, error_msg):
                             retry_count += 1
                             self.logger.info(f"🔄 Reintentando con activo alternativo... (intento {retry_count + 1}/{max_retries})")
                             time.sleep(1)  # Pequeña pausa antes de reintentar
@@ -681,23 +740,26 @@ class MultiCurrencyRSIBinaryOptionsStrategy:
         
         return None
     
-    def process_currency_pair(self, pair):
-        """Procesar señales para un par de divisas"""
-        # ELIMINADO: Verificación de bloqueo diario
-        # if self.daily_lockouts.get(pair, False):
-        #     return
+    def process_asset(self, asset):
+        """Procesar señales para un activo"""
+        # Verificar si estamos en período de calentamiento
+        if time.time() < self.warmup_end_time:
+            remaining_minutes = (self.warmup_end_time - time.time()) / 60
+            if remaining_minutes > 0:
+                self.logger.debug(f"⏳ En calentamiento - faltan {remaining_minutes:.1f} minutos")
+                return
         
         # Verificar si hay órdenes activas
-        if len(self.active_options.get(pair, [])) > 0:
+        if len(self.active_options.get(asset, [])) > 0:
             return
         
         # Verificar tiempo desde última señal (ahora 1 hora)
-        time_since_last = (datetime.now() - self.last_signal_time.get(pair, datetime.min)).total_seconds() / 60
+        time_since_last = (datetime.now() - self.last_signal_time.get(asset, datetime.min)).total_seconds() / 60
         if time_since_last < self.min_time_between_signals:
             return
         
         # Obtener RSI
-        current_rsi = self.get_rsi(pair)
+        current_rsi = self.get_rsi(asset)
         if current_rsi is None:
             return
         
@@ -705,16 +767,16 @@ class MultiCurrencyRSIBinaryOptionsStrategy:
         signal = None
         if current_rsi <= self.oversold_level:
             signal = "PUT"  # INVERTIDO: Sobreventa genera PUT
-            self.logger.info(f"🔴 {pair} - Señal PUT (RSI: {current_rsi:.2f})")
+            self.logger.info(f"🔴 {asset} - Señal PUT (RSI: {current_rsi:.2f})")
         elif current_rsi >= self.overbought_level:
             signal = "CALL"  # INVERTIDO: Sobrecompra genera CALL
-            self.logger.info(f"🟢 {pair} - Señal CALL (RSI: {current_rsi:.2f})")
+            self.logger.info(f"🟢 {asset} - Señal CALL (RSI: {current_rsi:.2f})")
         
         if signal:
-            self.create_binary_option(pair, signal, current_rsi)
-            self.last_signal_time[pair] = datetime.now()
+            self.create_binary_option(asset, signal, current_rsi)
+            self.last_signal_time[asset] = datetime.now()
     
-    def create_binary_option(self, pair, direction, rsi_value):
+    def create_binary_option(self, asset, direction, rsi_value):
         """Crear una opción binaria"""
         # Calcular tamaño de posición
         bet_size = self.calculate_position_size()
@@ -722,41 +784,41 @@ class MultiCurrencyRSIBinaryOptionsStrategy:
         # Verificar capital disponible
         current_balance = self.api_call_with_timeout(self.iqoption.get_balance)
         if current_balance is None or current_balance < bet_size:
-            self.logger.warning(f"⚠️ Capital insuficiente para {pair}")
+            self.logger.warning(f"⚠️ Capital insuficiente para {asset}")
             return
         
         # Colocar orden
-        order_id = self.place_option(pair, direction, bet_size)
+        order_id = self.place_option(asset, direction, bet_size)
         
         if order_id:
             # Registrar orden activa
             order_info = {
                 "id": order_id,
                 "type": direction,
-                "pair": pair,
+                "asset": asset,
                 "size": bet_size,
                 "entry_time": datetime.now(),
                 "expiry_time": datetime.now() + timedelta(minutes=self.expiry_minutes),
                 "rsi": rsi_value,
                 "balance_before": current_balance  # NUEVO: Guardar balance antes
             }
-            self.active_options[pair].append(order_info)
-            self.logger.info(f"📝 Orden registrada para {pair}")
+            self.active_options[asset].append(order_info)
+            self.logger.info(f"📝 Orden registrada para {asset}")
     
     def check_active_orders(self):
         """Verificar el estado de las órdenes activas"""
         current_time = datetime.now()
         
-        for pair in list(self.active_options.keys()):
+        for asset in list(self.active_options.keys()):
             remaining_orders = []
             
-            for order in self.active_options[pair]:
+            for order in self.active_options[asset]:
                 # Calcular tiempo desde expiración
                 time_since_expiry = (current_time - order["expiry_time"]).total_seconds()
                 
                 # Si la orden expiró hace más de 15 segundos, procesarla
                 if time_since_expiry > 15:
-                    self.process_expired_order(pair, order)
+                    self.process_expired_order(asset, order)
                 # Si expiró pero es muy reciente, esperar un poco más
                 elif order["expiry_time"] <= current_time:
                     self.logger.debug(f"⏳ Orden {order['id']} expiró hace {time_since_expiry:.0f}s, esperando...")
@@ -765,11 +827,11 @@ class MultiCurrencyRSIBinaryOptionsStrategy:
                     remaining_orders.append(order)
             
             if remaining_orders:
-                self.active_options[pair] = remaining_orders
+                self.active_options[asset] = remaining_orders
             else:
-                del self.active_options[pair]
+                del self.active_options[asset]
     
-    def process_expired_order(self, pair, order):
+    def process_expired_order(self, asset, order):
         """Procesar una orden expirada - VERSIÓN FINAL CON TODOS LOS MÉTODOS"""
         try:
             self.logger.info(f"🔄 Verificando orden {order['id']}...")
@@ -864,7 +926,7 @@ class MultiCurrencyRSIBinaryOptionsStrategy:
                 
                 if order_result and isinstance(order_result, dict):
                     # Procesar con la lógica original
-                    self._process_order_result(pair, order, order_result)
+                    self._process_order_result(asset, order, order_result)
                     return
             
             # Procesar resultado si se encontró
@@ -873,36 +935,36 @@ class MultiCurrencyRSIBinaryOptionsStrategy:
                 
                 if win_status == 'win':
                     self.logger.info(f"✅ Victoria detectada")
-                    self.process_win(pair, order, win_amount)
+                    self.process_win(asset, order, win_amount)
                 elif win_status == 'equal':
                     self.logger.info(f"🟡 Empate detectado")
-                    self.process_tie(pair, order)
+                    self.process_tie(asset, order)
                 elif win_status == 'loose':
                     self.logger.info(f"❌ Pérdida detectada")
-                    self.process_loss(pair, order)
+                    self.process_loss(asset, order)
                 else:
                     # Si no podemos determinar, verificar por monto
                     if win_amount > bet_size:
-                        self.process_win(pair, order, win_amount)
+                        self.process_win(asset, order, win_amount)
                     elif win_amount == bet_size:
-                        self.process_tie(pair, order)
+                        self.process_tie(asset, order)
                     else:
-                        self.process_loss(pair, order)
+                        self.process_loss(asset, order)
                 return
             
             # Si han pasado más de 2 minutos y no hay resultado, asumir pérdida
             if time_since_expiry > 120:
                 self.logger.error(f"❌ No se pudo verificar orden después de {time_since_expiry:.0f}s")
                 self.logger.error(f"❌ Asumiendo pérdida por timeout")
-                self.process_loss(pair, order)
+                self.process_loss(asset, order)
                 
         except Exception as e:
             self.logger.error(f"❌ Error procesando orden expirada: {str(e)}")
             self.logger.error(f"Detalles: {traceback.format_exc()}")
             # En caso de error, registrar como pérdida para ser conservadores
-            self.process_loss(pair, order)
+            self.process_loss(asset, order)
     
-    def _process_order_result(self, pair, order, order_result):
+    def _process_order_result(self, asset, order, order_result):
         """Procesar resultado de orden desde get_async_order"""
         bet_size = order["size"]
         is_win = False
@@ -949,51 +1011,78 @@ class MultiCurrencyRSIBinaryOptionsStrategy:
         
         # Procesar según resultado
         if is_win:
-            self.process_win(pair, order, win_amount)
+            self.process_win(asset, order, win_amount)
         elif is_tie:
-            self.process_tie(pair, order)
+            self.process_tie(asset, order)
         else:
-            self.process_loss(pair, order)
+            self.process_loss(asset, order)
     
-    def process_win(self, pair, order, win_amount):
+    def process_win(self, asset, order, win_amount):
         """Procesar una operación ganadora"""
         profit = win_amount - order["size"]
-        self.logger.info(f"✅ {pair} - {order['type']} GANADA! Beneficio: {format_currency(profit)}")
+        self.logger.info(f"✅ {asset} - {order['type']} GANADA! Beneficio: {format_currency(profit)}")
         
-        self.wins[pair] += 1
+        self.wins[asset] += 1
         self.total_profit += profit
         self.daily_profit += profit
-        self.consecutive_losses[pair] = 0
+        self.consecutive_losses[asset] = 0
+        
+        # Resetear pérdidas consecutivas diarias
+        if self.daily_consecutive_losses > 0:
+            self.logger.info(f"✅ Pérdidas consecutivas diarias reseteadas: {self.daily_consecutive_losses} → 0")
+            self.daily_consecutive_losses = 0
     
-    def process_tie(self, pair, order):
+    def process_tie(self, asset, order):
         """Procesar una operación empatada (On The Money)"""
-        self.logger.info(f"🟡 {pair} - {order['type']} EMPATE (On The Money). Sin ganancia ni pérdida")
+        self.logger.info(f"🟡 {asset} - {order['type']} EMPATE (On The Money). Sin ganancia ni pérdida")
         
         # En un empate no se cuentan pérdidas consecutivas
         # pero tampoco se resetean
-        self.ties[pair] += 1
+        self.ties[asset] += 1
         # No afecta el profit total ni las pérdidas consecutivas
+        # Los empates NO resetean ni incrementan las pérdidas consecutivas diarias
     
-    def process_loss(self, pair, order):
+    def process_loss(self, asset, order):
         """Procesar una operación perdedora"""
         loss = order["size"]
-        self.logger.info(f"❌ {pair} - {order['type']} PERDIDA. Pérdida: {format_currency(loss)}")
+        self.logger.info(f"❌ {asset} - {order['type']} PERDIDA. Pérdida: {format_currency(loss)}")
         
-        self.losses[pair] += 1
+        self.losses[asset] += 1
         self.total_profit -= loss
         self.daily_profit -= loss
-        self.consecutive_losses[pair] += 1
+        self.consecutive_losses[asset] += 1
         
-        self.logger.info(f"📊 {pair} - Pérdidas consecutivas: {self.consecutive_losses[pair]}")
+        # Incrementar pérdidas consecutivas diarias
+        self.daily_consecutive_losses += 1
         
-        # ELIMINADO: Bloqueo por pérdidas consecutivas
-        # Ya no bloqueamos el par por pérdidas consecutivas
-        # if self.consecutive_losses[pair] >= MAX_CONSECUTIVE_LOSSES:
-        #     self.daily_lockouts[pair] = True
-        #     self.logger.warning(f"🚫 {pair} - Bloqueado por {MAX_CONSECUTIVE_LOSSES} pérdidas consecutivas")
+        self.logger.info(f"📊 {asset} - Pérdidas consecutivas: {self.consecutive_losses[asset]}")
+        self.logger.info(f"📊 Pérdidas consecutivas del día: {self.daily_consecutive_losses}/{self.max_daily_consecutive_losses}")
+        
+        # Verificar si alcanzamos el límite diario
+        if self.daily_consecutive_losses >= self.max_daily_consecutive_losses and not self.daily_loss_lock:
+            self.activate_daily_loss_lock()
         
         # Guardar estado después de cada pérdida
         self.save_state()
+    
+    def activate_daily_loss_lock(self):
+        """Activar el bloqueo diario por pérdidas consecutivas"""
+        self.daily_loss_lock = True
+        self.daily_loss_lock_time = datetime.now()
+        
+        # Obtener balance actual para mostrar
+        current_balance = self.api_call_with_timeout(self.iqoption.get_balance)
+        
+        self.logger.info("=" * 60)
+        self.logger.info("❌ LÍMITE DE PÉRDIDAS CONSECUTIVAS ALCANZADO")
+        self.logger.info("=" * 60)
+        self.logger.info(f"📊 Pérdidas consecutivas: {self.daily_consecutive_losses}")
+        self.logger.info(f"💰 Profit del día: {format_currency(self.daily_profit)}")
+        self.logger.info(f"📊 Balance actual: {format_currency(current_balance)}")
+        self.logger.info(f"🕐 Hora: {self.daily_loss_lock_time.strftime('%H:%M:%S')}")
+        self.logger.info("🛑 Trading pausado por el resto del día")
+        self.logger.info("🔄 El trading se reanudará mañana")
+        self.logger.info("=" * 60)
     
     def check_stop_loss(self):
         """Verificar condiciones de stop loss"""
@@ -1038,21 +1127,78 @@ class MultiCurrencyRSIBinaryOptionsStrategy:
         
         return True
     
+    def check_daily_profit_lock(self):
+        """Verificar si debemos parar de operar por profit diario"""
+        # Si ya está activado el lock, solo mostrar mensaje periódicamente
+        if self.daily_profit_lock:
+            if time.time() % 600 < 15:  # Cada 10 minutos aproximadamente
+                self.logger.info(f"🔒 Trading pausado - Profit diario alcanzado: {format_currency(self.daily_profit_lock_amount)}")
+            time.sleep(15)  # Dormir un poco más cuando está en lock
+            return True
+        
+        # Solo verificar si no hay posiciones abiertas
+        if len(self.active_options) > 0:
+            return False
+        
+        # Verificar si el día es rentable
+        if self.daily_profit > 0:
+            self.daily_profit_lock = True
+            self.daily_profit_lock_amount = self.daily_profit
+            self.daily_profit_lock_time = datetime.now()
+            
+            # Obtener balance actual para mostrar
+            current_balance = self.api_call_with_timeout(self.iqoption.get_balance)
+            
+            self.logger.info("=" * 60)
+            self.logger.info("🎯 OBJETIVO DIARIO ALCANZADO - TRADING PAUSADO")
+            self.logger.info("=" * 60)
+            self.logger.info(f"💰 Profit del día: {format_currency(self.daily_profit)}")
+            self.logger.info(f"📊 Balance actual: {format_currency(current_balance)}")
+            self.logger.info(f"🕐 Hora: {self.daily_profit_lock_time.strftime('%H:%M:%S')}")
+            self.logger.info("✅ No se realizarán más operaciones hoy")
+            self.logger.info("🔄 El trading se reanudará mañana")
+            self.logger.info("=" * 60)
+            
+            return True
+        
+        return False
+    
+    def check_daily_loss_lock(self):
+        """Verificar si el trading está bloqueado por pérdidas consecutivas"""
+        if self.daily_loss_lock:
+            if time.time() % 600 < 15:  # Cada 10 minutos aproximadamente
+                self.logger.info(f"🔒 Trading pausado - {self.daily_consecutive_losses} pérdidas consecutivas alcanzadas")
+            time.sleep(15)
+            return True
+        return False
+    
     def on_new_day(self):
         """Resetear variables diarias"""
         self.logger.info("🌅 Reseteando variables para nuevo día de trading")
         
-        # ELIMINADO: Ya no reseteamos bloqueos diarios porque no existen
-        # for pair in list(self.daily_lockouts.keys()):
-        #     if self.daily_lockouts[pair]:
-        #         self.logger.info(f"✅ Desbloqueando {pair}")
-        #     self.daily_lockouts[pair] = False
+        # Resetear daily profit lock
+        if self.daily_profit_lock:
+            self.logger.info(f"🔓 Desbloqueando trading - Profit del día anterior: {format_currency(self.daily_profit_lock_amount)}")
+            self.daily_profit_lock = False
+            self.daily_profit_lock_amount = 0.0
+            self.daily_profit_lock_time = None
         
-        # Resetear pérdidas consecutivas (esto sí lo mantenemos para estadísticas)
-        for pair in list(self.consecutive_losses.keys()):
-            if self.consecutive_losses[pair] > 0:
-                self.logger.info(f"✅ Reseteando pérdidas consecutivas de {pair}: {self.consecutive_losses[pair]} → 0")
-            self.consecutive_losses[pair] = 0
+        # Resetear daily loss lock
+        if self.daily_loss_lock:
+            self.logger.info(f"🔓 Desbloqueando trading - {self.daily_consecutive_losses} pérdidas consecutivas del día anterior")
+            self.daily_loss_lock = False
+            self.daily_loss_lock_time = None
+        
+        # Resetear contador de pérdidas consecutivas diarias
+        if self.daily_consecutive_losses > 0:
+            self.logger.info(f"✅ Reseteando pérdidas consecutivas diarias: {self.daily_consecutive_losses} → 0")
+            self.daily_consecutive_losses = 0
+        
+        # Resetear pérdidas consecutivas por activo (esto sí lo mantenemos para estadísticas)
+        for asset in list(self.consecutive_losses.keys()):
+            if self.consecutive_losses[asset] > 0:
+                self.logger.info(f"✅ Reseteando pérdidas consecutivas de {asset}: {self.consecutive_losses[asset]} → 0")
+            self.consecutive_losses[asset] = 0
         
         # Actualizar beneficios mensuales
         if self.last_date:
@@ -1082,7 +1228,7 @@ class MultiCurrencyRSIBinaryOptionsStrategy:
                 "timestamp": datetime.now().isoformat(),
                 "strategy_mode": STRATEGY_MODE,
                 "active_options": {
-                    pair: [
+                    asset: [
                         {
                             **order,
                             "entry_time": order["entry_time"].isoformat(),
@@ -1090,11 +1236,11 @@ class MultiCurrencyRSIBinaryOptionsStrategy:
                         }
                         for order in orders
                     ]
-                    for pair, orders in self.active_options.items()
+                    for asset, orders in self.active_options.items()
                 },
                 "last_signal_time": {
-                    pair: time.isoformat() if time != datetime.min else "datetime.min"
-                    for pair, time in self.last_signal_time.items()
+                    asset: time.isoformat() if time != datetime.min else "datetime.min"
+                    for asset, time in self.last_signal_time.items()
                 },
                 "consecutive_losses": dict(self.consecutive_losses),
                 "daily_lockouts": dict(self.daily_lockouts),
@@ -1110,7 +1256,14 @@ class MultiCurrencyRSIBinaryOptionsStrategy:
                 "absolute_stop_loss_activated": self.absolute_stop_loss_activated,
                 "min_capital": self.min_capital,
                 "last_date": self.last_date.isoformat() if self.last_date else None,
-                "current_month": self.current_month
+                "current_month": self.current_month,
+                "daily_profit_lock": self.daily_profit_lock,
+                "daily_profit_lock_amount": self.daily_profit_lock_amount,
+                "daily_profit_lock_time": self.daily_profit_lock_time.isoformat() if self.daily_profit_lock_time else None,
+                "daily_consecutive_losses": self.daily_consecutive_losses,
+                "daily_loss_lock": self.daily_loss_lock,
+                "daily_loss_lock_time": self.daily_loss_lock_time.isoformat() if self.daily_loss_lock_time else None,
+                "max_daily_consecutive_losses": self.max_daily_consecutive_losses
             }
             
             with open(STATE_FILE, "w") as f:
@@ -1136,19 +1289,22 @@ class MultiCurrencyRSIBinaryOptionsStrategy:
             
             # Cargar órdenes activas
             self.active_options = defaultdict(list)
-            for pair, orders in state.get("active_options", {}).items():
+            for asset, orders in state.get("active_options", {}).items():
                 for order in orders:
                     order["entry_time"] = datetime.fromisoformat(order["entry_time"])
                     order["expiry_time"] = datetime.fromisoformat(order["expiry_time"])
-                    self.active_options[pair].append(order)
+                    # Compatibilidad: cambiar 'pair' a 'asset' si existe
+                    if 'pair' in order and 'asset' not in order:
+                        order['asset'] = order.pop('pair')
+                    self.active_options[asset].append(order)
             
             # Cargar tiempos de última señal
             self.last_signal_time = defaultdict(lambda: datetime.min)
-            for pair, time_str in state.get("last_signal_time", {}).items():
+            for asset, time_str in state.get("last_signal_time", {}).items():
                 if time_str == "datetime.min":
-                    self.last_signal_time[pair] = datetime.min
+                    self.last_signal_time[asset] = datetime.min
                 else:
-                    self.last_signal_time[pair] = datetime.fromisoformat(time_str)
+                    self.last_signal_time[asset] = datetime.fromisoformat(time_str)
             
             # Cargar estadísticas
             self.consecutive_losses = defaultdict(int, state.get("consecutive_losses", {}))
@@ -1164,6 +1320,25 @@ class MultiCurrencyRSIBinaryOptionsStrategy:
             self.stop_loss_triggered_month = state.get("stop_loss_triggered_month", None)
             self.absolute_stop_loss_activated = state.get("absolute_stop_loss_activated", False)
             self.min_capital = state.get("min_capital", self.initial_capital)
+            
+            # Cargar daily profit lock
+            self.daily_profit_lock = state.get("daily_profit_lock", False)
+            self.daily_profit_lock_amount = state.get("daily_profit_lock_amount", 0.0)
+            lock_time = state.get("daily_profit_lock_time")
+            if lock_time:
+                self.daily_profit_lock_time = datetime.fromisoformat(lock_time)
+            else:
+                self.daily_profit_lock_time = None
+            
+            # Cargar daily loss lock
+            self.daily_consecutive_losses = state.get("daily_consecutive_losses", 0)
+            self.daily_loss_lock = state.get("daily_loss_lock", False)
+            loss_lock_time = state.get("daily_loss_lock_time")
+            if loss_lock_time:
+                self.daily_loss_lock_time = datetime.fromisoformat(loss_lock_time)
+            else:
+                self.daily_loss_lock_time = None
+            self.max_daily_consecutive_losses = state.get("max_daily_consecutive_losses", 3)
             
             # Cargar fechas
             last_date_str = state.get("last_date")
@@ -1189,7 +1364,7 @@ class MultiCurrencyRSIBinaryOptionsStrategy:
             current_capital = self.initial_capital
         
         self.logger.info("=" * 60)
-        self.logger.info("📊 RESUMEN DE LA ESTRATEGIA RSI (LÓGICA INVERTIDA)")
+        self.logger.info("📊 RESUMEN DE LA ESTRATEGIA RSI MULTI-ACTIVOS (LÓGICA INVERTIDA)")
         self.logger.info("=" * 60)
         self.logger.info("⚡ Estrategia: PUT en sobreventa (RSI≤35), CALL en sobrecompra (RSI≥65)")
         self.logger.info(f"💰 Capital Inicial: {format_currency(self.initial_capital)}")
@@ -1221,18 +1396,26 @@ class MultiCurrencyRSIBinaryOptionsStrategy:
         if self.monthly_stop_loss:
             self.logger.info(f"🚨 Stop Loss Mensual: ACTIVADO en {self.stop_loss_triggered_month}")
         
-        # Estadísticas por par
-        self.logger.info("\n📊 Estadísticas por Par:")
-        for pair in self.forex_pairs:
-            if pair in self.wins or pair in self.losses or pair in self.ties:
-                pair_wins = self.wins.get(pair, 0)
-                pair_losses = self.losses.get(pair, 0)
-                pair_ties = self.ties.get(pair, 0)
-                pair_total = pair_wins + pair_losses + pair_ties
-                if pair_total > 0:
-                    pair_wr = (pair_wins / (pair_wins + pair_losses) * 100) if (pair_wins + pair_losses) > 0 else 0
-                    cons_losses = self.consecutive_losses.get(pair, 0)
-                    self.logger.info(f"{pair}: {pair_total} trades | {pair_wins}W/{pair_losses}L/{pair_ties}T | {pair_wr:.1f}% éxito | Pérdidas consecutivas actuales: {cons_losses}")
+        # Daily profit lock
+        if self.daily_profit_lock:
+            self.logger.info(f"🔒 Daily Profit Lock: ACTIVO desde {self.daily_profit_lock_time.strftime('%H:%M')}")
+        
+        # Daily loss lock
+        if self.daily_loss_lock:
+            self.logger.info(f"🔒 Daily Loss Lock: ACTIVO desde {self.daily_loss_lock_time.strftime('%H:%M')} ({self.daily_consecutive_losses} pérdidas)")
+        
+        # Estadísticas por activo
+        self.logger.info("\n📊 Estadísticas por Activo:")
+        for asset in self.trading_assets:
+            if asset in self.wins or asset in self.losses or asset in self.ties:
+                asset_wins = self.wins.get(asset, 0)
+                asset_losses = self.losses.get(asset, 0)
+                asset_ties = self.ties.get(asset, 0)
+                asset_total = asset_wins + asset_losses + asset_ties
+                if asset_total > 0:
+                    asset_wr = (asset_wins / (asset_wins + asset_losses) * 100) if (asset_wins + asset_losses) > 0 else 0
+                    cons_losses = self.consecutive_losses.get(asset, 0)
+                    self.logger.info(f"{asset}: {asset_total} trades | {asset_wins}W/{asset_losses}L/{asset_ties}T | {asset_wr:.1f}% éxito | Pérdidas consecutivas: {cons_losses}")
         
         # Rendimiento mensual
         self.logger.info("\n📅 Rendimiento Mensual:")
@@ -1245,8 +1428,8 @@ class MultiCurrencyRSIBinaryOptionsStrategy:
     
     def run(self):
         """Ejecutar la estrategia principal"""
-        self.logger.info("🚀 Iniciando estrategia RSI Multi-Divisa (LÓGICA INVERTIDA)")
-        self.logger.info(f"📊 Configuración: {len(self.valid_pairs)} pares disponibles")
+        self.logger.info("🚀 Iniciando estrategia RSI Multi-Activos (LÓGICA INVERTIDA)")
+        self.logger.info(f"📊 Configuración: {len(self.valid_assets)} activos disponibles")
         self.logger.info("⚡ IMPORTANTE: PUT en RSI≤35 (sobreventa), CALL en RSI≥65 (sobrecompra)")
         self.logger.info(f"⏰ Tiempo entre señales: {self.min_time_between_signals} minutos (1 hora)")
         self.logger.info("🔄 Sin bloqueo por pérdidas consecutivas")
@@ -1262,6 +1445,13 @@ class MultiCurrencyRSIBinaryOptionsStrategy:
                 # Log periódico
                 if cycle_count % 10 == 0:
                     self.logger.info(f"🔄 Ciclo #{cycle_count} - {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
+                    
+                    # Mostrar estado de calentamiento si aplica
+                    if time.time() < self.warmup_end_time:
+                        remaining = (self.warmup_end_time - time.time()) / 60
+                        self.logger.info(f"⏳ Período de calentamiento: {remaining:.1f} minutos restantes")
+                    elif cycle_count == 10:  # Primera vez después del calentamiento
+                        self.logger.info("✅ Período de calentamiento completado - Operaciones habilitadas")
                 
                 # Verificar conexión
                 if not self.iqoption.check_connect():
@@ -1276,6 +1466,14 @@ class MultiCurrencyRSIBinaryOptionsStrategy:
                     time.sleep(300)  # Esperar 5 minutos
                     continue
                 
+                # Verificar daily profit lock
+                if self.check_daily_profit_lock():
+                    continue
+                
+                # Verificar daily loss lock
+                if self.check_daily_loss_lock():
+                    continue
+                
                 # Verificar órdenes activas
                 self.check_active_orders()
                 
@@ -1284,21 +1482,21 @@ class MultiCurrencyRSIBinaryOptionsStrategy:
                 if self.last_date != current_date:
                     self.on_new_day()
                 
-                # Procesar cada par disponible
-                for pair in self.valid_pairs:
+                # Procesar cada activo disponible
+                for asset in self.valid_assets:
                     try:
-                        self.process_currency_pair(pair)
+                        self.process_asset(asset)
                     except Exception as e:
-                        self.logger.error(f"❌ Error procesando {pair}: {str(e)}")
+                        self.logger.error(f"❌ Error procesando {asset}: {str(e)}")
                 
                 # Guardar estado periódicamente
                 if cycle_count % SAVE_STATE_INTERVAL == 0:
                     self.save_state()
                 
-                # Re-verificar pares periódicamente
+                # Re-verificar activos periódicamente
                 if cycle_count % 100 == 0:
-                    self.logger.info("🔄 Re-verificando pares disponibles...")
-                    self.check_valid_pairs()
+                    self.logger.info("🔄 Re-verificando activos disponibles...")
+                    self.check_valid_assets()
                 
                 # Control de tiempo del ciclo
                 cycle_duration = time.time() - cycle_start
@@ -1328,3 +1526,7 @@ class MultiCurrencyRSIBinaryOptionsStrategy:
                 self.executor.shutdown(wait=False)
         except:
             pass
+
+
+# Alias para compatibilidad con main.py
+MultiCurrencyRSIBinaryOptionsStrategy = MultiAssetRSIBinaryOptionsStrategy

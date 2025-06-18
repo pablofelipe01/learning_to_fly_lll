@@ -1,0 +1,280 @@
+2025-06-17 08:55:24 | INFO | ============================================================
+2025-06-17 08:55:24 | INFO |    ESTRATEGIA RSI MULTI-ACTIVOS PARA IQ OPTION
+2025-06-17 08:55:24 | INFO |    ⚡ LÓGICA INVERTIDA ⚡
+2025-06-17 08:55:24 | INFO | ============================================================
+2025-06-17 08:55:24 | INFO | 📅 Fecha/Hora: 2025-06-17 08:55:24
+2025-06-17 08:55:24 | INFO | 📧 Usuario: pab***ipe@me.com
+2025-06-17 08:55:24 | INFO | ============================================================
+2025-06-17 08:55:24 | INFO | ⚠️ IMPORTANTE: Esta estrategia usa lógica INVERTIDA
+2025-06-17 08:55:24 | INFO |    - PUT cuando RSI ≤ 35 (sobreventa)
+2025-06-17 08:55:24 | INFO |    - CALL cuando RSI ≥ 65 (sobrecompra)
+2025-06-17 08:55:24 | INFO | ============================================================
+2025-06-17 08:55:24 | INFO | 🚀 Inicializando estrategia...
+2025-06-17 08:55:24 | INFO | 🎯 INICIANDO ESTRATEGIA RSI MULTI-ACTIVOS (LÓGICA INVERTIDA)
+2025-06-17 08:55:24 | INFO | 📊 Configuración: PUT <= 35, CALL >= 65
+2025-06-17 08:55:24 | INFO | ⚡ LÓGICA INVERTIDA: PUT en sobreventa, CALL en sobrecompra
+2025-06-17 08:55:24 | INFO | 🔗 Conectando a IQ Option...
+2025-06-17 08:55:27 | INFO | ✅ Conexión exitosa
+2025-06-17 08:55:27 | INFO | 💰 Balance actual: $542,673.10
+2025-06-17 08:55:27 | INFO | 💰 Capital inicial: $542,673.10
+2025-06-17 08:55:27 | INFO | 📂 No hay archivo de estado previo
+2025-06-17 08:55:27 | INFO | 🔍 Verificando activos disponibles...
+2025-06-17 08:55:35 | INFO | ✅ US500: Disponible como SP500-OTC (binary)
+2025-06-17 08:55:35 | INFO | ✅ EURUSD: Disponible como EURUSD-OTC (binary)
+2025-06-17 08:55:35 | INFO | ✅ GER30: Disponible como GER30-OTC (binary)
+2025-06-17 08:55:35 | INFO | ✅ GBPUSD: Disponible como GBPUSD-OTC (binary)
+2025-06-17 08:55:35 | INFO | ✅ XAUUSD: Disponible como XAUUSD-OTC (binary)
+2025-06-17 08:55:35 | INFO | ✅ USDJPY: Disponible como USDJPY-OTC (binary)
+2025-06-17 08:55:35 | INFO | ✅ UK100: Disponible como UK100-OTC (binary)
+2025-06-17 08:55:35 | INFO | ✅ EURGBP: Disponible como EURGBP-OTC (binary)
+2025-06-17 08:55:35 | INFO | ✅ AUDUSD: Disponible como AUDUSD-OTC (binary)
+2025-06-17 08:55:35 | INFO | ✅ JP225: Disponible como JP225-OTC (binary)
+2025-06-17 08:55:35 | INFO | ✅ EURJPY: Disponible como EURJPY-OTC (binary)
+2025-06-17 08:55:35 | WARNING | ⚠️ APPLE: No disponible (APPLE-OTC)
+2025-06-17 08:55:35 | INFO | ✅ XAGUSD: Disponible como XAGUSD-OTC (binary)
+2025-06-17 08:55:35 | INFO | ✅ MSFT: Disponible como MSFT-OTC (binary)
+2025-06-17 08:55:35 | INFO | ✅ GBPJPY: Disponible como GBPJPY-OTC (binary)
+2025-06-17 08:55:35 | INFO | 📊 Total activos disponibles: 14
+2025-06-17 08:55:35 | INFO | 📋 Activos habilitados:
+2025-06-17 08:55:35 | INFO |    - US500 → SP500-OTC (binary)
+2025-06-17 08:55:35 | INFO |    - EURUSD → EURUSD-OTC (binary)
+2025-06-17 08:55:35 | INFO |    - GER30 → GER30-OTC (binary)
+2025-06-17 08:55:35 | INFO |    - GBPUSD → GBPUSD-OTC (binary)
+2025-06-17 08:55:35 | INFO |    - XAUUSD → XAUUSD-OTC (binary)
+2025-06-17 08:55:35 | INFO |    - USDJPY → USDJPY-OTC (binary)
+2025-06-17 08:55:35 | INFO |    - UK100 → UK100-OTC (binary)
+2025-06-17 08:55:35 | INFO |    - EURGBP → EURGBP-OTC (binary)
+2025-06-17 08:55:35 | INFO |    - AUDUSD → AUDUSD-OTC (binary)
+2025-06-17 08:55:35 | INFO |    - JP225 → JP225-OTC (binary)
+2025-06-17 08:55:35 | INFO |    - EURJPY → EURJPY-OTC (binary)
+2025-06-17 08:55:35 | INFO |    - XAGUSD → XAGUSD-OTC (binary)
+2025-06-17 08:55:35 | INFO |    - MSFT → MSFT-OTC (binary)
+2025-06-17 08:55:35 | INFO |    - GBPJPY → GBPJPY-OTC (binary)
+2025-06-17 08:55:35 | INFO | 🎯 Iniciando operaciones...
+2025-06-17 08:55:35 | INFO | ℹ️ Presiona Ctrl+C para detener la estrategia
+2025-06-17 08:55:35 | INFO | 🚀 Iniciando estrategia RSI Multi-Activos (LÓGICA INVERTIDA)
+2025-06-17 08:55:35 | INFO | 📊 Configuración: 14 activos disponibles
+2025-06-17 08:55:35 | INFO | ⚡ IMPORTANTE: PUT en RSI≤35 (sobreventa), CALL en RSI≥65 (sobrecompra)
+2025-06-17 08:55:35 | INFO | ⏰ Tiempo entre señales: 60 minutos (1 hora)
+2025-06-17 08:55:35 | INFO | 🔄 Sin bloqueo por pérdidas consecutivas
+2025-06-17 08:55:35 | INFO | 💰 Tamaño de posición: 2.5% del capital (sin límite máximo)
+2025-06-17 08:55:37 | INFO | 🔴 XAUUSD - Señal PUT (RSI: 28.20)
+2025-06-17 08:55:37 | INFO | 📈 Colocando PUT en XAUUSD (XAUUSD-OTC), cantidad: $13,566.83
+2025-06-17 08:55:38 | INFO | ✅ Orden colocada exitosamente. ID: 12754902610
+2025-06-17 08:55:38 | INFO | 📝 Orden registrada para XAUUSD
+2025-06-17 08:55:38 | INFO | 🔴 UK100 - Señal PUT (RSI: 31.44)
+2025-06-17 08:55:38 | INFO | 📈 Colocando PUT en UK100 (UK100-OTC), cantidad: $13,227.68
+2025-06-17 08:55:39 | INFO | ✅ Orden colocada exitosamente. ID: 12754902667
+2025-06-17 08:55:39 | INFO | 📝 Orden registrada para UK100
+2025-06-17 08:55:39 | INFO | 🟢 EURGBP - Señal CALL (RSI: 67.02)
+2025-06-17 08:55:40 | INFO | 📈 Colocando CALL en EURGBP (EURGBP-OTC), cantidad: $12,897.00
+2025-06-17 08:55:40 | INFO | ✅ Orden colocada exitosamente. ID: 12754902733
+2025-06-17 08:55:40 | INFO | 📝 Orden registrada para EURGBP
+2025-06-17 08:55:41 | INFO | 🔴 AUDUSD - Señal PUT (RSI: 33.11)
+2025-06-17 08:55:41 | INFO | 📈 Colocando PUT en AUDUSD (AUDUSD-OTC), cantidad: $12,574.58
+2025-06-17 08:55:42 | INFO | ✅ Orden colocada exitosamente. ID: 12754902792
+2025-06-17 08:55:42 | INFO | 📝 Orden registrada para AUDUSD
+2025-06-17 08:55:42 | INFO | 🔴 XAGUSD - Señal PUT (RSI: 28.50)
+2025-06-17 08:55:42 | INFO | 📈 Colocando PUT en XAGUSD (XAGUSD-OTC), cantidad: $12,260.23
+2025-06-17 08:55:43 | INFO | ✅ Orden colocada exitosamente. ID: 12754902890
+2025-06-17 08:55:43 | INFO | 📝 Orden registrada para XAGUSD
+2025-06-17 08:55:43 | INFO | 🟢 GBPJPY - Señal CALL (RSI: 72.12)
+2025-06-17 08:55:44 | INFO | 📈 Colocando CALL en GBPJPY (GBPJPY-OTC), cantidad: $11,953.73
+2025-06-17 08:55:44 | INFO | ✅ Orden colocada exitosamente. ID: 12754902963
+2025-06-17 08:55:44 | INFO | 📝 Orden registrada para GBPJPY
+2025-06-17 08:55:51 | INFO | 📉 Nuevo mínimo: $466,196.10 (14.09% pérdida)
+2025-06-17 08:56:52 | INFO | 🔴 JP225 - Señal PUT (RSI: 34.94)
+2025-06-17 08:56:52 | INFO | 📈 Colocando PUT en JP225 (JP225-OTC), cantidad: $11,654.90
+2025-06-17 08:56:53 | INFO | ✅ Orden colocada exitosamente. ID: 12754906824
+2025-06-17 08:56:53 | INFO | 📝 Orden registrada para JP225
+2025-06-17 08:57:06 | INFO | 📉 Nuevo mínimo: $454,542.10 (16.24% pérdida)
+2025-06-17 08:57:51 | INFO | 🔄 Ciclo #10 - 2025-06-17 08:57:51
+2025-06-17 08:58:06 | INFO | 🔄 Verificando orden 12754902610...
+2025-06-17 08:58:06 | INFO | 📋 Orden encontrada en order_binary
+2025-06-17 08:58:06 | INFO |    Result: LOOSE
+2025-06-17 08:58:06 | INFO | ❌ Pérdida detectada
+2025-06-17 08:58:06 | INFO | ❌ XAUUSD - PUT PERDIDA. Pérdida: $13,566.83
+2025-06-17 08:58:06 | INFO | 📊 XAUUSD - Pérdidas consecutivas: 1
+2025-06-17 08:58:06 | INFO | 🔄 Verificando orden 12754902667...
+2025-06-17 08:58:06 | INFO | 📋 Orden encontrada en order_binary
+2025-06-17 08:58:06 | INFO |    Result: LOOSE
+2025-06-17 08:58:06 | INFO | ❌ Pérdida detectada
+2025-06-17 08:58:06 | INFO | ❌ UK100 - PUT PERDIDA. Pérdida: $13,227.68
+2025-06-17 08:58:06 | INFO | 📊 UK100 - Pérdidas consecutivas: 1
+2025-06-17 08:58:06 | INFO | 🔄 Verificando orden 12754902733...
+2025-06-17 08:58:06 | INFO | 📋 Orden encontrada en order_binary
+2025-06-17 08:58:06 | INFO |    Result: LOOSE
+2025-06-17 08:58:06 | INFO | ❌ Pérdida detectada
+2025-06-17 08:58:06 | INFO | ❌ EURGBP - CALL PERDIDA. Pérdida: $12,897.00
+2025-06-17 08:58:06 | INFO | 📊 EURGBP - Pérdidas consecutivas: 1
+2025-06-17 08:58:06 | INFO | 🔄 Verificando orden 12754902792...
+2025-06-17 08:58:06 | INFO | 📋 Orden encontrada en order_binary
+2025-06-17 08:58:06 | INFO |    Result: LOOSE
+2025-06-17 08:58:06 | INFO | ❌ Pérdida detectada
+2025-06-17 08:58:06 | INFO | ❌ AUDUSD - PUT PERDIDA. Pérdida: $12,574.58
+2025-06-17 08:58:06 | INFO | 📊 AUDUSD - Pérdidas consecutivas: 1
+2025-06-17 08:58:06 | INFO | 🔄 Verificando orden 12754902890...
+2025-06-17 08:58:06 | INFO | 📋 Orden encontrada en order_binary
+2025-06-17 08:58:06 | INFO |    Result: LOOSE
+2025-06-17 08:58:06 | INFO | ❌ Pérdida detectada
+2025-06-17 08:58:06 | INFO | ❌ XAGUSD - PUT PERDIDA. Pérdida: $12,260.23
+2025-06-17 08:58:06 | INFO | 📊 XAGUSD - Pérdidas consecutivas: 1
+2025-06-17 08:58:06 | INFO | 🔄 Verificando orden 12754902963...
+2025-06-17 08:58:06 | INFO | 📋 Orden encontrada en order_binary
+2025-06-17 08:58:06 | INFO |    Result: WIN (profit: 185%)
+2025-06-17 08:58:06 | INFO | ✅ Victoria detectada
+2025-06-17 08:58:06 | INFO | ✅ GBPJPY - CALL GANADA! Beneficio: $22,114.40
+2025-06-17 08:59:21 | INFO | 🔄 Verificando orden 12754906824...
+2025-06-17 08:59:21 | INFO | 📋 Orden encontrada en order_binary
+2025-06-17 08:59:21 | INFO |    Result: LOOSE
+2025-06-17 08:59:21 | INFO | ❌ Pérdida detectada
+2025-06-17 08:59:21 | INFO | ❌ JP225 - PUT PERDIDA. Pérdida: $11,654.90
+2025-06-17 08:59:21 | INFO | 📊 JP225 - Pérdidas consecutivas: 1
+2025-06-17 09:00:21 | INFO | 🔄 Ciclo #20 - 2025-06-17 09:00:21
+2025-06-17 09:02:06 | INFO | 🔴 GER30 - Señal PUT (RSI: 34.85)
+2025-06-17 09:02:07 | INFO | 📈 Colocando PUT en GER30 (GER30-OTC), cantidad: $11,916.38
+2025-06-17 09:02:07 | INFO | ✅ Orden colocada exitosamente. ID: 12754924957
+2025-06-17 09:02:07 | INFO | 📝 Orden registrada para GER30
+2025-06-17 09:02:51 | INFO | 🔄 Ciclo #30 - 2025-06-17 09:02:51
+2025-06-17 09:04:36 | INFO | 🔄 Verificando orden 12754924957...
+2025-06-17 09:04:36 | INFO | 📋 Orden encontrada en order_binary
+2025-06-17 09:04:36 | INFO |    Result: WIN (profit: 185%)
+2025-06-17 09:04:36 | INFO | ✅ Victoria detectada
+2025-06-17 09:04:36 | INFO | ✅ GER30 - PUT GANADA! Beneficio: $22,045.30
+2025-06-17 09:05:21 | INFO | 🔄 Ciclo #40 - 2025-06-17 09:05:21
+2025-06-17 09:05:21 | INFO | 🟢 EURUSD - Señal CALL (RSI: 65.84)
+2025-06-17 09:05:22 | INFO | 📈 Colocando CALL en EURUSD (EURUSD-OTC), cantidad: $12,169.59
+2025-06-17 09:05:22 | INFO | ✅ Orden colocada exitosamente. ID: 12754935661
+2025-06-17 09:05:22 | INFO | 📝 Orden registrada para EURUSD
+2025-06-17 09:07:42 | INFO | ⏹️ Estrategia detenida por el usuario
+2025-06-17 09:07:42 | INFO | 🏁 Finalizando estrategia...
+2025-06-17 09:07:42 | INFO | ============================================================
+2025-06-17 09:07:42 | INFO | 📊 RESUMEN DE LA ESTRATEGIA RSI MULTI-ACTIVOS (LÓGICA INVERTIDA)
+2025-06-17 09:07:42 | INFO | ============================================================
+2025-06-17 09:07:42 | INFO | ⚡ Estrategia: PUT en sobreventa (RSI≤35), CALL en sobrecompra (RSI≥65)
+2025-06-17 09:07:42 | INFO | 💰 Capital Inicial: $542,673.10
+2025-06-17 09:07:42 | INFO | 💰 Balance Final: $497,127.40
+2025-06-17 09:07:42 | INFO | 📈 Rendimiento Total: -8.39%
+2025-06-17 09:07:42 | INFO | 🎯 Total Operaciones: 8
+2025-06-17 09:07:42 | INFO | ✅ Victorias: 2 (25.0%)
+2025-06-17 09:07:42 | INFO | ❌ Derrotas: 6 (75.0%)
+2025-06-17 09:07:42 | INFO | 🟡 Empates: 0 (0.0%)
+2025-06-17 09:07:42 | INFO | 📊 Tasa de Éxito (sin empates): 25.00%
+2025-06-17 09:07:42 | INFO | 💵 Beneficio Neto: $-32,021.52
+2025-06-17 09:07:42 | INFO | 📉 Capital Mínimo: $454,542.10
+2025-06-17 09:07:42 | INFO | 
+📊 Estadísticas por Activo:
+2025-06-17 09:07:42 | INFO | GER30: 1 trades | 1W/0L/0T | 100.0% éxito | Pérdidas consecutivas: 0
+2025-06-17 09:07:42 | INFO | XAUUSD: 1 trades | 0W/1L/0T | 0.0% éxito | Pérdidas consecutivas: 1
+2025-06-17 09:07:42 | INFO | UK100: 1 trades | 0W/1L/0T | 0.0% éxito | Pérdidas consecutivas: 1
+2025-06-17 09:07:42 | INFO | EURGBP: 1 trades | 0W/1L/0T | 0.0% éxito | Pérdidas consecutivas: 1
+2025-06-17 09:07:42 | INFO | AUDUSD: 1 trades | 0W/1L/0T | 0.0% éxito | Pérdidas consecutivas: 1
+2025-06-17 09:07:42 | INFO | JP225: 1 trades | 0W/1L/0T | 0.0% éxito | Pérdidas consecutivas: 1
+2025-06-17 09:07:42 | INFO | XAGUSD: 1 trades | 0W/1L/0T | 0.0% éxito | Pérdidas consecutivas: 1
+2025-06-17 09:07:42 | INFO | GBPJPY: 1 trades | 1W/0L/0T | 100.0% éxito | Pérdidas consecutivas: 0
+2025-06-17 09:07:42 | INFO | 
+📅 Rendimiento Mensual:
+2025-06-17 09:07:42 | INFO | ============================================================
+2025-06-17 09:07:42 | INFO | 👋 Estrategia finalizada
+2025-06-17 09:07:42 | INFO | 👋 Programa finalizado
+2025-06-17 09:08:07 | INFO | ============================================================
+2025-06-17 09:08:07 | INFO |    ESTRATEGIA RSI MULTI-ACTIVOS PARA IQ OPTION
+2025-06-17 09:08:07 | INFO |    ⚡ LÓGICA INVERTIDA ⚡
+2025-06-17 09:08:07 | INFO | ============================================================
+2025-06-17 09:08:07 | INFO | 📅 Fecha/Hora: 2025-06-17 09:08:07
+2025-06-17 09:08:07 | INFO | 📧 Usuario: pab***ipe@me.com
+2025-06-17 09:08:07 | INFO | ============================================================
+2025-06-17 09:08:07 | INFO | ⚠️ IMPORTANTE: Esta estrategia usa lógica INVERTIDA
+2025-06-17 09:08:07 | INFO |    - PUT cuando RSI ≤ 35 (sobreventa)
+2025-06-17 09:08:07 | INFO |    - CALL cuando RSI ≥ 65 (sobrecompra)
+2025-06-17 09:08:07 | INFO | ============================================================
+2025-06-17 09:08:07 | INFO | 🚀 Inicializando estrategia...
+2025-06-17 09:08:07 | INFO | 🎯 INICIANDO ESTRATEGIA RSI MULTI-ACTIVOS (LÓGICA INVERTIDA)
+2025-06-17 09:08:07 | INFO | 📊 Configuración: PUT <= 35, CALL >= 65
+2025-06-17 09:08:07 | INFO | ⚡ LÓGICA INVERTIDA: PUT en sobreventa, CALL en sobrecompra
+2025-06-17 09:08:07 | INFO | 🔗 Conectando a IQ Option...
+2025-06-17 09:08:10 | INFO | ✅ Conexión exitosa
+2025-06-17 09:08:10 | INFO | 💰 Balance actual: $497,127.40
+2025-06-17 09:08:10 | INFO | 💰 Capital inicial: $497,127.40
+2025-06-17 09:08:10 | INFO | ✅ Estado cargado desde 2025-06-17T09:07:42.650575
+2025-06-17 09:08:10 | INFO | 🔍 Verificando activos disponibles...
+2025-06-17 09:08:16 | INFO | ✅ US500: Disponible como SP500-OTC (binary)
+2025-06-17 09:08:16 | INFO | ✅ EURUSD: Disponible como EURUSD-OTC (binary)
+2025-06-17 09:08:16 | INFO | ✅ GER30: Disponible como GER30-OTC (binary)
+2025-06-17 09:08:16 | INFO | ✅ GBPUSD: Disponible como GBPUSD-OTC (binary)
+2025-06-17 09:08:16 | INFO | ✅ XAUUSD: Disponible como XAUUSD-OTC (binary)
+2025-06-17 09:08:16 | INFO | ✅ USDJPY: Disponible como USDJPY-OTC (binary)
+2025-06-17 09:08:16 | INFO | ✅ UK100: Disponible como UK100-OTC (binary)
+2025-06-17 09:08:16 | INFO | ✅ EURGBP: Disponible como EURGBP-OTC (binary)
+2025-06-17 09:08:16 | INFO | ✅ AUDUSD: Disponible como AUDUSD-OTC (binary)
+2025-06-17 09:08:16 | INFO | ✅ JP225: Disponible como JP225-OTC (binary)
+2025-06-17 09:08:16 | INFO | ✅ EURJPY: Disponible como EURJPY-OTC (binary)
+2025-06-17 09:08:16 | WARNING | ⚠️ APPLE: No disponible (APPLE-OTC)
+2025-06-17 09:08:16 | INFO | ✅ XAGUSD: Disponible como XAGUSD-OTC (binary)
+2025-06-17 09:08:16 | INFO | ✅ MSFT: Disponible como MSFT-OTC (binary)
+2025-06-17 09:08:16 | INFO | ✅ GBPJPY: Disponible como GBPJPY-OTC (binary)
+2025-06-17 09:08:16 | INFO | 📊 Total activos disponibles: 14
+2025-06-17 09:08:16 | INFO | 📋 Activos habilitados:
+2025-06-17 09:08:16 | INFO |    - US500 → SP500-OTC (binary)
+2025-06-17 09:08:16 | INFO |    - EURUSD → EURUSD-OTC (binary)
+2025-06-17 09:08:16 | INFO |    - GER30 → GER30-OTC (binary)
+2025-06-17 09:08:16 | INFO |    - GBPUSD → GBPUSD-OTC (binary)
+2025-06-17 09:08:16 | INFO |    - XAUUSD → XAUUSD-OTC (binary)
+2025-06-17 09:08:16 | INFO |    - USDJPY → USDJPY-OTC (binary)
+2025-06-17 09:08:16 | INFO |    - UK100 → UK100-OTC (binary)
+2025-06-17 09:08:16 | INFO |    - EURGBP → EURGBP-OTC (binary)
+2025-06-17 09:08:16 | INFO |    - AUDUSD → AUDUSD-OTC (binary)
+2025-06-17 09:08:16 | INFO |    - JP225 → JP225-OTC (binary)
+2025-06-17 09:08:16 | INFO |    - EURJPY → EURJPY-OTC (binary)
+2025-06-17 09:08:16 | INFO |    - XAGUSD → XAGUSD-OTC (binary)
+2025-06-17 09:08:16 | INFO |    - MSFT → MSFT-OTC (binary)
+2025-06-17 09:08:16 | INFO |    - GBPJPY → GBPJPY-OTC (binary)
+2025-06-17 09:08:16 | INFO | 🎯 Iniciando operaciones...
+2025-06-17 09:08:16 | INFO | ℹ️ Presiona Ctrl+C para detener la estrategia
+2025-06-17 09:08:16 | INFO | 🚀 Iniciando estrategia RSI Multi-Activos (LÓGICA INVERTIDA)
+2025-06-17 09:08:16 | INFO | 📊 Configuración: 14 activos disponibles
+2025-06-17 09:08:16 | INFO | ⚡ IMPORTANTE: PUT en RSI≤35 (sobreventa), CALL en RSI≥65 (sobrecompra)
+2025-06-17 09:08:16 | INFO | ⏰ Tiempo entre señales: 60 minutos (1 hora)
+2025-06-17 09:08:16 | INFO | 🔄 Sin bloqueo por pérdidas consecutivas
+2025-06-17 09:08:16 | INFO | 💰 Tamaño de posición: 2.5% del capital (sin límite máximo)
+2025-06-17 09:08:16 | INFO | 🔄 Verificando orden 12754935661...
+2025-06-17 09:08:17 | INFO | 📊 Verificación por balance:
+2025-06-17 09:08:17 | INFO |    Balance antes: $486,783.75
+2025-06-17 09:08:17 | INFO |    Balance ahora: $497,127.40
+2025-06-17 09:08:17 | INFO |    Diferencia: $+10,343.65
+2025-06-17 09:08:17 | INFO | ✅ Victoria detectada
+2025-06-17 09:08:17 | INFO | ✅ EURUSD - CALL GANADA! Beneficio: $10,343.65
+2025-06-17 09:10:31 | INFO | 🔄 Ciclo #10 - 2025-06-17 09:10:31
+2025-06-17 09:13:01 | INFO | 🔄 Ciclo #20 - 2025-06-17 09:13:01
+2025-06-17 09:14:37 | INFO | ⏹️ Estrategia detenida por el usuario
+2025-06-17 09:14:37 | INFO | 🏁 Finalizando estrategia...
+2025-06-17 09:14:37 | INFO | ============================================================
+2025-06-17 09:14:37 | INFO | 📊 RESUMEN DE LA ESTRATEGIA RSI MULTI-ACTIVOS (LÓGICA INVERTIDA)
+2025-06-17 09:14:37 | INFO | ============================================================
+2025-06-17 09:14:37 | INFO | ⚡ Estrategia: PUT en sobreventa (RSI≤35), CALL en sobrecompra (RSI≥65)
+2025-06-17 09:14:37 | INFO | 💰 Capital Inicial: $497,127.40
+2025-06-17 09:14:37 | INFO | 💰 Balance Final: $497,127.40
+2025-06-17 09:14:37 | INFO | 📈 Rendimiento Total: 0.00%
+2025-06-17 09:14:37 | INFO | 🎯 Total Operaciones: 9
+2025-06-17 09:14:37 | INFO | ✅ Victorias: 3 (33.3%)
+2025-06-17 09:14:37 | INFO | ❌ Derrotas: 6 (66.7%)
+2025-06-17 09:14:37 | INFO | 🟡 Empates: 0 (0.0%)
+2025-06-17 09:14:37 | INFO | 📊 Tasa de Éxito (sin empates): 33.33%
+2025-06-17 09:14:37 | INFO | 💵 Beneficio Neto: $-21,677.87
+2025-06-17 09:14:37 | INFO | 📉 Capital Mínimo: $454,542.10
+2025-06-17 09:14:37 | INFO | 
+📊 Estadísticas por Activo:
+2025-06-17 09:14:37 | INFO | EURUSD: 1 trades | 1W/0L/0T | 100.0% éxito | Pérdidas consecutivas: 0
+2025-06-17 09:14:37 | INFO | GER30: 1 trades | 1W/0L/0T | 100.0% éxito | Pérdidas consecutivas: 0
+2025-06-17 09:14:37 | INFO | XAUUSD: 1 trades | 0W/1L/0T | 0.0% éxito | Pérdidas consecutivas: 1
+2025-06-17 09:14:37 | INFO | UK100: 1 trades | 0W/1L/0T | 0.0% éxito | Pérdidas consecutivas: 1
+2025-06-17 09:14:37 | INFO | EURGBP: 1 trades | 0W/1L/0T | 0.0% éxito | Pérdidas consecutivas: 1
+2025-06-17 09:14:37 | INFO | AUDUSD: 1 trades | 0W/1L/0T | 0.0% éxito | Pérdidas consecutivas: 1
+2025-06-17 09:14:37 | INFO | JP225: 1 trades | 0W/1L/0T | 0.0% éxito | Pérdidas consecutivas: 1
+2025-06-17 09:14:37 | INFO | XAGUSD: 1 trades | 0W/1L/0T | 0.0% éxito | Pérdidas consecutivas: 1
+2025-06-17 09:14:37 | INFO | GBPJPY: 1 trades | 1W/0L/0T | 100.0% éxito | Pérdidas consecutivas: 0
+2025-06-17 09:14:37 | INFO | 
+📅 Rendimiento Mensual:
+2025-06-17 09:14:37 | INFO | ============================================================
+2025-06-17 09:14:37 | INFO | 👋 Estrategia finalizada
+2025-06-17 09:14:37 | INFO | 👋 Programa finalizado

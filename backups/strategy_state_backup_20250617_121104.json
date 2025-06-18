@@ -1,0 +1,51 @@
+{
+    "timestamp": "2025-06-17T12:06:55.639849",
+    "strategy_mode": "CALL_PUT",
+    "active_options": {},
+    "last_signal_time": {
+        "EURCAD": "2025-06-17T11:47:58.696711",
+        "EURNZD": "2025-06-17T11:48:00.181664",
+        "GBPCHF": "2025-06-17T11:48:01.686896",
+        "EURJPY": "2025-06-17T11:48:14.994833",
+        "EURCHF": "2025-06-17T11:54:14.010254",
+        "GBPCAD": "2025-06-17T11:55:14.152084",
+        "EURGBP": "2025-06-17T11:58:29.999587",
+        "AUDCHF": "2025-06-17T12:03:28.595935"
+    },
+    "consecutive_losses": {
+        "EURCAD": 1,
+        "EURNZD": 1,
+        "GBPCHF": 0,
+        "EURJPY": 0,
+        "EURCHF": 0,
+        "GBPCAD": 1,
+        "EURGBP": 1,
+        "AUDCHF": 1
+    },
+    "daily_lockouts": {},
+    "wins": {
+        "GBPCHF": 1,
+        "EURJPY": 1,
+        "EURCHF": 1
+    },
+    "losses": {
+        "EURCAD": 1,
+        "EURNZD": 1,
+        "GBPCAD": 1,
+        "EURGBP": 1,
+        "AUDCHF": 1
+    },
+    "ties": {},
+    "total_profit": 4719.570799999998,
+    "daily_profit": 4719.570799999998,
+    "monthly_profits": {},
+    "monthly_starting_capital": {
+        "2025-06": 465127.95
+    },
+    "monthly_stop_loss": false,
+    "stop_loss_triggered_month": null,
+    "absolute_stop_loss_activated": false,
+    "min_capital": 420331.95,
+    "last_date": "2025-06-17",
+    "current_month": "2025-06"
+}

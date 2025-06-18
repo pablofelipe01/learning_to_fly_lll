@@ -1,0 +1,85 @@
+2025-06-17 09:28:53 | INFO | ============================================================
+2025-06-17 09:28:53 | INFO |    ESTRATEGIA RSI MULTI-ACTIVOS PARA IQ OPTION
+2025-06-17 09:28:53 | INFO |    ⚡ LÓGICA INVERTIDA ⚡
+2025-06-17 09:28:53 | INFO | ============================================================
+2025-06-17 09:28:53 | INFO | 📅 Fecha/Hora: 2025-06-17 09:28:53
+2025-06-17 09:28:53 | INFO | 📧 Usuario: pab***ipe@me.com
+2025-06-17 09:28:53 | INFO | ============================================================
+2025-06-17 09:28:53 | INFO | ⚠️ IMPORTANTE: Esta estrategia usa lógica INVERTIDA
+2025-06-17 09:28:53 | INFO |    - PUT cuando RSI ≤ 35 (sobreventa)
+2025-06-17 09:28:53 | INFO |    - CALL cuando RSI ≥ 65 (sobrecompra)
+2025-06-17 09:28:53 | INFO | ============================================================
+2025-06-17 09:28:53 | INFO | 🚀 Inicializando estrategia...
+2025-06-17 09:28:53 | INFO | 🎯 INICIANDO ESTRATEGIA RSI MULTI-ACTIVOS (LÓGICA INVERTIDA)
+2025-06-17 09:28:53 | INFO | 📊 Configuración: PUT <= 35, CALL >= 65
+2025-06-17 09:28:53 | INFO | ⚡ LÓGICA INVERTIDA: PUT en sobreventa, CALL en sobrecompra
+2025-06-17 09:28:53 | INFO | 🔗 Conectando a IQ Option...
+2025-06-17 09:28:54 | INFO | ✅ Conexión exitosa
+2025-06-17 09:28:55 | INFO | 💰 Balance actual: $543,127.40
+2025-06-17 09:28:55 | INFO | 💰 Capital inicial: $543,127.40
+2025-06-17 09:28:55 | INFO | ⏳ Período de calentamiento activo por 1 hora
+2025-06-17 09:28:55 | INFO | 🕐 Primera operación posible a las: 10:28:55
+2025-06-17 09:28:55 | INFO | 📂 No hay archivo de estado previo
+2025-06-17 09:28:55 | INFO | 🔍 Verificando activos disponibles...
+2025-06-17 09:29:02 | INFO | ✅ US500: Disponible como SP500-OTC (binary)
+2025-06-17 09:29:02 | INFO | ✅ EURUSD: Disponible como EURUSD-OTC (binary)
+2025-06-17 09:29:02 | INFO | ✅ GER30: Disponible como GER30-OTC (binary)
+2025-06-17 09:29:02 | INFO | ✅ GBPUSD: Disponible como GBPUSD-OTC (binary)
+2025-06-17 09:29:02 | INFO | ✅ XAUUSD: Disponible como XAUUSD-OTC (binary)
+2025-06-17 09:29:02 | INFO | ✅ USDJPY: Disponible como USDJPY-OTC (binary)
+2025-06-17 09:29:02 | INFO | ✅ UK100: Disponible como UK100-OTC (binary)
+2025-06-17 09:29:02 | INFO | ✅ EURGBP: Disponible como EURGBP-OTC (binary)
+2025-06-17 09:29:02 | INFO | ✅ AUDUSD: Disponible como AUDUSD-OTC (binary)
+2025-06-17 09:29:02 | INFO | ✅ JP225: Disponible como JP225-OTC (binary)
+2025-06-17 09:29:02 | INFO | ✅ EURJPY: Disponible como EURJPY-OTC (binary)
+2025-06-17 09:29:02 | WARNING | ⚠️ APPLE: No disponible (APPLE-OTC)
+2025-06-17 09:29:02 | INFO | ✅ XAGUSD: Disponible como XAGUSD-OTC (binary)
+2025-06-17 09:29:02 | INFO | ✅ MSFT: Disponible como MSFT-OTC (binary)
+2025-06-17 09:29:02 | INFO | ✅ GBPJPY: Disponible como GBPJPY-OTC (binary)
+2025-06-17 09:29:02 | INFO | 📊 Total activos disponibles: 14
+2025-06-17 09:29:02 | INFO | 📋 Activos habilitados:
+2025-06-17 09:29:02 | INFO |    - US500 → SP500-OTC (binary)
+2025-06-17 09:29:02 | INFO |    - EURUSD → EURUSD-OTC (binary)
+2025-06-17 09:29:02 | INFO |    - GER30 → GER30-OTC (binary)
+2025-06-17 09:29:02 | INFO |    - GBPUSD → GBPUSD-OTC (binary)
+2025-06-17 09:29:02 | INFO |    - XAUUSD → XAUUSD-OTC (binary)
+2025-06-17 09:29:02 | INFO |    - USDJPY → USDJPY-OTC (binary)
+2025-06-17 09:29:02 | INFO |    - UK100 → UK100-OTC (binary)
+2025-06-17 09:29:02 | INFO |    - EURGBP → EURGBP-OTC (binary)
+2025-06-17 09:29:02 | INFO |    - AUDUSD → AUDUSD-OTC (binary)
+2025-06-17 09:29:02 | INFO |    - JP225 → JP225-OTC (binary)
+2025-06-17 09:29:02 | INFO |    - EURJPY → EURJPY-OTC (binary)
+2025-06-17 09:29:02 | INFO |    - XAGUSD → XAGUSD-OTC (binary)
+2025-06-17 09:29:02 | INFO |    - MSFT → MSFT-OTC (binary)
+2025-06-17 09:29:02 | INFO |    - GBPJPY → GBPJPY-OTC (binary)
+2025-06-17 09:29:02 | INFO | 🎯 Iniciando operaciones...
+2025-06-17 09:29:02 | INFO | ℹ️ Presiona Ctrl+C para detener la estrategia
+2025-06-17 09:29:02 | INFO | 🚀 Iniciando estrategia RSI Multi-Activos (LÓGICA INVERTIDA)
+2025-06-17 09:29:02 | INFO | 📊 Configuración: 14 activos disponibles
+2025-06-17 09:29:02 | INFO | ⚡ IMPORTANTE: PUT en RSI≤35 (sobreventa), CALL en RSI≥65 (sobrecompra)
+2025-06-17 09:29:02 | INFO | ⏰ Tiempo entre señales: 60 minutos (1 hora)
+2025-06-17 09:29:02 | INFO | 🔄 Sin bloqueo por pérdidas consecutivas
+2025-06-17 09:29:02 | INFO | 💰 Tamaño de posición: 2.5% del capital (sin límite máximo)
+2025-06-17 09:31:17 | INFO | 🔄 Ciclo #10 - 2025-06-17 09:31:17
+2025-06-17 09:31:17 | INFO | ⏳ Período de calentamiento: 57.6 minutos restantes
+2025-06-17 09:33:47 | INFO | 🔄 Ciclo #20 - 2025-06-17 09:33:47
+2025-06-17 09:33:47 | INFO | ⏳ Período de calentamiento: 55.1 minutos restantes
+2025-06-17 09:34:58 | INFO | ⏹️ Estrategia detenida por el usuario
+2025-06-17 09:34:58 | INFO | 🏁 Finalizando estrategia...
+2025-06-17 09:34:58 | INFO | ============================================================
+2025-06-17 09:34:58 | INFO | 📊 RESUMEN DE LA ESTRATEGIA RSI MULTI-ACTIVOS (LÓGICA INVERTIDA)
+2025-06-17 09:34:58 | INFO | ============================================================
+2025-06-17 09:34:58 | INFO | ⚡ Estrategia: PUT en sobreventa (RSI≤35), CALL en sobrecompra (RSI≥65)
+2025-06-17 09:34:58 | INFO | 💰 Capital Inicial: $543,127.40
+2025-06-17 09:34:58 | INFO | 💰 Balance Final: $543,127.40
+2025-06-17 09:34:58 | INFO | 📈 Rendimiento Total: 0.00%
+2025-06-17 09:34:58 | INFO | 🎯 Total Operaciones: 0
+2025-06-17 09:34:58 | INFO | 💵 Beneficio Neto: $0.00
+2025-06-17 09:34:58 | INFO | 📉 Capital Mínimo: $543,127.40
+2025-06-17 09:34:58 | INFO | 
+📊 Estadísticas por Activo:
+2025-06-17 09:34:58 | INFO | 
+📅 Rendimiento Mensual:
+2025-06-17 09:34:58 | INFO | ============================================================
+2025-06-17 09:34:58 | INFO | 👋 Estrategia finalizada
+2025-06-17 09:34:58 | INFO | 👋 Programa finalizado

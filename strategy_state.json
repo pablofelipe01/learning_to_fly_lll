@@ -1,0 +1,39 @@
+{
+    "timestamp": "2025-06-18T09:51:47.593121",
+    "strategy_mode": "CALL_PUT",
+    "active_options": {},
+    "last_signal_time": {
+        "EURUSD": "2025-06-18T09:27:58.563024",
+        "UK100": "2025-06-18T09:30:14.462596"
+    },
+    "consecutive_losses": {
+        "EURUSD": 0,
+        "UK100": 0
+    },
+    "daily_lockouts": {},
+    "wins": {
+        "EURUSD": 1,
+        "UK100": 1
+    },
+    "losses": {},
+    "ties": {},
+    "total_profit": 670.847,
+    "daily_profit": 670.847,
+    "monthly_profits": {},
+    "monthly_starting_capital": {
+        "2025-06": 18221.82
+    },
+    "monthly_stop_loss": false,
+    "stop_loss_triggered_month": null,
+    "absolute_stop_loss_activated": false,
+    "min_capital": 17859.82,
+    "last_date": "2025-06-18",
+    "current_month": "2025-06",
+    "daily_profit_lock": true,
+    "daily_profit_lock_amount": 670.847,
+    "daily_profit_lock_time": "2025-06-18T09:35:57.689231",
+    "daily_consecutive_losses": 0,
+    "daily_loss_lock": false,
+    "daily_loss_lock_time": null,
+    "max_daily_consecutive_losses": 3
+}

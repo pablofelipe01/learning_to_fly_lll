@@ -1,0 +1,229 @@
+2025-06-17 11:47:47 | INFO | ============================================================
+2025-06-17 11:47:47 | INFO |    ESTRATEGIA RSI MULTI-DIVISA PARA IQ OPTION
+2025-06-17 11:47:47 | INFO |    ⚡ LÓGICA INVERTIDA ⚡
+2025-06-17 11:47:47 | INFO | ============================================================
+2025-06-17 11:47:47 | INFO | 📅 Fecha/Hora: 2025-06-17 11:47:47
+2025-06-17 11:47:47 | INFO | 📧 Usuario: pab***ipe@me.com
+2025-06-17 11:47:47 | INFO | ============================================================
+2025-06-17 11:47:47 | INFO | ⚠️ IMPORTANTE: Esta estrategia usa lógica INVERTIDA
+2025-06-17 11:47:47 | INFO |    - PUT cuando RSI ≤ 35 (sobreventa)
+2025-06-17 11:47:47 | INFO |    - CALL cuando RSI ≥ 65 (sobrecompra)
+2025-06-17 11:47:47 | INFO | ============================================================
+2025-06-17 11:47:47 | INFO | 🚀 Inicializando estrategia...
+2025-06-17 11:47:47 | INFO | 🎯 INICIANDO ESTRATEGIA RSI MULTI-DIVISA (LÓGICA INVERTIDA)
+2025-06-17 11:47:47 | INFO | 📊 Configuración: PUT <= 35, CALL >= 65
+2025-06-17 11:47:47 | INFO | ⚡ LÓGICA INVERTIDA: PUT en sobreventa, CALL en sobrecompra
+2025-06-17 11:47:47 | INFO | 🔗 Conectando a IQ Option...
+2025-06-17 11:47:49 | INFO | ✅ Conexión exitosa
+2025-06-17 11:47:49 | INFO | 💰 Balance actual: $465,127.95
+2025-06-17 11:47:49 | INFO | 💰 Capital inicial: $465,127.95
+2025-06-17 11:47:49 | INFO | 📂 No hay archivo de estado previo
+2025-06-17 11:47:49 | INFO | 🔍 Verificando pares disponibles...
+2025-06-17 11:47:56 | INFO | ✅ AUDCHF: Encontrado como AUDCHF-OTC (turbo)
+2025-06-17 11:47:56 | INFO | ✅ AUDCHF: Encontrado como AUDCHF-OTC (binary)
+2025-06-17 11:47:56 | INFO | ✅ AUDCHF: Encontrado como AUDCHF-op (binary)
+2025-06-17 11:47:56 | INFO | ✅ AUDCHF: Seleccionado AUDCHF-OTC (turbo)
+2025-06-17 11:47:56 | INFO | ✅ CADCHF: Encontrado como CADCHF-OTC (turbo)
+2025-06-17 11:47:56 | INFO | ✅ CADCHF: Encontrado como CADCHF-OTC (binary)
+2025-06-17 11:47:56 | INFO | ✅ CADCHF: Encontrado como CADCHF-op (binary)
+2025-06-17 11:47:56 | INFO | ✅ CADCHF: Seleccionado CADCHF-OTC (turbo)
+2025-06-17 11:47:56 | INFO | ✅ EURAUD: Encontrado como EURAUD-OTC (turbo)
+2025-06-17 11:47:56 | INFO | ✅ EURAUD: Encontrado como EURAUD-OTC (binary)
+2025-06-17 11:47:56 | INFO | ✅ EURAUD: Encontrado como EURAUD-op (binary)
+2025-06-17 11:47:56 | INFO | ✅ EURAUD: Seleccionado EURAUD-OTC (turbo)
+2025-06-17 11:47:56 | INFO | ✅ EURCAD: Encontrado como EURCAD-OTC (turbo)
+2025-06-17 11:47:56 | INFO | ✅ EURCAD: Encontrado como EURCAD-OTC (binary)
+2025-06-17 11:47:56 | INFO | ✅ EURCAD: Encontrado como EURCAD-op (binary)
+2025-06-17 11:47:56 | INFO | ✅ EURCAD: Seleccionado EURCAD-OTC (turbo)
+2025-06-17 11:47:56 | INFO | ✅ EURCHF: Encontrado como EURCHF-OTC (turbo)
+2025-06-17 11:47:56 | INFO | ✅ EURCHF: Encontrado como EURCHF-OTC (binary)
+2025-06-17 11:47:56 | INFO | ✅ EURCHF: Encontrado como EURCHF-op (binary)
+2025-06-17 11:47:56 | INFO | ✅ EURCHF: Seleccionado EURCHF-OTC (turbo)
+2025-06-17 11:47:56 | INFO | ✅ EURNZD: Encontrado como EURNZD-OTC (turbo)
+2025-06-17 11:47:56 | INFO | ✅ EURNZD: Encontrado como EURNZD-OTC (binary)
+2025-06-17 11:47:56 | INFO | ✅ EURNZD: Encontrado como EURNZD-op (binary)
+2025-06-17 11:47:56 | INFO | ✅ EURNZD: Seleccionado EURNZD-OTC (turbo)
+2025-06-17 11:47:56 | INFO | ✅ GBPAUD: Encontrado como GBPAUD-OTC (turbo)
+2025-06-17 11:47:56 | INFO | ✅ GBPAUD: Encontrado como GBPAUD-OTC (binary)
+2025-06-17 11:47:56 | INFO | ✅ GBPAUD: Encontrado como GBPAUD-op (binary)
+2025-06-17 11:47:56 | INFO | ✅ GBPAUD: Seleccionado GBPAUD-OTC (turbo)
+2025-06-17 11:47:56 | INFO | ✅ GBPCAD: Encontrado como GBPCAD-OTC (turbo)
+2025-06-17 11:47:56 | INFO | ✅ GBPCAD: Encontrado como GBPCAD-OTC (binary)
+2025-06-17 11:47:56 | INFO | ✅ GBPCAD: Encontrado como GBPCAD-op (binary)
+2025-06-17 11:47:56 | INFO | ✅ GBPCAD: Seleccionado GBPCAD-OTC (turbo)
+2025-06-17 11:47:56 | INFO | ✅ GBPCHF: Encontrado como GBPCHF-OTC (turbo)
+2025-06-17 11:47:56 | INFO | ✅ GBPCHF: Encontrado como GBPCHF-OTC (binary)
+2025-06-17 11:47:56 | INFO | ✅ GBPCHF: Encontrado como GBPCHF-op (binary)
+2025-06-17 11:47:56 | INFO | ✅ GBPCHF: Seleccionado GBPCHF-OTC (turbo)
+2025-06-17 11:47:56 | INFO | ✅ GBPNZD: Encontrado como GBPNZD-OTC (turbo)
+2025-06-17 11:47:56 | INFO | ✅ GBPNZD: Encontrado como GBPNZD-OTC (binary)
+2025-06-17 11:47:56 | INFO | ✅ GBPNZD: Encontrado como GBPNZD-op (binary)
+2025-06-17 11:47:56 | INFO | ✅ GBPNZD: Seleccionado GBPNZD-OTC (turbo)
+2025-06-17 11:47:56 | INFO | ✅ GBPJPY: Encontrado como GBPJPY-OTC (turbo)
+2025-06-17 11:47:56 | INFO | ✅ GBPJPY: Encontrado como GBPJPY-OTC (binary)
+2025-06-17 11:47:56 | INFO | ✅ GBPJPY: Encontrado como GBPJPY-op (binary)
+2025-06-17 11:47:56 | INFO | ✅ GBPJPY: Seleccionado GBPJPY-OTC (turbo)
+2025-06-17 11:47:56 | INFO | ✅ NZDUSD: Encontrado como NZDUSD-OTC (binary)
+2025-06-17 11:47:56 | INFO | ✅ NZDUSD: Encontrado como NZDUSD-op (binary)
+2025-06-17 11:47:56 | INFO | ✅ NZDUSD: Seleccionado NZDUSD-OTC (binary)
+2025-06-17 11:47:56 | INFO | ✅ EURGBP: Encontrado como EURGBP-OTC (turbo)
+2025-06-17 11:47:56 | INFO | ✅ EURGBP: Encontrado como EURGBP-OTC (binary)
+2025-06-17 11:47:56 | INFO | ✅ EURGBP: Encontrado como EURGBP-op (binary)
+2025-06-17 11:47:56 | INFO | ✅ EURGBP: Seleccionado EURGBP-OTC (turbo)
+2025-06-17 11:47:56 | INFO | ✅ EURJPY: Encontrado como EURJPY-op (turbo)
+2025-06-17 11:47:56 | INFO | ✅ EURJPY: Encontrado como EURJPY-OTC (binary)
+2025-06-17 11:47:56 | INFO | ✅ EURJPY: Encontrado como EURJPY-op (binary)
+2025-06-17 11:47:56 | INFO | ✅ EURJPY: Seleccionado EURJPY-op (turbo)
+2025-06-17 11:47:56 | INFO | ✅ EURUSD: Encontrado como EURUSD-OTC (turbo)
+2025-06-17 11:47:56 | INFO | ✅ EURUSD: Encontrado como EURUSD-op (turbo)
+2025-06-17 11:47:56 | INFO | ✅ EURUSD: Encontrado como EURUSD-OTC (binary)
+2025-06-17 11:47:56 | INFO | ✅ EURUSD: Encontrado como EURUSD-op (binary)
+2025-06-17 11:47:56 | INFO | ✅ EURUSD: Seleccionado EURUSD-OTC (turbo)
+2025-06-17 11:47:56 | INFO | ✅ GBPUSD: Encontrado como GBPUSD-OTC (turbo)
+2025-06-17 11:47:56 | INFO | ✅ GBPUSD: Encontrado como GBPUSD-op (turbo)
+2025-06-17 11:47:56 | INFO | ✅ GBPUSD: Encontrado como GBPUSD-OTC (binary)
+2025-06-17 11:47:56 | INFO | ✅ GBPUSD: Encontrado como GBPUSD-op (binary)
+2025-06-17 11:47:56 | INFO | ✅ GBPUSD: Seleccionado GBPUSD-OTC (turbo)
+2025-06-17 11:47:56 | INFO | 📊 Total pares disponibles: 16
+2025-06-17 11:47:56 | INFO | 📋 Pares activos:
+2025-06-17 11:47:56 | INFO |    - AUDCHF → AUDCHF-OTC (turbo)
+2025-06-17 11:47:56 | INFO |    - CADCHF → CADCHF-OTC (turbo)
+2025-06-17 11:47:56 | INFO |    - EURAUD → EURAUD-OTC (turbo)
+2025-06-17 11:47:56 | INFO |    - EURCAD → EURCAD-OTC (turbo)
+2025-06-17 11:47:56 | INFO |    - EURCHF → EURCHF-OTC (turbo)
+2025-06-17 11:47:56 | INFO |    - EURNZD → EURNZD-OTC (turbo)
+2025-06-17 11:47:56 | INFO |    - GBPAUD → GBPAUD-OTC (turbo)
+2025-06-17 11:47:56 | INFO |    - GBPCAD → GBPCAD-OTC (turbo)
+2025-06-17 11:47:56 | INFO |    - GBPCHF → GBPCHF-OTC (turbo)
+2025-06-17 11:47:56 | INFO |    - GBPNZD → GBPNZD-OTC (turbo)
+2025-06-17 11:47:56 | INFO |    - GBPJPY → GBPJPY-OTC (turbo)
+2025-06-17 11:47:56 | INFO |    - NZDUSD → NZDUSD-OTC (binary)
+2025-06-17 11:47:56 | INFO |    - EURGBP → EURGBP-OTC (turbo)
+2025-06-17 11:47:56 | INFO |    - EURJPY → EURJPY-op (turbo)
+2025-06-17 11:47:56 | INFO |    - EURUSD → EURUSD-OTC (turbo)
+2025-06-17 11:47:56 | INFO |    - GBPUSD → GBPUSD-OTC (turbo)
+2025-06-17 11:47:56 | INFO | 🎯 Iniciando operaciones...
+2025-06-17 11:47:56 | INFO | ℹ️ Presiona Ctrl+C para detener la estrategia
+2025-06-17 11:47:56 | INFO | 🚀 Iniciando estrategia RSI Multi-Divisa (LÓGICA INVERTIDA)
+2025-06-17 11:47:56 | INFO | 📊 Configuración: 16 pares disponibles
+2025-06-17 11:47:56 | INFO | ⚡ IMPORTANTE: PUT en RSI≤35 (sobreventa), CALL en RSI≥65 (sobrecompra)
+2025-06-17 11:47:56 | INFO | ⏰ Tiempo entre señales: 60 minutos (1 hora)
+2025-06-17 11:47:56 | INFO | 🔄 Sin bloqueo por pérdidas consecutivas
+2025-06-17 11:47:56 | INFO | 💰 Tamaño de posición: 2.5% del capital (sin límite máximo)
+2025-06-17 11:47:57 | INFO | 🟢 EURCAD - Señal CALL (RSI: 73.10)
+2025-06-17 11:47:58 | INFO | 📈 Colocando CALL en EURCAD (EURCAD-OTC), cantidad: $11,628.20
+2025-06-17 11:47:58 | INFO | ✅ Orden colocada exitosamente. ID: 12755495295
+2025-06-17 11:47:58 | INFO | 📝 Orden registrada para EURCAD
+2025-06-17 11:47:59 | INFO | 🟢 EURNZD - Señal CALL (RSI: 74.98)
+2025-06-17 11:47:59 | INFO | 📈 Colocando CALL en EURNZD (EURNZD-OTC), cantidad: $11,337.50
+2025-06-17 11:48:00 | INFO | ✅ Orden colocada exitosamente. ID: 12755495380
+2025-06-17 11:48:00 | INFO | 📝 Orden registrada para EURNZD
+2025-06-17 11:48:00 | INFO | 🔴 GBPCHF - Señal PUT (RSI: 31.43)
+2025-06-17 11:48:01 | INFO | 📈 Colocando PUT en GBPCHF (GBPCHF-OTC), cantidad: $11,054.07
+2025-06-17 11:48:01 | INFO | ✅ Orden colocada exitosamente. ID: 12755495558
+2025-06-17 11:48:01 | INFO | 📝 Orden registrada para GBPCHF
+2025-06-17 11:48:11 | INFO | 📉 Nuevo mínimo: $431,108.95 (7.31% pérdida)
+2025-06-17 11:48:13 | INFO | 🔴 EURJPY - Señal PUT (RSI: 34.02)
+2025-06-17 11:48:14 | INFO | 📈 Colocando PUT en EURJPY (EURJPY-op), cantidad: $10,777.72
+2025-06-17 11:48:14 | INFO | ✅ Orden colocada exitosamente. ID: 12755496439
+2025-06-17 11:48:14 | INFO | 📝 Orden registrada para EURJPY
+2025-06-17 11:48:26 | INFO | 📉 Nuevo mínimo: $420,331.95 (9.63% pérdida)
+2025-06-17 11:50:11 | INFO | 🔄 Ciclo #10 - 2025-06-17 11:50:11
+2025-06-17 11:50:27 | INFO | 🔄 Verificando orden 12755495295...
+2025-06-17 11:50:27 | INFO | 📋 Orden encontrada en order_binary
+2025-06-17 11:50:27 | INFO |    Result: LOOSE
+2025-06-17 11:50:27 | INFO | ❌ Pérdida detectada
+2025-06-17 11:50:27 | INFO | ❌ EURCAD - CALL PERDIDA. Pérdida: $11,628.20
+2025-06-17 11:50:27 | INFO | 📊 EURCAD - Pérdidas consecutivas: 1
+2025-06-17 11:50:27 | INFO | 🔄 Verificando orden 12755495380...
+2025-06-17 11:50:27 | INFO | 📋 Orden encontrada en order_binary
+2025-06-17 11:50:27 | INFO |    Result: LOOSE
+2025-06-17 11:50:27 | INFO | ❌ Pérdida detectada
+2025-06-17 11:50:27 | INFO | ❌ EURNZD - CALL PERDIDA. Pérdida: $11,337.50
+2025-06-17 11:50:27 | INFO | 📊 EURNZD - Pérdidas consecutivas: 1
+2025-06-17 11:50:27 | INFO | 🔄 Verificando orden 12755495558...
+2025-06-17 11:50:27 | INFO | 📋 Orden encontrada en order_binary
+2025-06-17 11:50:27 | INFO |    Result: WIN (profit: 185%)
+2025-06-17 11:50:27 | INFO | ✅ Victoria detectada
+2025-06-17 11:50:27 | INFO | ✅ GBPCHF - PUT GANADA! Beneficio: $20,450.03
+2025-06-17 11:50:42 | INFO | 🔄 Verificando orden 12755496439...
+2025-06-17 11:50:42 | INFO | 📋 Orden encontrada en order_binary
+2025-06-17 11:50:42 | INFO |    Result: WIN (profit: 184%)
+2025-06-17 11:50:42 | INFO | ✅ Victoria detectada
+2025-06-17 11:50:42 | INFO | ✅ EURJPY - PUT GANADA! Beneficio: $19,831.00
+2025-06-17 11:52:41 | INFO | 🔄 Ciclo #20 - 2025-06-17 11:52:41
+2025-06-17 11:54:12 | INFO | 🟢 EURCHF - Señal CALL (RSI: 65.37)
+2025-06-17 11:54:13 | INFO | 📈 Colocando CALL en EURCHF (EURCHF-OTC), cantidad: $11,515.29
+2025-06-17 11:54:14 | INFO | ✅ Orden colocada exitosamente. ID: 12755517389
+2025-06-17 11:54:14 | INFO | 📝 Orden registrada para EURCHF
+2025-06-17 11:55:11 | INFO | 🔄 Ciclo #30 - 2025-06-17 11:55:11
+2025-06-17 11:55:13 | INFO | 🔴 GBPCAD - Señal PUT (RSI: 34.61)
+2025-06-17 11:55:13 | INFO | 📈 Colocando PUT en GBPCAD (GBPCAD-OTC), cantidad: $11,227.41
+2025-06-17 11:55:14 | INFO | ✅ Orden colocada exitosamente. ID: 12755520709
+2025-06-17 11:55:14 | INFO | 📝 Orden registrada para GBPCAD
+2025-06-17 11:56:42 | INFO | 🔄 Verificando orden 12755517389...
+2025-06-17 11:56:42 | INFO | 📋 Orden encontrada en order_binary
+2025-06-17 11:56:42 | INFO |    Result: WIN (profit: 185%)
+2025-06-17 11:56:42 | INFO | ✅ Victoria detectada
+2025-06-17 11:56:42 | INFO | ✅ EURCHF - CALL GANADA! Beneficio: $21,303.29
+2025-06-17 11:57:42 | INFO | 🔄 Ciclo #40 - 2025-06-17 11:57:42
+2025-06-17 11:57:42 | INFO | 🔄 Verificando orden 12755520709...
+2025-06-17 11:57:42 | INFO | 📋 Orden encontrada en order_binary
+2025-06-17 11:57:42 | INFO |    Result: LOOSE
+2025-06-17 11:57:42 | INFO | ❌ Pérdida detectada
+2025-06-17 11:57:42 | INFO | ❌ GBPCAD - PUT PERDIDA. Pérdida: $11,227.41
+2025-06-17 11:57:42 | INFO | 📊 GBPCAD - Pérdidas consecutivas: 1
+2025-06-17 11:58:28 | INFO | 🟢 EURGBP - Señal CALL (RSI: 65.01)
+2025-06-17 11:58:29 | INFO | 📈 Colocando CALL en EURGBP (EURGBP-OTC), cantidad: $11,479.31
+2025-06-17 11:58:29 | INFO | ✅ Orden colocada exitosamente. ID: 12755530679
+2025-06-17 11:58:29 | INFO | 📝 Orden registrada para EURGBP
+2025-06-17 12:00:12 | INFO | 🔄 Ciclo #50 - 2025-06-17 12:00:12
+2025-06-17 12:00:57 | INFO | 🔄 Verificando orden 12755530679...
+2025-06-17 12:00:57 | INFO | 📋 Orden encontrada en order_binary
+2025-06-17 12:00:57 | INFO |    Result: LOOSE
+2025-06-17 12:00:57 | INFO | ❌ Pérdida detectada
+2025-06-17 12:00:57 | INFO | ❌ EURGBP - CALL PERDIDA. Pérdida: $11,479.31
+2025-06-17 12:00:57 | INFO | 📊 EURGBP - Pérdidas consecutivas: 1
+2025-06-17 12:02:42 | INFO | 🔄 Ciclo #60 - 2025-06-17 12:02:42
+2025-06-17 12:03:27 | INFO | 🟢 AUDCHF - Señal CALL (RSI: 65.49)
+2025-06-17 12:03:27 | INFO | 📈 Colocando CALL en AUDCHF (AUDCHF-OTC), cantidad: $11,192.33
+2025-06-17 12:03:28 | INFO | ✅ Orden colocada exitosamente. ID: 12755545622
+2025-06-17 12:03:28 | INFO | 📝 Orden registrada para AUDCHF
+2025-06-17 12:05:12 | INFO | 🔄 Ciclo #70 - 2025-06-17 12:05:12
+2025-06-17 12:05:57 | INFO | 🔄 Verificando orden 12755545622...
+2025-06-17 12:05:57 | INFO | 📋 Orden encontrada en order_binary
+2025-06-17 12:05:57 | INFO |    Result: LOOSE
+2025-06-17 12:05:57 | INFO | ❌ Pérdida detectada
+2025-06-17 12:05:57 | INFO | ❌ AUDCHF - CALL PERDIDA. Pérdida: $11,192.33
+2025-06-17 12:05:57 | INFO | 📊 AUDCHF - Pérdidas consecutivas: 1
+2025-06-17 12:06:55 | INFO | ⏹️ Estrategia detenida por el usuario
+2025-06-17 12:06:55 | INFO | 🏁 Finalizando estrategia...
+2025-06-17 12:06:55 | INFO | ============================================================
+2025-06-17 12:06:55 | INFO | 📊 RESUMEN DE LA ESTRATEGIA RSI (LÓGICA INVERTIDA)
+2025-06-17 12:06:55 | INFO | ============================================================
+2025-06-17 12:06:55 | INFO | ⚡ Estrategia: PUT en sobreventa (RSI≤35), CALL en sobrecompra (RSI≥65)
+2025-06-17 12:06:55 | INFO | 💰 Capital Inicial: $465,127.95
+2025-06-17 12:06:55 | INFO | 💰 Balance Final: $436,501.28
+2025-06-17 12:06:55 | INFO | 📈 Rendimiento Total: -6.15%
+2025-06-17 12:06:55 | INFO | 🎯 Total Operaciones: 8
+2025-06-17 12:06:55 | INFO | ✅ Victorias: 3 (37.5%)
+2025-06-17 12:06:55 | INFO | ❌ Derrotas: 5 (62.5%)
+2025-06-17 12:06:55 | INFO | 🟡 Empates: 0 (0.0%)
+2025-06-17 12:06:55 | INFO | 📊 Tasa de Éxito (sin empates): 37.50%
+2025-06-17 12:06:55 | INFO | 💵 Beneficio Neto: $4,719.57
+2025-06-17 12:06:55 | INFO | 📉 Capital Mínimo: $420,331.95
+2025-06-17 12:06:55 | INFO | 
+📊 Estadísticas por Par:
+2025-06-17 12:06:55 | INFO | AUDCHF: 1 trades | 0W/1L/0T | 0.0% éxito | Pérdidas consecutivas actuales: 1
+2025-06-17 12:06:55 | INFO | EURCAD: 1 trades | 0W/1L/0T | 0.0% éxito | Pérdidas consecutivas actuales: 1
+2025-06-17 12:06:55 | INFO | EURCHF: 1 trades | 1W/0L/0T | 100.0% éxito | Pérdidas consecutivas actuales: 0
+2025-06-17 12:06:55 | INFO | EURNZD: 1 trades | 0W/1L/0T | 0.0% éxito | Pérdidas consecutivas actuales: 1
+2025-06-17 12:06:55 | INFO | GBPCAD: 1 trades | 0W/1L/0T | 0.0% éxito | Pérdidas consecutivas actuales: 1
+2025-06-17 12:06:55 | INFO | GBPCHF: 1 trades | 1W/0L/0T | 100.0% éxito | Pérdidas consecutivas actuales: 0
+2025-06-17 12:06:55 | INFO | EURGBP: 1 trades | 0W/1L/0T | 0.0% éxito | Pérdidas consecutivas actuales: 1
+2025-06-17 12:06:55 | INFO | EURJPY: 1 trades | 1W/0L/0T | 100.0% éxito | Pérdidas consecutivas actuales: 0
+2025-06-17 12:06:55 | INFO | 
+📅 Rendimiento Mensual:
+2025-06-17 12:06:55 | INFO | ============================================================
+2025-06-17 12:06:55 | INFO | 👋 Estrategia finalizada
+2025-06-17 12:06:55 | INFO | 👋 Programa finalizado

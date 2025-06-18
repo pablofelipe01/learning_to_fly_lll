@@ -1,0 +1,61 @@
+{
+    "timestamp": "2025-06-17T11:44:23.913667",
+    "strategy_mode": "CALL_PUT",
+    "active_options": {
+        "MSFT": [
+            {
+                "id": 12755479680,
+                "type": "CALL",
+                "asset": "MSFT",
+                "size": 11926.35,
+                "entry_time": "2025-06-17T11:43:12.556160",
+                "expiry_time": "2025-06-17T11:45:12.556162",
+                "rsi": 71.27,
+                "balance_before": 477053.95
+            }
+        ]
+    },
+    "last_signal_time": {
+        "AUDUSD": "2025-06-17T11:36:56.794479",
+        "GBPJPY": "2025-06-17T10:36:43.230899",
+        "APPLE": "2025-06-17T10:42:55.827772",
+        "MSFT": "2025-06-17T11:43:12.556272",
+        "XAUUSD": "2025-06-17T10:47:25.506191",
+        "EURUSD": "2025-06-17T10:48:55.234066",
+        "GER30": "2025-06-17T10:54:55.176282",
+        "UK100": "2025-06-17T11:37:11.502028"
+    },
+    "consecutive_losses": {
+        "AUDUSD": 0,
+        "GBPJPY": 1,
+        "XAUUSD": 1,
+        "EURUSD": 1,
+        "GER30": 1,
+        "UK100": 1
+    },
+    "daily_lockouts": {},
+    "wins": {
+        "AUDUSD": 1
+    },
+    "losses": {
+        "AUDUSD": 1,
+        "GBPJPY": 1,
+        "XAUUSD": 1,
+        "EURUSD": 1,
+        "GER30": 1,
+        "UK100": 1
+    },
+    "ties": {},
+    "total_profit": -54112.061,
+    "daily_profit": -54112.061,
+    "monthly_profits": {},
+    "monthly_starting_capital": {
+        "2025-06": 543127.4
+    },
+    "monthly_stop_loss": false,
+    "stop_loss_triggered_month": null,
+    "absolute_stop_loss_activated": false,
+    "min_capital": 454922.4,
+    "last_date": "2025-06-17",
+    "current_month": "2025-06"
+}

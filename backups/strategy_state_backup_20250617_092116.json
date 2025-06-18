@@ -1,0 +1,54 @@
+{
+    "timestamp": "2025-06-17T09:14:37.786387",
+    "strategy_mode": "CALL_PUT",
+    "active_options": {},
+    "last_signal_time": {
+        "XAUUSD": "2025-06-17T08:55:38.243625",
+        "UK100": "2025-06-17T08:55:39.583712",
+        "EURGBP": "2025-06-17T08:55:40.957849",
+        "AUDUSD": "2025-06-17T08:55:42.062018",
+        "XAGUSD": "2025-06-17T08:55:43.547438",
+        "GBPJPY": "2025-06-17T08:55:44.900552",
+        "JP225": "2025-06-17T08:56:53.306647",
+        "GER30": "2025-06-17T09:02:07.804555",
+        "EURUSD": "2025-06-17T09:05:22.951453"
+    },
+    "consecutive_losses": {
+        "XAUUSD": 1,
+        "UK100": 1,
+        "EURGBP": 1,
+        "AUDUSD": 1,
+        "XAGUSD": 1,
+        "GBPJPY": 0,
+        "JP225": 1,
+        "GER30": 0,
+        "EURUSD": 0
+    },
+    "daily_lockouts": {},
+    "wins": {
+        "GBPJPY": 1,
+        "GER30": 1,
+        "EURUSD": 1
+    },
+    "losses": {
+        "XAUUSD": 1,
+        "UK100": 1,
+        "EURGBP": 1,
+        "AUDUSD": 1,
+        "XAGUSD": 1,
+        "JP225": 1
+    },
+    "ties": {},
+    "total_profit": -21677.866499999982,
+    "daily_profit": -21677.866499999982,
+    "monthly_profits": {},
+    "monthly_starting_capital": {
+        "2025-06": 542673.1
+    },
+    "monthly_stop_loss": false,
+    "stop_loss_triggered_month": null,
+    "absolute_stop_loss_activated": false,
+    "min_capital": 454542.1,
+    "last_date": "2025-06-17",
+    "current_month": "2025-06"
+}
