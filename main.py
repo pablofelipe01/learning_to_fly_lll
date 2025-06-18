@@ -14,7 +14,7 @@ def main():
     """Función principal para ejecutar la estrategia"""
     
     # Configurar argumentos de línea de comandos
-    parser = argparse.ArgumentParser(description='Estrategia RSI Multi-Activos para IQ Option')
+    parser = argparse.ArgumentParser(description='Estrategia Algebra Multi-Activos para Option')
     parser.add_argument('--email', type=str, help='Email de IQ Option (sobrescribe config)')
     parser.add_argument('--password', type=str, help='Contraseña de IQ Option (sobrescribe config)')
     parser.add_argument('--account', type=str, choices=['PRACTICE', 'REAL'], 
@@ -45,7 +45,7 @@ def main():
     
     # Banner de inicio
     logger.info("=" * 60)
-    logger.info("   ESTRATEGIA RSI MULTI-ACTIVOS PARA IQ OPTION")
+    logger.info("   ESTRATEGIA ALGEBRA MULTI-ACTIVOS PARA OPTION")
     logger.info("   ⚡ LÓGICA INVERTIDA ⚡")
     logger.info("=" * 60)
     logger.info(f"📅 Fecha/Hora: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")

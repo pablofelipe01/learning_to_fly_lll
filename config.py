@@ -2,8 +2,8 @@
 # Configuración de la estrategia RSI para IQ Option - Multi-Activos
 
 # Credenciales IQ Option
-IQ_EMAIL = "pablofelipe@me.com"
-IQ_PASSWORD = "............"  # Añadir tu contraseña aquí
+IQ_EMAIL = "tu_correo"
+IQ_PASSWORD = "Tu_contraseña"  # Añadir tu contraseña aquí
 ACCOUNT_TYPE = "PRACTICE"  # "PRACTICE" o "REAL"
 
 # Lista de activos multi-mercado

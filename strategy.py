@@ -38,7 +38,7 @@ class MultiAssetRSIBinaryOptionsStrategy:
         """
         # Configurar logger
         self.logger = setup_logger(__name__, LOG_FILE, getattr(logging, LOG_LEVEL))
-        self.logger.info("🎯 INICIANDO ESTRATEGIA RSI MULTI-ACTIVOS (LÓGICA INVERTIDA)")
+        self.logger.info("🎯 INICIANDO ESTRATEGIA ALGEBRA MULTI-ACTIVOS (LÓGICA INVERTIDA)")
         self.logger.info(f"📊 Configuración: PUT <= {OVERSOLD_LEVEL}, CALL >= {OVERBOUGHT_LEVEL}")
         self.logger.info("⚡ LÓGICA INVERTIDA: PUT en sobreventa, CALL en sobrecompra")
         
@@ -1364,7 +1364,7 @@ class MultiAssetRSIBinaryOptionsStrategy:
             current_capital = self.initial_capital
         
         self.logger.info("=" * 60)
-        self.logger.info("📊 RESUMEN DE LA ESTRATEGIA RSI MULTI-ACTIVOS (LÓGICA INVERTIDA)")
+        self.logger.info("📊 RESUMEN DE LA ESTRATEGIA ALGEBRA MULTI-ACTIVOS (LÓGICA INVERTIDA)")
         self.logger.info("=" * 60)
         self.logger.info("⚡ Estrategia: PUT en sobreventa (RSI≤35), CALL en sobrecompra (RSI≥65)")
         self.logger.info(f"💰 Capital Inicial: {format_currency(self.initial_capital)}")
@@ -1428,7 +1428,7 @@ class MultiAssetRSIBinaryOptionsStrategy:
     
     def run(self):
         """Ejecutar la estrategia principal"""
-        self.logger.info("🚀 Iniciando estrategia RSI Multi-Activos (LÓGICA INVERTIDA)")
+        self.logger.info("🚀 Iniciando estrategia ALGEBRA Multi-Activos (LÓGICA INVERTIDA)")
         self.logger.info(f"📊 Configuración: {len(self.valid_assets)} activos disponibles")
         self.logger.info("⚡ IMPORTANTE: PUT en RSI≤35 (sobreventa), CALL en RSI≥65 (sobrecompra)")
         self.logger.info(f"⏰ Tiempo entre señales: {self.min_time_between_signals} minutos (1 hora)")
